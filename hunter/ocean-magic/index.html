@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ocean Magic AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html { font-size: 16px; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1b2a;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 8px 0 12px;
+            border-bottom: 1px solid #1b3a4b;
+            margin-bottom: 12px;
+        }
+        
+        .header h1 {
+            font-size: 1.25rem;
+            color: #64d2ff;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 0.75rem;
+            color: #7a9bb3;
+            margin-top: 2px;
+        }
+        
+        /* AP Edge - Most Important */
+        .ap-edge {
+            background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%);
+            border: 2px solid #2d7a2d;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .ap-edge h2 {
+            color: #4ade80;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .ap-check {
+            background: #166534;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .ap-check-title {
+            color: #4ade80;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+        
+        .ap-check p {
+            font-size: 0.9rem;
+            color: #d1fae5;
+        }
+        
+        .ap-check strong {
+            color: #fff;
+        }
+        
+        .quick-rule {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 8px 0;
+            border-top: 1px solid #2d5a2d;
+        }
+        
+        .quick-rule:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        
+        .quick-rule .icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .quick-rule p {
+            font-size: 0.85rem;
+            color: #bbf7d0;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%);
+            border: 1px solid #2d5a8a;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .how-it-works h2 {
+            color: #60a5fa;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .how-it-works p {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: #bfdbfe;
+        }
+        
+        .how-it-works p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .how-it-works strong {
+            color: #93c5fd;
+        }
+        
+        /* Standard Sections */
+        .section {
+            background: #112233;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #1b3a4b;
+        }
+        
+        .section h2 {
+            color: #64d2ff;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .rule {
+            font-size: 0.85rem;
+            padding: 6px 0;
+            border-bottom: 1px solid #1b3a4b;
+            color: #c5d5e5;
+        }
+        
+        .rule:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .rule strong {
+            color: #64d2ff;
+        }
+        
+        /* Highlight box */
+        .highlight {
+            background: rgba(100, 210, 255, 0.1);
+            border-left: 3px solid #64d2ff;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .highlight p {
+            font-size: 0.85rem;
+            color: #a5d8ff;
+            margin: 0;
+        }
+        
+        /* Warning */
+        .warning {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 3px solid #fbbf24;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .warning p {
+            font-size: 0.85rem;
+            color: #fde68a;
+            margin: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #4a6a7a;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #1b3a4b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Ocean Magic Cheat Sheet</h1>
+        <p>IGT/GTECH • Advantage Play Reference</p>
+    </div>
+
+    <!-- AP EDGE - TOP PRIORITY -->
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Look at the <strong>bottom of the screen</strong> for bubble tops peeking up below the reels.</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">🫧</span>
+            <p><strong>More bubbles visible = More value</strong> left by the previous player</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">⭐</span>
+            <p>Bubbles that will rise to <strong>Logo symbol positions</strong> are especially valuable (triggers expansion)</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">📍</span>
+            <p>Check <strong>all five reels</strong> — bubbles can be waiting below any of them</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">🚶</span>
+            <p><strong>No bubbles visible?</strong> Walk away — no advantage exists</p>
+        </div>
+    </div>
+
+    <!-- HOW THE AP WORKS -->
+    <div class="how-it-works">
+        <h2>🔍 How the Advantage Works</h2>
+        <p>Unlike most slots, <strong>wild bubbles persist between players</strong>. They bubble up from below the screen after each spin.</p>
+        <p>When a previous player leaves with bubbles still rising, <strong>you inherit those wilds for free</strong> — they didn't pay for them, but you benefit.</p>
+        <p>Each spin, bubbles move <strong>up one row</strong>. Bubbles on the top row float off. Your goal: capture value before it disappears.</p>
+    </div>
+
+    <!-- GAME BASICS -->
+    <div class="section">
+        <h2>🎰 Game Basics</h2>
+        <p class="rule"><strong>4 rows × 5 reels</strong></p>
+        <p class="rule"><strong>One payline per credit</strong> bet</p>
+        <p class="rule">Two modes: <strong>Wild Bubble</strong> and <strong>Bubble Burst</strong></p>
+    </div>
+
+    <!-- WILD BUBBLE MECHANICS -->
+    <div class="section">
+        <h2>🫧 Wild Bubble Mechanics</h2>
+        <p class="rule">No wilds on reel strips — <strong>bubbles randomly appear</strong> from bottom after each bet</p>
+        <p class="rule">Wilds substitute for <strong>any symbol except scatter</strong></p>
+        <p class="rule">If bubble replaces scatter, you get credit for <strong>both</strong></p>
+        <p class="rule">Each spin: bubbles <strong>move up one row</strong></p>
+        <p class="rule">Top row bubbles <strong>float off</strong> next spin</p>
+        
+        <div class="highlight">
+            <p>💡 <strong>Key:</strong> You can see bubble tops below bottom row — this is your edge!</p>
+        </div>
+    </div>
+
+    <!-- LOGO EXPANSION -->
+    <div class="section">
+        <h2>✨ Logo Expansion</h2>
+        <p class="rule">Bubble lands on <strong>Logo symbol</strong> → expands to all adjacent positions (8 wilds max)</p>
+        <p class="rule"><strong>Edge:</strong> 5 wilds • <strong>Corner:</strong> 3 wilds</p>
+        <p class="rule">Expanded wilds do <strong>NOT</strong> bubble up — only original bubble mechanics apply</p>
+        <p class="rule">Expansion on scatter = counts as <strong>both wild AND scatter</strong></p>
+    </div>
+
+    <!-- BONUS GAME -->
+    <div class="section">
+        <h2>🎁 Bonus Game</h2>
+        <p class="rule"><strong>3+ Treasure Chests</strong> trigger bonus</p>
+        <p class="rule"><strong>Stage 1:</strong> Pick bubbles → reveal 1-5 free games or 2-3 extra picks</p>
+        <p class="rule">Picks: <strong>3 scatters = 5</strong> • <strong>4 scatters = 10</strong> • <strong>5 scatters = 20</strong></p>
+        <p class="rule"><strong>Stage 2:</strong> Free spins on separate bonus reel strips</p>
+        <p class="rule">Can <strong>re-trigger</strong> • Max: <strong>150 free games</strong></p>
+    </div>
+
+    <!-- BUBBLE BURST MODE -->
+    <div class="section">
+        <h2>💥 Bubble Burst Mode</h2>
+        <p class="rule">Activated by <strong>doubling your bet</strong></p>
+        <p class="rule"><strong>Half</strong> the bet = non-refundable fee</p>
+        <p class="rule">Wins based on <strong>half the bet</strong> with lower pay table</p>
+        <p class="rule">Randomly places <strong>extra bubbles</strong> ("exploding wild")</p>
+        <p class="rule">Burst bubbles also <strong>bubble up</strong> each spin</p>
+        
+        <div class="warning">
+            <p>⚡ <strong>Industry Standard:</strong> Paid features typically have higher overall return when activated</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+
+</body>
+</html>

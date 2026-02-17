@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Plants vs Zombies 3D AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a2a0a;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header { text-align: center; padding: 8px 0 12px; border-bottom: 1px solid #3a5a1a; margin-bottom: 12px; }
+        .header h1 { font-size: 1.2rem; color: #7ed321; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #5a8a2a; margin-top: 2px; }
+        .ap-edge { background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%); border: 2px solid #2d7a2d; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .ap-edge h2 { color: #4ade80; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check { background: #166534; border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .ap-check-title { color: #4ade80; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #d1fae5; }
+        .ap-check strong { color: #fff; }
+        .quick-rule { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-top: 1px solid #2d5a2d; }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #bbf7d0; }
+        .how-it-works { background: linear-gradient(135deg, #2a3a1a 0%, #1a2a0a 100%); border: 1px solid #4a6a2a; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .how-it-works h2 { color: #7ed321; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #b0d090; }
+        .how-it-works strong { color: #9ed050; }
+        .section { background: #202a10; border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid #3a5a1a; }
+        .section h2 { color: #7ed321; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #3a5a1a; color: #a0c080; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #7ed321; }
+        .highlight { background: rgba(126, 211, 33, 0.1); border-left: 3px solid #7ed321; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .highlight p { font-size: 0.85rem; color: #b0d090; margin: 0; }
+        .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .caution { background: rgba(251, 191, 36, 0.1); border-left: 3px solid #fbbf24; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .caution p { font-size: 0.85rem; color: #fcd34d; margin: 0; }
+        .meter-visual { background: #151a0a; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .meter-label { display: flex; justify-content: space-between; font-size: 0.7rem; color: #6a8a4a; margin-bottom: 4px; }
+        .meter-bar { height: 20px; background: #2a3a1a; border-radius: 10px; position: relative; overflow: hidden; }
+        .meter-fill { height: 100%; background: linear-gradient(90deg, #ff6b6b 0%, #fbbf24 40%, #7ed321 100%); border-radius: 10px; }
+        .meter-markers { display: flex; justify-content: space-between; font-size: 0.65rem; color: #6a8a4a; margin-top: 4px; }
+        .brain { display: inline-block; font-size: 1.2rem; }
+        .threshold-table { width: 100%; margin: 10px 0; border-collapse: collapse; font-size: 0.8rem; }
+        .threshold-table th { background: #2a3a1a; color: #7ed321; padding: 8px 6px; text-align: left; font-weight: 600; }
+        .threshold-table td { padding: 8px 6px; border-bottom: 1px solid #3a5a1a; color: #a0c080; }
+        .threshold-table tr:last-child td { border-bottom: none; }
+        .threshold-table .play { color: #4ade80; font-weight: 600; }
+        .footer { text-align: center; font-size: 0.7rem; color: #4a6a2a; margin-top: 16px; padding-top: 12px; border-top: 1px solid #3a5a1a; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧟 Plants vs Zombies 3D</h1>
+        <p>Spielo/IGT • Brain Meter Banking</p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Look at the <strong>pink/red BRAIN METER</strong> at the top of screen. Bonus triggers at <strong>500 points</strong>. Higher meter = closer to bonus!</p>
+        </div>
+        <div class="quick-rule"><span class="icon">🧠</span><p><strong>200+ points</strong> = Standard play threshold</p></div>
+        <div class="quick-rule"><span class="icon">🧠</span><p><strong>150+ points</strong> = Acceptable in competitive areas</p></div>
+        <div class="quick-rule"><span class="icon">⚠️</span><p><strong>Meter can DECREASE!</strong> No brain = -12 points</p></div>
+        <div class="quick-rule"><span class="icon">💰</span><p>Each bet level has <strong>separate meter</strong></p></div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How the Advantage Works</h2>
+        <p>The <strong>brain meter</strong> fills as you collect brain symbols. At <strong>500 points</strong>, bonus triggers!</p>
+        <p><strong>Brain symbol</strong> on reels 1, 3, or 5 = <strong>+54 points</strong></p>
+        <p><strong>No brain</strong> on a spin = <strong>-12 points</strong> (meter decreases!)</p>
+        <p>Meter is <strong>persistent per bet level</strong> — check all 5 bet sizes!</p>
+        <p>This game helped launch the <strong>modern AP slot era</strong> in 2016.</p>
+    </div>
+
+    <div class="section">
+        <h2>📊 Brain Meter Visual</h2>
+        <p class="rule" style="border-bottom: none;">Example: Finding a playable meter at 280 points</p>
+        <div class="meter-visual">
+            <div class="meter-label"><span>0</span><span>BONUS @ 500</span></div>
+            <div class="meter-bar"><div class="meter-fill" style="width: 56%;"></div></div>
+            <div class="meter-markers">
+                <span>Skip</span>
+                <span>|150</span>
+                <span>|200 ✓</span>
+                <span>|350</span>
+                <span>500🎁</span>
+            </div>
+        </div>
+        <p class="rule">☝️ At 280 points, you're past the 200 threshold — <strong>PLAY!</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>📊 Entry Thresholds</h2>
+        <table class="threshold-table">
+            <tr><th>Meter Points</th><th>Action</th></tr>
+            <tr><td>0-100</td><td>SKIP — too far from bonus</td></tr>
+            <tr><td>100-150</td><td>Borderline — only if desperate</td></tr>
+            <tr><td>150-200</td><td class="play">PLAY in competitive areas ✓</td></tr>
+            <tr><td>200-300</td><td class="play">STANDARD PLAY ✓</td></tr>
+            <tr><td>300-400</td><td class="play">GOOD PLAY ✓✓</td></tr>
+            <tr><td>400-499</td><td class="play">EXCELLENT — sit down! ✓✓✓</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2">🧠 Brain Math</h2>
+        <p class="rule"><strong>Brain lands (reels 1, 3, 5):</strong> +54 points each</p>
+        <p class="rule"><strong>No brain on spin:</strong> -12 points</p>
+        <p class="rule"><strong>Bonus triggers at:</strong> 500 points exactly</p>
+        <p class="rule">Net gain per brain spin: <strong>+54 - 12 = +42</strong></p>
+        <div class="warning">
+            <p>⚠️ <strong>UNIQUE RISK:</strong> Unlike most AP games, the meter can go DOWN! If you hit a bad streak with no brains, you may need to abandon the machine before bonus.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎰 Game Basics</h2>
+        <p class="rule"><strong>5×4 reel set</strong> with 40 lines</p>
+        <p class="rule"><strong>Bet increments:</strong> 80¢ steps</p>
+        <p class="rule"><strong>5 bet levels</strong> — each has separate brain meter!</p>
+        <p class="rule"><strong>$1.60 and $3.20 bets:</strong> Increased bonus trigger chance</p>
+        <p class="rule">Based on the popular <strong>2009 video game</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>🎁 Four Bonus Types</h2>
+        <p class="rule"><strong>🐪 Camel Zombie:</strong> Picking bonus — reveal suns/cones</p>
+        <p class="rule"><strong>🛡️ Defend Yourself:</strong> Up to 20 spins, kill zombies for credits</p>
+        <p class="rule"><strong>🎰 Free Games:</strong> Standard free spins bonus</p>
+        <p class="rule"><strong>💀 Zombie Uprising:</strong> BEST bonus! Plants vs zombies battle</p>
+        <div class="highlight">
+            <p>💡 Zombie Uprising is the rarest but highest-paying bonus. Clear all 4 lanes for maximum payout!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🌱 Plants & Accumulators</h2>
+        <p class="rule"><strong>Plants accumulate</strong> on left side (up to 4)</p>
+        <p class="rule"><strong>Plant food</strong> accumulates separately (up to 4)</p>
+        <p class="rule">Both enhance the <strong>Zombie Uprising bonus</strong></p>
+        <p class="rule">These accumulators are <strong>also persistent per bet level</strong></p>
+        <div class="caution">
+            <p>⚠️ Check not just the brain meter but also plant/plant food status for extra value!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2">⚠️ Key Considerations</h2>
+        <p class="rule"><strong>METER DECREASES</strong> — can lose your advantage!</p>
+        <p class="rule"><strong>Very popular</strong> — Vegas locals stake out "turfs"</p>
+        <p class="rule">Hard to find <strong>400+ meters</strong> in busy casinos</p>
+        <p class="rule">May need to <strong>abandon</strong> if meter drops too low</p>
+        <p class="rule">Smart locals don't take kindly to tourists on "their" machines</p>
+    </div>
+
+    <div class="section">
+        <h2">👀 Scouting Tips</h2>
+        <p class="rule"><strong>Check ALL 5 bet levels</strong> — separate meters!</p>
+        <p class="rule">Often paired with <strong>Aladdin's Fortune 3D</strong></p>
+        <p class="rule">Found in many <strong>Vegas casinos</strong> including airports</p>
+        <p class="rule"><strong>Walk multiple casinos</strong> — locals clean out meters quickly</p>
+        <p class="rule">Best finds: <strong>Late night</strong> when competition sleeps</p>
+    </div>
+
+    <div class="section">
+        <h2">🏆 Why PvZ Matters</h2>
+        <p class="rule">Released <strong>2016</strong> — launched modern AP slot era</p>
+        <p class="rule">Along with Aladdin's Fortune, <strong>created new generation</strong> of slot hustlers</p>
+        <p class="rule">Made by <strong>Spielo (now IGT)</strong> — major manufacturer</p>
+        <p class="rule">Widely deployed = <strong>many opportunities</strong></p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+</body>
+</html>

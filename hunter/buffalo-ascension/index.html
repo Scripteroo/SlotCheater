@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Buffalo Ascension AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #1a0f0a 0%, #2a1a10 100%);
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header { text-align: center; padding: 8px 0 12px; border-bottom: 1px solid #8b4513; margin-bottom: 12px; }
+        .header h1 { font-size: 1.2rem; color: #ff8c00; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #cd853f; margin-top: 2px; }
+        
+        .ap-edge { background: linear-gradient(135deg, #2a1a10 0%, #1a0f0a 100%); border: 2px solid #ff8c00; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .ap-edge h2 { color: #ff8c00; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check { background: rgba(255, 140, 0, 0.15); border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .ap-check-title { color: #ff8c00; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #ffb347; }
+        .ap-check strong { color: #fff; }
+        .quick-rule { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-top: 1px solid #5a3a2a; }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #ffb347; }
+        
+        .play-point { background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%); border: 2px solid #4ade80; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .play-point h2 { color: #4ade80; font-size: 1rem; margin-bottom: 10px; }
+        .play-point .big-number { font-size: 2rem; font-weight: 700; color: #4ade80; text-align: center; margin: 10px 0; }
+        .play-point .big-number span { font-size: 1rem; color: #a7f3d0; }
+        .play-point p { font-size: 0.85rem; color: #a7f3d0; margin-bottom: 6px; }
+        .play-point strong { color: #fff; }
+        
+        .formula-box { background: #0a1a0a; border-radius: 8px; padding: 12px; margin: 10px 0; text-align: center; }
+        .formula { font-family: monospace; font-size: 1.1rem; color: #4ade80; margin-bottom: 8px; }
+        .formula-note { font-size: 0.75rem; color: #6b8a6b; }
+        
+        .how-it-works { background: linear-gradient(135deg, #2a2010 0%, #1a0f0a 100%); border: 1px solid #8b4513; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .how-it-works h2 { color: #ff8c00; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #d4a574; }
+        .how-it-works strong { color: #ff8c00; }
+        
+        .section { background: #1f1510; border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid #5a3a2a; }
+        .section h2 { color: #ff8c00; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #3a2a1a; color: #d4a574; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #ff8c00; }
+        
+        .highlight { background: rgba(255, 140, 0, 0.1); border-left: 3px solid #ff8c00; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .highlight p { font-size: 0.85rem; color: #ffb347; margin: 0; }
+        .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .caution { background: rgba(251, 191, 36, 0.1); border-left: 3px solid #fbbf24; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .caution p { font-size: 0.85rem; color: #fcd34d; margin: 0; }
+        
+        /* Reel Visual */
+        .reel-visual { background: #0a0805; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .reel-row { display: flex; justify-content: center; gap: 6px; align-items: flex-end; }
+        .reel-col { display: flex; flex-direction: column; align-items: center; }
+        .reel-award { font-size: 0.5rem; color: #ff8c00; margin-bottom: 4px; text-align: center; min-height: 24px; display: flex; align-items: flex-end; justify-content: center; }
+        .reel-award.progressive { color: #e066ff; }
+        .reel-stack { display: flex; flex-direction: column; gap: 2px; }
+        .reel-slot { width: 36px; height: 16px; background: #2a1a10; border: 1px solid #5a3a2a; border-radius: 3px; }
+        .reel-slot.filled { background: linear-gradient(135deg, #ff8c00 0%, #cc6600 100%); border-color: #ff8c00; }
+        .reel-slot.fixed { background: #3a2a1a; border-color: #5a3a2a; }
+        .reel-label { font-size: 0.65rem; color: #8b4513; margin-top: 4px; }
+        .reel-height { font-size: 0.7rem; color: #ff8c00; font-weight: 600; margin-top: 2px; }
+        
+        /* Ways Calculator */
+        .ways-calc { background: #0a0805; border: 2px solid #ff8c00; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .ways-calc h3 { font-size: 0.85rem; color: #ff8c00; margin-bottom: 10px; text-align: center; }
+        .ways-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+        .ways-table th { background: #2a1a10; color: #ff8c00; padding: 6px 4px; text-align: center; }
+        .ways-table td { padding: 6px 4px; text-align: center; border-bottom: 1px solid #3a2a1a; color: #d4a574; }
+        .ways-table .play { color: #4ade80; font-weight: 600; }
+        .ways-table .skip { color: #ef4444; }
+        .ways-table .edge { color: #fbbf24; }
+        
+        /* Threshold Table */
+        .threshold-table { width: 100%; margin: 10px 0; border-collapse: collapse; font-size: 0.8rem; }
+        .threshold-table th { background: #2a1a10; color: #ff8c00; padding: 8px 6px; text-align: left; font-weight: 600; }
+        .threshold-table td { padding: 8px 6px; border-bottom: 1px solid #3a2a1a; color: #d4a574; }
+        .threshold-table tr:last-child td { border-bottom: none; }
+        .threshold-table .play { color: #4ade80; font-weight: 600; }
+        .threshold-table .skip { color: #ef4444; }
+        
+        /* Strategy Box */
+        .strategy-box { background: #0a0805; border: 2px solid #8b4513; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .strategy-step { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px dashed #3a2a1a; }
+        .strategy-step:last-child { border-bottom: none; }
+        .step-num { background: #ff8c00; color: #1a0f0a; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
+        .step-text { font-size: 0.85rem; color: #d4a574; }
+        .step-text strong { color: #ff8c00; }
+        
+        .super-box { background: linear-gradient(135deg, #3a1a3a 0%, #2a0a2a 100%); border: 2px solid #e066ff; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .super-box h2 { color: #e066ff; font-size: 1rem; margin-bottom: 10px; }
+        .super-box p { font-size: 0.85rem; color: #d4a0e0; margin-bottom: 6px; }
+        .super-box strong { color: #fff; }
+        .super-box .big-number { font-size: 1.5rem; font-weight: 700; color: #e066ff; text-align: center; margin: 8px 0; }
+        
+        .footer { text-align: center; font-size: 0.7rem; color: #5a3a2a; margin-top: 16px; padding-top: 12px; border-top: 1px solid #5a3a2a; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🦬 Buffalo Ascension</h1>
+        <p>Aristocrat • Reel-Height Persistence</p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Count the <strong>HEIGHT of reels 2, 3, and 4</strong>. Calculate <strong>WAYS TO WIN</strong>. Only play at <strong>≥3,136 ways!</strong></p>
+        </div>
+        <div class="quick-rule"><span class="icon">📊</span><p><strong>Ways = 4 × R2 × R3 × R4 × 4</strong></p></div>
+        <div class="quick-rule"><span class="icon">✅</span><p><strong>≥3,136 ways</strong> = PLAY</p></div>
+        <div class="quick-rule"><span class="icon">⚡</span><p><strong>Super Stampede visible?</strong> Can play at ≥2,688 ways</p></div>
+        <div class="quick-rule"><span class="icon">❌</span><p><strong><3,136 ways</strong> = SKIP (no exceptions)</p></div>
+    </div>
+
+    <!-- MAIN PLAY POINT -->
+    <div class="play-point">
+        <h2>🎯 THE PLAY POINT</h2>
+        <div class="big-number">≥ 3,136 <span>WAYS</span></div>
+        <p>This is your <strong>binary decision</strong>: at or above = sit down. Below = walk away.</p>
+        <div class="formula-box">
+            <div class="formula">WAYS = 4 × h2 × h3 × h4 × 4</div>
+            <div class="formula-note">Reels 1 & 5 are fixed at 4. Only reels 2, 3, 4 grow.</div>
+        </div>
+    </div>
+
+    <!-- SUPER STAMPEDE EXCEPTION -->
+    <div class="super-box">
+        <h2>⚡ Super Stampede Exception</h2>
+        <p>If you see <strong>SUPER STAMPEDE</strong> above reel 2 or 4:</p>
+        <div class="big-number">≥ 2,688 <span style="font-size: 0.9rem; color: #d4a0e0;">WAYS</span></div>
+        <p>More aggressive threshold — based on limited data, higher variance.</p>
+        <div class="caution">
+            <p>⚠️ Only use this lower threshold if you're comfortable with extra variance!</p>
+        </div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How the Mechanic Works</h2>
+        <p><strong>Reels 1 & 5:</strong> Fixed at 4 symbols tall (never change)</p>
+        <p><strong>Reels 2, 3, 4:</strong> Can grow from 4 to 7 symbols tall</p>
+        <p><strong>Purple arrow lands:</strong> Increases that reel's height by 1</p>
+        <p><strong>Reel reaches 7 + gets arrow:</strong> Triggers award above, reel resets to 4</p>
+        <p><strong>Above Reels 2 & 4:</strong> Bonus awards (Free Games, Stampede, Super Stampede)</p>
+        <p><strong>Above Reel 3:</strong> Progressive jackpot (golden arrow triggers)</p>
+        <p>Reel heights <strong>persist between players</strong> until triggered!</p>
+    </div>
+
+    <!-- REEL VISUAL -->
+    <div class="section">
+        <h2>📊 Reel Height Visual</h2>
+        <p class="rule" style="border-bottom: none; margin-bottom: 8px;">Example: A playable state (4-7-7-4-4 = 3,136 ways)</p>
+        <div class="reel-visual">
+            <div class="reel-row">
+                <div class="reel-col">
+                    <div class="reel-award"></div>
+                    <div class="reel-stack">
+                        <div class="reel-slot fixed"></div>
+                        <div class="reel-slot fixed"></div>
+                        <div class="reel-slot fixed"></div>
+                        <div class="reel-slot fixed"></div>
+                    </div>
+                    <div class="reel-label">REEL 1</div>
+                    <div class="reel-height">4 (fixed)</div>
+                </div>
+                <div class="reel-col">
+                    <div class="reel-award">FREE<br>GAMES</div>
+                    <div class="reel-stack">
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                    </div>
+                    <div class="reel-label">REEL 2</div>
+                    <div class="reel-height" style="color: #4ade80;">7 ★</div>
+                </div>
+                <div class="reel-col">
+                    <div class="reel-award progressive">PROG<br>🏆</div>
+                    <div class="reel-stack">
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                    </div>
+                    <div class="reel-label">REEL 3</div>
+                    <div class="reel-height" style="color: #4ade80;">7 ★</div>
+                </div>
+                <div class="reel-col">
+                    <div class="reel-award">STAM<br>PEDE</div>
+                    <div class="reel-stack">
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                        <div class="reel-slot filled"></div>
+                    </div>
+                    <div class="reel-label">REEL 4</div>
+                    <div class="reel-height">4</div>
+                </div>
+                <div class="reel-col">
+                    <div class="reel-award"></div>
+                    <div class="reel-stack">
+                        <div class="reel-slot fixed"></div>
+                        <div class="reel-slot fixed"></div>
+                        <div class="reel-slot fixed"></div>
+                        <div class="reel-slot fixed"></div>
+                    </div>
+                    <div class="reel-label">REEL 5</div>
+                    <div class="reel-height">4 (fixed)</div>
+                </div>
+            </div>
+        </div>
+        <p class="rule">☝️ <strong>3,136 ways = PLAY!</strong> Two 7-high reels hits the threshold exactly.</p>
+    </div>
+
+    <!-- WAYS CALCULATOR -->
+    <div class="section">
+        <h2>🧮 Quick Ways Calculator</h2>
+        <div class="ways-calc">
+            <h3>Common Configurations</h3>
+            <table class="ways-table">
+                <tr><th>R2</th><th>R3</th><th>R4</th><th>Ways</th><th>Action</th></tr>
+                <tr><td>4</td><td>4</td><td>4</td><td>1,024</td><td class="skip">SKIP</td></tr>
+                <tr><td>5</td><td>5</td><td>5</td><td>2,000</td><td class="skip">SKIP</td></tr>
+                <tr><td>6</td><td>6</td><td>6</td><td>3,456</td><td class="play">PLAY ✓</td></tr>
+                <tr><td>7</td><td>7</td><td>4</td><td>3,136</td><td class="play">PLAY ✓</td></tr>
+                <tr><td>7</td><td>4</td><td>7</td><td>3,136</td><td class="play">PLAY ✓</td></tr>
+                <tr><td>4</td><td>7</td><td>7</td><td>3,136</td><td class="play">PLAY ✓</td></tr>
+                <tr><td>7</td><td>7</td><td>5</td><td>3,920</td><td class="play">PLAY ✓</td></tr>
+                <tr><td>7</td><td>7</td><td>6</td><td>4,704</td><td class="play">PLAY ✓</td></tr>
+                <tr><td>7</td><td>7</td><td>7</td><td>5,488</td><td class="play">PLAY ✓✓</td></tr>
+                <tr><td>6</td><td>7</td><td>5</td><td>3,360</td><td class="play">PLAY ✓</td></tr>
+                <tr><td>5</td><td>7</td><td>6</td><td>3,360</td><td class="play">PLAY ✓</td></tr>
+                <tr><td>6</td><td>5</td><td>6</td><td>2,880</td><td class="skip">SKIP</td></tr>
+                <tr><td>5</td><td>6</td><td>6</td><td>2,880</td><td class="skip">SKIP</td></tr>
+            </table>
+        </div>
+        <div class="highlight">
+            <p>💡 <strong>Quick rule:</strong> Two 7s among reels 2-4 = almost always playable. All 6s = playable. Anything less = usually skip.</p>
+        </div>
+    </div>
+
+    <!-- FLOOR PROCEDURE -->
+    <div class="section">
+        <h2>📋 Floor Procedure</h2>
+        <div class="strategy-box">
+            <div class="strategy-step">
+                <span class="step-num">1</span>
+                <span class="step-text"><strong>COUNT:</strong> Read stack heights on reels 2, 3, and 4 (count visible rows)</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">2</span>
+                <span class="step-text"><strong>CALCULATE:</strong> Ways = 4 × R2 × R3 × R4 × 4</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">3</span>
+                <span class="step-text"><strong>CHECK AWARDS:</strong> Look above reels 2 & 4 — Super Stampede?</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">4</span>
+                <span class="step-text"><strong>DECIDE:</strong> ≥3,136 ways (or ≥2,688 with Super Stampede) = PLAY</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">5</span>
+                <span class="step-text"><strong>MOVE ON:</strong> Under threshold? Walk away immediately.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- AWARDS ABOVE REELS -->
+    <div class="section">
+        <h2">🎁 Awards Above Reels</h2>
+        <p class="rule"><strong>Reel 2:</strong> Free Games, Stampede, or Super Stampede</p>
+        <p class="rule"><strong>Reel 3:</strong> Progressive jackpot (golden arrow triggers)</p>
+        <p class="rule"><strong>Reel 4:</strong> Free Games, Stampede, or Super Stampede</p>
+        <p class="rule"><strong>Trigger:</strong> Reel at 7 high + receives arrow = award fires, reel resets</p>
+        <div class="highlight">
+            <p>💡 <strong>Super Stampede</strong> is the premium bonus — justifies the lower 2,688 threshold!</p>
+        </div>
+    </div>
+
+    <!-- ENTRY THRESHOLDS -->
+    <div class="section">
+        <h2>📊 Entry Thresholds</h2>
+        <table class="threshold-table">
+            <tr><th>Condition</th><th>Action</th></tr>
+            <tr>
+                <td>Ways ≥ 3,136</td>
+                <td class="play">PLAY ✓</td>
+            </tr>
+            <tr>
+                <td>Ways ≥ 2,688 + Super Stampede visible</td>
+                <td class="play">PLAY ✓ (aggressive)</td>
+            </tr>
+            <tr>
+                <td>Ways 2,688–3,135, no Super Stampede</td>
+                <td class="skip">SKIP ✗</td>
+            </tr>
+            <tr>
+                <td>Ways < 2,688</td>
+                <td class="skip">SKIP ✗</td>
+            </tr>
+            <tr>
+                <td>Fresh machine (4-4-4 = 1,024 ways)</td>
+                <td class="skip">SKIP ✗</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- VARIANCE WARNING -->
+    <div class="section">
+        <h2">⚠️ Variance Warning</h2>
+        <p class="rule"><strong>Extremely high variance</strong> — like Hexbreak3r</p>
+        <p class="rule">Even good states can <strong>brick many spins</strong></p>
+        <p class="rule">Stampede/Super Stampede bonuses can <strong>whiff</strong></p>
+        <p class="rule">Treat this as <strong>binary</strong>: at threshold = play, below = ignore</p>
+        <div class="warning">
+            <p>⚠️ This is NOT a steady grind game. Expect wild swings. Good states still lose sometimes!</p>
+        </div>
+    </div>
+
+    <!-- SIMILAR TO HEXBREAK3R -->
+    <div class="section">
+        <h2">🆚 Similar To Hexbreak3r</h2>
+        <p class="rule"><strong>Both:</strong> Reel-height / ways-to-win persistence</p>
+        <p class="rule"><strong>Both:</strong> Binary play decision based on ways threshold</p>
+        <p class="rule"><strong>Both:</strong> Extremely high variance</p>
+        <p class="rule"><strong>Both:</strong> Reels grow and persist until triggered</p>
+        <p class="rule"><strong>Difference:</strong> Buffalo has awards above reels, Hex has expanding reels</p>
+    </div>
+
+    <!-- GAME BASICS -->
+    <div class="section">
+        <h2">🎰 Game Basics</h2>
+        <p class="rule"><strong>Manufacturer:</strong> Aristocrat</p>
+        <p class="rule"><strong>Type:</strong> Reel-height persistence (ways-to-win AP)</p>
+        <p class="rule"><strong>Reels 1 & 5:</strong> Fixed at 4 symbols</p>
+        <p class="rule"><strong>Reels 2-4:</strong> Variable 4-7 symbols (persistent)</p>
+        <p class="rule"><strong>Ways range:</strong> 1,024 (fresh) to 5,488 (all maxed)</p>
+        <p class="rule"><strong>Part of:</strong> Buffalo slot family (popular brand)</p>
+    </div>
+
+    <!-- WHAT TRIGGERS RESET -->
+    <div class="section">
+        <h2">🔄 What Triggers Reset</h2>
+        <p class="rule"><strong>Reel at 7 + arrow lands</strong> → Award triggers, THAT reel resets to 4</p>
+        <p class="rule"><strong>Only the triggered reel resets</strong> — others stay tall!</p>
+        <p class="rule"><strong>Reel 3 needs GOLDEN arrow</strong> for progressive</p>
+        <p class="rule"><strong>Reels 2 & 4 need purple arrow</strong> when at 7</p>
+        <div class="highlight">
+            <p>💡 If reel 2 triggers and resets, reels 3 & 4 stay at their current height. Re-calculate ways!</p>
+        </div>
+    </div>
+
+    <!-- SCOUTING TIPS -->
+    <div class="section">
+        <h2">👀 Scouting Tips</h2>
+        <p class="rule"><strong>Look for tall reels:</strong> Visually obvious — count the rows</p>
+        <p class="rule"><strong>Two 7-high reels:</strong> Usually playable</p>
+        <p class="rule"><strong>Check bonus type:</strong> Super Stampede = lower threshold OK</p>
+        <p class="rule"><strong>Buffalo brand is popular:</strong> May have competition</p>
+        <p class="rule"><strong>Calculate quickly:</strong> Memorize common configs from chart</p>
+    </div>
+
+    <!-- QUICK MENTAL MATH -->
+    <div class="section">
+        <h2">🧠 Quick Mental Math</h2>
+        <p class="rule"><strong>4-4-4:</strong> 1,024 (skip — fresh)</p>
+        <p class="rule"><strong>7-7-4:</strong> 3,136 (play — exactly at threshold)</p>
+        <p class="rule"><strong>7-7-7:</strong> 5,488 (play — max ways)</p>
+        <p class="rule"><strong>6-6-6:</strong> 3,456 (play — all sixes works)</p>
+        <p class="rule"><strong>5-5-5:</strong> 2,000 (skip)</p>
+        <div class="highlight">
+            <p>💡 <strong>Shortcut:</strong> See two 7s? Almost certainly playable. Do the math to confirm.</p>
+        </div>
+    </div>
+
+    <!-- KEY REMINDERS -->
+    <div class="section">
+        <h2">🔑 Key Reminders</h2>
+        <p class="rule">✅ <strong>≥3,136 ways</strong> = PLAY (primary threshold)</p>
+        <p class="rule">✅ <strong>≥2,688 ways + Super Stampede</strong> = PLAY (aggressive)</p>
+        <p class="rule">✅ Reel heights <strong>persist</strong> until that reel triggers</p>
+        <p class="rule">✅ Only the <strong>triggered reel resets</strong> — others stay</p>
+        <p class="rule">❌ <strong><3,136 ways</strong> = SKIP (no negotiation)</p>
+        <p class="rule">❌ <strong>High variance</strong> — don't expect steady wins</p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+</body>
+</html>

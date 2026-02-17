@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Triple Double Diamond AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header { text-align: center; padding: 8px 0 12px; border-bottom: 1px solid #4a4a8a; margin-bottom: 12px; }
+        .header h1 { font-size: 1.1rem; color: #00bfff; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #7a7aaa; margin-top: 2px; }
+        
+        .ap-edge { background: linear-gradient(135deg, #1a1a3a 0%, #0a0a1a 100%); border: 2px solid #00bfff; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .ap-edge h2 { color: #00bfff; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check { background: rgba(0, 191, 255, 0.15); border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .ap-check-title { color: #00bfff; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #80dfff; }
+        .ap-check strong { color: #fff; }
+        .quick-rule { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-top: 1px solid #2a2a5a; }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #a0c0e0; }
+        
+        /* Threshold Boxes */
+        .threshold-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+        .threshold-box { border-radius: 10px; padding: 14px; display: flex; align-items: center; gap: 12px; }
+        .threshold-box.red { background: linear-gradient(135deg, #3a1a1a 0%, #2a0a0a 100%); border: 2px solid #ff6b6b; }
+        .threshold-box.green { background: linear-gradient(135deg, #1a3a1a 0%, #0a2a0a 100%); border: 2px solid #4ade80; }
+        .threshold-box.blue { background: linear-gradient(135deg, #1a1a3a 0%, #0a0a2a 100%); border: 2px solid #60a5fa; }
+        .threshold-icon { font-size: 1.5rem; }
+        .threshold-info { flex: 1; }
+        .threshold-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .threshold-box.red .threshold-label { color: #ff6b6b; }
+        .threshold-box.green .threshold-label { color: #4ade80; }
+        .threshold-box.blue .threshold-label { color: #60a5fa; }
+        .threshold-value { font-size: 1.3rem; font-weight: 700; color: #fff; }
+        .threshold-note { font-size: 0.7rem; color: #8a8aaa; }
+        
+        .how-it-works { background: linear-gradient(135deg, #1a1a3a 0%, #0a0a1a 100%); border: 1px solid #4a4a8a; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .how-it-works h2 { color: #00bfff; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #a0b0c0; }
+        .how-it-works strong { color: #00bfff; }
+        
+        .section { background: #0f0f2a; border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid #2a2a5a; }
+        .section h2 { color: #00bfff; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #1a1a3a; color: #a0b0c0; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #00bfff; }
+        
+        .highlight { background: rgba(0, 191, 255, 0.1); border-left: 3px solid #00bfff; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .highlight p { font-size: 0.85rem; color: #80dfff; margin: 0; }
+        .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .caution { background: rgba(251, 191, 36, 0.1); border-left: 3px solid #fbbf24; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .caution p { font-size: 0.85rem; color: #fcd34d; margin: 0; }
+        
+        /* Meter Visual */
+        .meter-visual { background: #050510; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .meter-row { margin-bottom: 12px; }
+        .meter-row:last-child { margin-bottom: 0; }
+        .meter-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .meter-name { font-size: 0.75rem; font-weight: 600; }
+        .meter-name.red { color: #ff6b6b; }
+        .meter-name.green { color: #4ade80; }
+        .meter-name.blue { color: #60a5fa; }
+        .meter-count { font-size: 0.75rem; color: #8a8aaa; }
+        .meter-bar { height: 20px; background: #1a1a2a; border-radius: 10px; position: relative; overflow: hidden; }
+        .meter-fill { height: 100%; border-radius: 10px; transition: width 0.3s; }
+        .meter-fill.red { background: linear-gradient(90deg, #4a1a1a 0%, #ff6b6b 100%); }
+        .meter-fill.green { background: linear-gradient(90deg, #1a4a1a 0%, #4ade80 100%); }
+        .meter-fill.blue { background: linear-gradient(90deg, #1a1a4a 0%, #60a5fa 100%); }
+        .meter-threshold { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; }
+        .meter-markers { display: flex; justify-content: space-between; font-size: 0.6rem; color: #5a5a8a; margin-top: 2px; padding: 0 2px; }
+        
+        /* Cycle Table */
+        .cycle-table { width: 100%; margin: 10px 0; border-collapse: collapse; font-size: 0.8rem; }
+        .cycle-table th { background: #1a1a3a; color: #00bfff; padding: 8px 6px; text-align: center; font-weight: 600; }
+        .cycle-table td { padding: 8px 6px; border-bottom: 1px solid #1a1a3a; color: #a0b0c0; text-align: center; }
+        .cycle-table tr:last-child td { border-bottom: none; }
+        .cycle-table .red-text { color: #ff6b6b; }
+        .cycle-table .green-text { color: #4ade80; }
+        .cycle-table .blue-text { color: #60a5fa; }
+        
+        /* Strategy Box */
+        .strategy-box { background: #050510; border: 2px solid #4a4a8a; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .strategy-step { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px dashed #1a1a3a; }
+        .strategy-step:last-child { border-bottom: none; }
+        .step-num { background: #00bfff; color: #0a0a1a; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
+        .step-text { font-size: 0.85rem; color: #a0b0c0; }
+        .step-text strong { color: #00bfff; }
+        
+        /* Quick Reference Card */
+        .quick-card { background: linear-gradient(135deg, #1a2a3a 0%, #0a1a2a 100%); border: 2px solid #00bfff; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .quick-card h2 { color: #00bfff; font-size: 1rem; margin-bottom: 12px; text-align: center; }
+        .quick-card-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; text-align: center; }
+        .quick-card-item { padding: 10px 6px; border-radius: 8px; }
+        .quick-card-item.red { background: rgba(255, 107, 107, 0.2); border: 1px solid #ff6b6b; }
+        .quick-card-item.green { background: rgba(74, 222, 128, 0.2); border: 1px solid #4ade80; }
+        .quick-card-item.blue { background: rgba(96, 165, 250, 0.2); border: 1px solid #60a5fa; }
+        .quick-card-item .label { font-size: 0.7rem; text-transform: uppercase; margin-bottom: 4px; }
+        .quick-card-item.red .label { color: #ff6b6b; }
+        .quick-card-item.green .label { color: #4ade80; }
+        .quick-card-item.blue .label { color: #60a5fa; }
+        .quick-card-item .value { font-size: 1.2rem; font-weight: 700; color: #fff; }
+        .quick-card-item .mult { font-size: 0.65rem; color: #8a8aaa; }
+        
+        .footer { text-align: center; font-size: 0.7rem; color: #3a3a6a; margin-top: 16px; padding-top: 12px; border-top: 1px solid #2a2a5a; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>💎 Triple Double Diamond</h1>
+        <p>IGT S3000 • Progressive Free Games</p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Check the <strong>THREE METERS</strong> (Red, Green, Blue) above the reels. Each must hit by <strong>15 free games</strong>. Higher count = closer to bonus!</p>
+        </div>
+        <div class="quick-rule"><span class="icon">🔴</span><p><strong>Red (2×):</strong> Play at ≥12</p></div>
+        <div class="quick-rule"><span class="icon">🟢</span><p><strong>Green (5×):</strong> Play at ≥13</p></div>
+        <div class="quick-rule"><span class="icon">🔵</span><p><strong>Blue (10×):</strong> Play at ≥14</p></div>
+        <div class="quick-rule"><span class="icon">💰</span><p>Check <strong>ALL bet levels</strong> — each has separate meters!</p></div>
+    </div>
+
+    <!-- QUICK REFERENCE CARD -->
+    <div class="quick-card">
+        <h2>📋 Quick Reference — PLAY IF:</h2>
+        <div class="quick-card-grid">
+            <div class="quick-card-item red">
+                <div class="label">Red</div>
+                <div class="value">≥12</div>
+                <div class="mult">2× multiplier</div>
+            </div>
+            <div class="quick-card-item green">
+                <div class="label">Green</div>
+                <div class="value">≥13</div>
+                <div class="mult">5× multiplier</div>
+            </div>
+            <div class="quick-card-item blue">
+                <div class="label">Blue</div>
+                <div class="value">≥14</div>
+                <div class="mult">10× multiplier</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- THRESHOLD BOXES -->
+    <div class="threshold-grid">
+        <div class="threshold-box red">
+            <div class="threshold-icon">🔴</div>
+            <div class="threshold-info">
+                <div class="threshold-label">Red Meter (2× Free Games)</div>
+                <div class="threshold-value">PLAY AT ≥12</div>
+                <div class="threshold-note">Hits every ~48 spins • Most frequent</div>
+            </div>
+        </div>
+        <div class="threshold-box green">
+            <div class="threshold-icon">🟢</div>
+            <div class="threshold-info">
+                <div class="threshold-label">Green Meter (5× Free Games)</div>
+                <div class="threshold-value">PLAY AT ≥13</div>
+                <div class="threshold-note">Hits every ~175 spins • Medium frequency</div>
+            </div>
+        </div>
+        <div class="threshold-box blue">
+            <div class="threshold-icon">🔵</div>
+            <div class="threshold-info">
+                <div class="threshold-label">Blue Meter (10× Free Games)</div>
+                <div class="threshold-value">PLAY AT ≥14</div>
+                <div class="threshold-note">Hits every ~600 spins • Least frequent but best multiplier</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How the Mechanic Works</h2>
+        <p><strong>Three meters</strong> above reels: Red (2×), Green (5×), Blue (10×)</p>
+        <p>Each meter <strong>must hit by 15</strong> free games — guaranteed bonus!</p>
+        <p>Meters advance on <strong>fixed spin cycles</strong> (you don't see spin count)</p>
+        <p>When meter reaches 15 → <strong>automatic free games</strong> at that multiplier</p>
+        <p>Each <strong>bet level has separate meters</strong> — check them all!</p>
+        <p>After bonus, that meter's <strong>spin counter resets</strong> internally</p>
+    </div>
+
+    <!-- METER VISUAL -->
+    <div class="section">
+        <h2>📊 Meter Visual Example</h2>
+        <p class="rule" style="border-bottom: none; margin-bottom: 8px;">Example: A playable state (Green at 14!)</p>
+        <div class="meter-visual">
+            <div class="meter-row">
+                <div class="meter-header">
+                    <span class="meter-name red">🔴 RED (2×)</span>
+                    <span class="meter-count">8 / 15</span>
+                </div>
+                <div class="meter-bar">
+                    <div class="meter-fill red" style="width: 53%;"></div>
+                    <div class="meter-threshold" style="left: 80%;"></div>
+                </div>
+                <div class="meter-markers"><span>0</span><span>|12</span><span>15</span></div>
+            </div>
+            <div class="meter-row">
+                <div class="meter-header">
+                    <span class="meter-name green">🟢 GREEN (5×)</span>
+                    <span class="meter-count">14 / 15 ★</span>
+                </div>
+                <div class="meter-bar">
+                    <div class="meter-fill green" style="width: 93%;"></div>
+                    <div class="meter-threshold" style="left: 86.7%;"></div>
+                </div>
+                <div class="meter-markers"><span>0</span><span>|13</span><span>15</span></div>
+            </div>
+            <div class="meter-row">
+                <div class="meter-header">
+                    <span class="meter-name blue">🔵 BLUE (10×)</span>
+                    <span class="meter-count">6 / 15</span>
+                </div>
+                <div class="meter-bar">
+                    <div class="meter-fill blue" style="width: 40%;"></div>
+                    <div class="meter-threshold" style="left: 93.3%;"></div>
+                </div>
+                <div class="meter-markers"><span>0</span><span>|14</span><span>15</span></div>
+            </div>
+        </div>
+        <p class="rule">☝️ <strong>PLAY!</strong> Green meter at 14 exceeds the ≥13 threshold. 5× free games coming soon!</p>
+    </div>
+
+    <!-- SPIN CYCLES -->
+    <div class="section">
+        <h2>⏱️ Spin Cycle Rates</h2>
+        <p class="rule" style="border-bottom: none; margin-bottom: 8px;">Standard configuration (48/175/600):</p>
+        <table class="cycle-table">
+            <tr><th>Meter</th><th>Cycle</th><th>Meaning</th></tr>
+            <tr>
+                <td class="red-text">Red (2×)</td>
+                <td>48 spins</td>
+                <td>+1 free game every ~48 spins</td>
+            </tr>
+            <tr>
+                <td class="green-text">Green (5×)</td>
+                <td>175 spins</td>
+                <td>+1 free game every ~175 spins</td>
+            </tr>
+            <tr>
+                <td class="blue-text">Blue (10×)</td>
+                <td>600 spins</td>
+                <td>+1 free game every ~600 spins</td>
+            </tr>
+        </table>
+        <div class="caution">
+            <p>⚠️ Some casinos use SLOWER cycles (75/250/600 or 110/330/850). These are much worse! The thresholds above assume the fast 48/175/600 version.</p>
+        </div>
+    </div>
+
+    <!-- FLOOR PROCEDURE -->
+    <div class="section">
+        <h2>📋 Floor Procedure</h2>
+        <div class="strategy-box">
+            <div class="strategy-step">
+                <span class="step-num">1</span>
+                <span class="step-text"><strong>FIND:</strong> Triple Double Diamond Progressive Free Games (or Phoenix reskin)</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">2</span>
+                <span class="step-text"><strong>TAP THROUGH:</strong> Every bet level (1×, 2×, 3×, etc.) to view all meter sets</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">3</span>
+                <span class="step-text"><strong>READ:</strong> Red = R, Green = G, Blue = B counts for each bet level</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">4</span>
+                <span class="step-text"><strong>CHECK:</strong> R ≥12? G ≥13? B ≥14? ANY true = PLAY that bet level</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">5</span>
+                <span class="step-text"><strong>SKIP:</strong> If NO meter meets threshold on ANY bet level, move on</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ENTRY DECISION -->
+    <div class="section">
+        <h2>✅ Entry Decision</h2>
+        <p class="rule"><strong>PLAY if ANY of these is true:</strong></p>
+        <p class="rule">🔴 Red (2×) meter ≥ 12</p>
+        <p class="rule">🟢 Green (5×) meter ≥ 13</p>
+        <p class="rule">🔵 Blue (10×) meter ≥ 14</p>
+        <p class="rule"><strong>Check ALL bet levels</strong> — they have separate meters!</p>
+        <div class="highlight">
+            <p>💡 Only ONE meter needs to meet threshold. If Green is at 14, play even if Red and Blue are low!</p>
+        </div>
+    </div>
+
+    <!-- WHY THESE THRESHOLDS -->
+    <div class="section">
+        <h2">🧮 Why These Thresholds?</h2>
+        <p class="rule"><strong>Must-hit-by 15</strong> means guaranteed bonus at 15</p>
+        <p class="rule"><strong>Higher threshold for slower meters:</strong> Blue is hardest to fill</p>
+        <p class="rule"><strong>12/13/14</strong> gives strong practical edge without being too tight</p>
+        <p class="rule">You don't know where you are <strong>within the cycle</strong></p>
+        <p class="rule">These numbers work for <strong>standard 48/175/600</strong> configuration</p>
+    </div>
+
+    <!-- MULTIPLIER VALUES -->
+    <div class="section">
+        <h2">💰 Free Games Multipliers</h2>
+        <p class="rule"><strong>🔴 Red bonus:</strong> Free games at <strong>2× multiplier</strong></p>
+        <p class="rule"><strong>🟢 Green bonus:</strong> Free games at <strong>5× multiplier</strong></p>
+        <p class="rule"><strong>🔵 Blue bonus:</strong> Free games at <strong>10× multiplier</strong></p>
+        <p class="rule">Higher multiplier = <strong>bigger potential wins</strong></p>
+        <div class="highlight">
+            <p>💡 Blue (10×) is the jackpot bonus — rare but valuable. Green (5×) is the sweet spot for frequency vs. value!</p>
+        </div>
+    </div>
+
+    <!-- GAME BASICS -->
+    <div class="section">
+        <h2">🎰 Game Basics</h2>
+        <p class="rule"><strong>Manufacturer:</strong> IGT</p>
+        <p class="rule"><strong>Platform:</strong> S3000</p>
+        <p class="rule"><strong>Type:</strong> 3-bucket must-hit-by free games</p>
+        <p class="rule"><strong>Reskin:</strong> Phoenix (same mechanics)</p>
+        <p class="rule"><strong>Classic game:</strong> Triple Double Diamond base game</p>
+        <p class="rule"><strong>Bet levels:</strong> Multiple (each has separate meters)</p>
+    </div>
+
+    <!-- CONFIGURATION WARNING -->
+    <div class="section">
+        <h2">⚠️ Configuration Warning</h2>
+        <p class="rule">Some casinos use <strong>SLOWER cycle configurations:</strong></p>
+        <p class="rule">• 75/250/600 (slower)</p>
+        <p class="rule">• 110/330/850 (much slower)</p>
+        <p class="rule">These are <strong>MUCH WORSE</strong> for AP</p>
+        <p class="rule">The 12/13/14 thresholds assume <strong>48/175/600 (fast)</strong></p>
+        <div class="warning">
+            <p>⚠️ If meters seem to advance very slowly, the casino may be on a slow configuration. Track meter movement to confirm before committing!</p>
+        </div>
+    </div>
+
+    <!-- TRACKING TIP -->
+    <div class="section">
+        <h2">📝 Optional: Track Your Locals</h2>
+        <p class="rule"><strong>Log meter movement</strong> at your regular casinos</p>
+        <p class="rule">Confirm they're on <strong>48/175/600 (fast)</strong> config</p>
+        <p class="rule">If slower, you may need to <strong>tighten thresholds</strong></p>
+        <p class="rule">Or <strong>avoid that casino's machines</strong> entirely</p>
+    </div>
+
+    <!-- SCOUTING -->
+    <div class="section">
+        <h2">👀 Scouting Tips</h2>
+        <p class="rule"><strong>Tap through ALL bet levels</strong> — don't miss high meters!</p>
+        <p class="rule"><strong>Switching bet levels is FREE</strong> — doesn't cost a spin</p>
+        <p class="rule"><strong>Look for Phoenix reskin</strong> — same mechanics</p>
+        <p class="rule"><strong>Quick scan:</strong> Any meter showing 12+ visually? Check closer.</p>
+        <p class="rule"><strong>Classic 3-reel game:</strong> Usually in older/classic section</p>
+    </div>
+
+    <!-- KEY REMINDERS -->
+    <div class="section">
+        <h2">🔑 Key Reminders</h2>
+        <p class="rule">✅ <strong>Red ≥12, Green ≥13, Blue ≥14</strong> = PLAY</p>
+        <p class="rule">✅ <strong>Must-hit-by 15</strong> = guaranteed bonus</p>
+        <p class="rule">✅ <strong>Check ALL bet levels</strong> — separate meters!</p>
+        <p class="rule">✅ <strong>Switching bets is free</strong> — no spin cost</p>
+        <p class="rule">✅ Thresholds assume <strong>48/175/600 (fast)</strong> config</p>
+        <p class="rule">❌ <strong>Skip</strong> if all meters below threshold on all bet levels</p>
+        <p class="rule">❌ <strong>Beware slow configs</strong> — track to confirm</p>
+        <p>&nbsp;</p>
+        <p> Get the free app for your mobile!</p>
+        <a href="https://amzn.to/4r6U9ZT"><img src="https://m.media-amazon.com/images/I/816+T93bGLL.png" style="width: 100%; height: 100%; object-fit: cover;"></a>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+</body>
+</html>

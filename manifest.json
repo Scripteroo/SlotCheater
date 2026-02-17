@@ -1,0 +1,32 @@
+{
+  "name": "SlotCheater.com - Learn Slot Hustling",
+  "short_name": "SlotCheater",
+  "description": "Learn to be a Slot Hustler by playing games. Master Advantage Play, MHB, RTP slots and join the winners!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0B0D",
+  "theme_color": "#8B5CF6",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "games", "entertainment"],
+  "screenshots": [
+    {
+      "src": "/images/slotcheater-logo.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ]
+}

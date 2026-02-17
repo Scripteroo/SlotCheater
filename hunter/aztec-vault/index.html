@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aztec Vault AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #1a1a0a 0%, #2a1f0a 100%);
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header { text-align: center; padding: 8px 0 12px; border-bottom: 1px solid #8b7355; margin-bottom: 12px; }
+        .header h1 { font-size: 1.2rem; color: #ffd700; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #b8860b; margin-top: 2px; }
+        
+        .ap-edge { background: linear-gradient(135deg, #2a2a1a 0%, #1a1a0a 100%); border: 2px solid #ffd700; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .ap-edge h2 { color: #ffd700; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check { background: rgba(255, 215, 0, 0.15); border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .ap-check-title { color: #ffd700; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #ffe066; }
+        .ap-check strong { color: #fff; }
+        .quick-rule { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-top: 1px solid #5a4a2a; }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #e6c200; }
+        
+        .how-it-works { background: linear-gradient(135deg, #2a2510 0%, #1a1a0a 100%); border: 1px solid #8b7355; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .how-it-works h2 { color: #ffd700; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #d4b896; }
+        .how-it-works strong { color: #ffd700; }
+        
+        .section { background: #1f1a0a; border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid #5a4a2a; }
+        .section h2 { color: #ffd700; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #3a3020; color: #d4b896; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #ffd700; }
+        
+        .highlight { background: rgba(255, 215, 0, 0.1); border-left: 3px solid #ffd700; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .highlight p { font-size: 0.85rem; color: #ffe066; margin: 0; }
+        .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .caution { background: rgba(251, 191, 36, 0.1); border-left: 3px solid #fbbf24; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .caution p { font-size: 0.85rem; color: #fcd34d; margin: 0; }
+        
+        /* Column Visual */
+        .column-visual { background: #0a0a05; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .column-row { display: flex; justify-content: space-around; gap: 4px; }
+        .column-reel { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+        .column-label { font-size: 0.65rem; color: #8b7355; margin-bottom: 2px; }
+        .coin-slot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: bold; border: 2px solid #5a4a2a; }
+        .coin-filled { background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%); color: #1a1a0a; border-color: #ffd700; }
+        .coin-special { background: linear-gradient(135deg, #00d4aa 0%, #008866 100%); color: #fff; border-color: #00d4aa; }
+        .coin-wheel { background: linear-gradient(135deg, #ff6b6b 0%, #cc4444 100%); color: #fff; border-color: #ff6b6b; }
+        .coin-empty { background: #1a1a0a; color: #3a3020; border-style: dashed; }
+        .column-status { font-size: 0.6rem; margin-top: 4px; font-weight: 600; }
+        .status-hot { color: #4ade80; }
+        .status-warm { color: #fbbf24; }
+        .status-cold { color: #6b7280; }
+        
+        /* Threshold Table */
+        .threshold-table { width: 100%; margin: 10px 0; border-collapse: collapse; font-size: 0.8rem; }
+        .threshold-table th { background: #2a2510; color: #ffd700; padding: 8px 6px; text-align: left; font-weight: 600; }
+        .threshold-table td { padding: 8px 6px; border-bottom: 1px solid #3a3020; color: #d4b896; }
+        .threshold-table tr:last-child td { border-bottom: none; }
+        .threshold-table .play { color: #4ade80; font-weight: 600; }
+        .threshold-table .maybe { color: #fbbf24; }
+        .threshold-table .skip { color: #ef4444; }
+        
+        /* Strategy Box */
+        .strategy-box { background: #0a0a05; border: 2px solid #8b7355; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .strategy-step { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px dashed #3a3020; }
+        .strategy-step:last-child { border-bottom: none; }
+        .step-num { background: #ffd700; color: #1a1a0a; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
+        .step-text { font-size: 0.85rem; color: #d4b896; }
+        .step-text strong { color: #ffd700; }
+        
+        /* Special Coins Legend */
+        .coin-legend { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
+        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #d4b896; }
+        .legend-coin { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: bold; }
+        
+        .safe-box { background: linear-gradient(135deg, #1a3a2a 0%, #0d2a1a 100%); border: 2px solid #4ade80; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .safe-box h2 { color: #4ade80; font-size: 1rem; margin-bottom: 10px; }
+        .safe-box p { font-size: 0.85rem; color: #a7f3d0; margin-bottom: 6px; }
+        .safe-box strong { color: #fff; }
+        
+        .footer { text-align: center; font-size: 0.7rem; color: #5a4a2a; margin-top: 16px; padding-top: 12px; border-top: 1px solid #5a4a2a; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏛️ Aztec Vault</h1>
+        <p>Aristocrat • Coin-Column Accumulator</p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Look at the <strong>COIN COLUMNS</strong> above each reel. Check how full they are and what <strong>special coins</strong> (Win All, Wheel, multipliers) are present!</p>
+        </div>
+        <div class="quick-rule"><span class="icon">🪙</span><p><strong>1 coin from full</strong> = PLAY (especially with Win All/Wheel)</p></div>
+        <div class="quick-rule"><span class="icon">📊</span><p><strong>Multiple columns 70-90% full</strong> = PLAY</p></div>
+        <div class="quick-rule"><span class="icon">⭐</span><p><strong>Win All / Wheel coins</strong> in near-full column = PRIORITY</p></div>
+        <div class="quick-rule"><span class="icon">❌</span><p><strong>All columns mostly empty</strong> = SKIP</p></div>
+    </div>
+
+    <!-- SAFE AP -->
+    <div class="safe-box">
+        <h2>✅ Clean Accumulator AP</h2>
+        <p><strong>Coins NEVER disappear</strong> — they persist until column fills!</p>
+        <p>Once you find a good board, you're guaranteed eventual payout.</p>
+        <p>Short-cycle game — similar to Green Stamps / coin-pot style.</p>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How the Mechanic Works</h2>
+        <p>Above each reel is a <strong>vertical column</strong> of coin spots.</p>
+        <p><strong>Landing coins</strong> on a reel adds tokens with credit values or special labels.</p>
+        <p>When a column <strong>fills to the top</strong> → you win ALL coins in that column!</p>
+        <p><strong>Win All coin</strong> in completed column = win ENTIRE board + wheel spin!</p>
+        <p>After payout, the <strong>board clears/resets</strong>.</p>
+        <p>Coins <strong>persist between players</strong> — this is the AP opportunity!</p>
+    </div>
+
+    <!-- COLUMN VISUAL -->
+    <div class="section">
+        <h2>🪙 Column Visual Example</h2>
+        <p class="rule" style="border-bottom: none; margin-bottom: 8px;">Example: A playable board state</p>
+        <div class="column-visual">
+            <div class="column-row">
+                <div class="column-reel">
+                    <div class="column-label">REEL 1</div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-filled">50</div>
+                    <div class="coin-slot coin-filled">25</div>
+                    <div class="coin-slot coin-special">WIN</div>
+                    <div class="coin-slot coin-filled">100</div>
+                    <div class="column-status status-hot">1 AWAY! ★</div>
+                </div>
+                <div class="column-reel">
+                    <div class="column-label">REEL 2</div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-filled">15</div>
+                    <div class="coin-slot coin-filled">30</div>
+                    <div class="coin-slot coin-filled">20</div>
+                    <div class="column-status status-warm">60%</div>
+                </div>
+                <div class="column-reel">
+                    <div class="column-label">REEL 3</div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-filled">40</div>
+                    <div class="coin-slot coin-wheel">WHL</div>
+                    <div class="coin-slot coin-filled">75</div>
+                    <div class="coin-slot coin-filled">25</div>
+                    <div class="column-status status-hot">1 AWAY! ★</div>
+                </div>
+                <div class="column-reel">
+                    <div class="column-label">REEL 4</div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-filled">10</div>
+                    <div class="coin-slot coin-filled">15</div>
+                    <div class="column-status status-cold">40%</div>
+                </div>
+                <div class="column-reel">
+                    <div class="column-label">REEL 5</div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-empty"></div>
+                    <div class="coin-slot coin-filled">5</div>
+                    <div class="column-status status-cold">20%</div>
+                </div>
+            </div>
+        </div>
+        <p class="rule">☝️ This is an <strong>EXCELLENT PLAY!</strong> Two columns 1-away, one has Win All, one has Wheel!</p>
+        
+        <div class="coin-legend">
+            <div class="legend-item"><div class="legend-coin coin-filled">50</div> Credit value</div>
+            <div class="legend-item"><div class="legend-coin coin-special">WIN</div> Win All</div>
+            <div class="legend-item"><div class="legend-coin coin-wheel">WHL</div> Wheel</div>
+            <div class="legend-item"><div class="legend-coin coin-empty"></div> Empty slot</div>
+        </div>
+    </div>
+
+    <!-- ENTRY THRESHOLDS -->
+    <div class="section">
+        <h2>📊 Entry Thresholds</h2>
+        <table class="threshold-table">
+            <tr><th>Board State</th><th>Action</th></tr>
+            <tr>
+                <td>Column 1 coin from full + Win All</td>
+                <td class="play">EXCELLENT — sit NOW! ✓✓✓</td>
+            </tr>
+            <tr>
+                <td>Column 1 coin from full + Wheel</td>
+                <td class="play">EXCELLENT — sit NOW! ✓✓✓</td>
+            </tr>
+            <tr>
+                <td>Column 1 coin from full + big credits</td>
+                <td class="play">STRONG PLAY ✓✓</td>
+            </tr>
+            <tr>
+                <td>Multiple columns at 70-90% full</td>
+                <td class="play">GOOD PLAY ✓✓</td>
+            </tr>
+            <tr>
+                <td>2 columns 1-2 coins from full</td>
+                <td class="play">PLAYABLE ✓</td>
+            </tr>
+            <tr>
+                <td>1 column near-full, small values, no specials</td>
+                <td class="maybe">BORDERLINE — evaluate total</td>
+            </tr>
+            <tr>
+                <td>All columns mostly empty (1-2 coins each)</td>
+                <td class="skip">SKIP ✗</td>
+            </tr>
+            <tr>
+                <td>Only advanced column has tiny values</td>
+                <td class="skip">SKIP ✗</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- SPECIAL COINS -->
+    <div class="section">
+        <h2>⭐ Special Coin Types</h2>
+        <p class="rule"><strong>🏆 Win All:</strong> Complete this column → win ENTIRE board + wheel spin!</p>
+        <p class="rule"><strong>🎡 Wheel:</strong> Complete this column → spin wheel for jackpots/credits</p>
+        <p class="rule"><strong>✖️ Multiplier:</strong> Multiplies all credits in that column (2x, 3x, 5x)</p>
+        <p class="rule"><strong>💰 Credit coins:</strong> Fixed credit values paid when column completes</p>
+        <div class="highlight">
+            <p>💡 <strong>Win All is the jackpot!</strong> A near-full column with Win All = priority play even if credit values are modest.</p>
+        </div>
+    </div>
+
+    <!-- STRATEGY -->
+    <div class="section">
+        <h2>📋 Strategy Summary</h2>
+        <div class="strategy-box">
+            <div class="strategy-step">
+                <span class="step-num">1</span>
+                <span class="step-text"><strong>SCAN:</strong> Look at coin columns above all 5 reels</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">2</span>
+                <span class="step-text"><strong>COUNT:</strong> How many coins until each column fills?</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">3</span>
+                <span class="step-text"><strong>EVALUATE:</strong> Check for Win All, Wheel, multipliers, big credits</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">4</span>
+                <span class="step-text"><strong>DECIDE:</strong> 1-away with specials = PLAY. All empty = SKIP.</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">5</span>
+                <span class="step-text"><strong>GRIND:</strong> Play until column(s) complete and board clears</span>
+            </div>
+            <div class="strategy-step">
+                <span class="step-num">6</span>
+                <span class="step-text"><strong>RE-EVALUATE:</strong> After clear, is new board state playable?</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT MAKES A GOOD BOARD -->
+    <div class="section">
+        <h2">✅ What Makes a Good Board</h2>
+        <p class="rule"><strong>Near-full columns:</strong> 80-90%+ filled (1-2 coins from top)</p>
+        <p class="rule"><strong>Special coins present:</strong> Win All, Wheel, multipliers</p>
+        <p class="rule"><strong>High credit values:</strong> Bigger numbers = bigger payouts</p>
+        <p class="rule"><strong>Multiple advanced columns:</strong> More shots at completing</p>
+        <p class="rule"><strong>Left-side columns:</strong> May complete faster (more symbol hits)</p>
+    </div>
+
+    <!-- WHAT MAKES A BAD BOARD -->
+    <div class="section">
+        <h2>❌ What Makes a Bad Board</h2>
+        <p class="rule"><strong>All columns nearly empty:</strong> Too much work to fill</p>
+        <p class="rule"><strong>Only small credit values:</strong> Not worth the grind</p>
+        <p class="rule"><strong>No special coins anywhere:</strong> Missing the big payoff potential</p>
+        <p class="rule"><strong>Single advanced column, rest empty:</strong> Limited value</p>
+        <div class="warning">
+            <p>⚠️ Don't play a board just because ONE column is close if it has tiny values and no specials!</p>
+        </div>
+    </div>
+
+    <!-- GAME BASICS -->
+    <div class="section">
+        <h2>🎰 Game Basics</h2>
+        <p class="rule"><strong>Manufacturer:</strong> Aristocrat</p>
+        <p class="rule"><strong>Sister game:</strong> Cleopatra's Vault (same mechanics)</p>
+        <p class="rule"><strong>Type:</strong> Coin-column accumulator (short-cycle)</p>
+        <p class="rule"><strong>Persistence:</strong> Coins stay until column completes</p>
+        <p class="rule"><strong>Reset:</strong> Board clears after any column fills</p>
+    </div>
+
+    <!-- SISTER GAME -->
+    <div class="section">
+        <h2>👯 Sister Game: Cleopatra's Vault</h2>
+        <p class="rule"><strong>Same mechanics</strong> as Aztec Vault</p>
+        <p class="rule"><strong>Same AP strategy</strong> applies</p>
+        <p class="rule">Egyptian theme instead of Aztec</p>
+        <p class="rule">Look for both when scouting!</p>
+        <div class="highlight">
+            <p>💡 If you know Aztec Vault, you know Cleopatra's Vault. Scout for both!</p>
+        </div>
+    </div>
+
+    <!-- VALUE CALCULATION -->
+    <div class="section">
+        <h2">💰 Quick Value Assessment</h2>
+        <p class="rule"><strong>Add up visible credits</strong> in near-full columns</p>
+        <p class="rule"><strong>Win All present?</strong> Add value of ENTIRE board</p>
+        <p class="rule"><strong>Multiplier present?</strong> Multiply that column's total</p>
+        <p class="rule"><strong>Compare to expected cost</strong> to fill remaining spots</p>
+        <div class="caution">
+            <p>⚠️ Exact EV thresholds aren't published. Stay selective — play obvious opportunities, skip marginal boards.</p>
+        </div>
+    </div>
+
+    <!-- SCOUTING -->
+    <div class="section">
+        <h2">👀 Scouting Tips</h2>
+        <p class="rule"><strong>Quick visual scan:</strong> Look for columns nearly touching the top</p>
+        <p class="rule"><strong>Check for colored coins:</strong> Special coins often have distinct colors</p>
+        <p class="rule"><strong>Multiple bet levels?</strong> Check if state persists per denomination</p>
+        <p class="rule"><strong>Look for both:</strong> Aztec Vault AND Cleopatra's Vault</p>
+        <p class="rule"><strong>Aristocrat section:</strong> Often grouped with other Aristocrat games</p>
+    </div>
+
+    <!-- COMPARISON -->
+    <div class="section">
+        <h2">🆚 Similar To</h2>
+        <p class="rule"><strong>Green Stamps:</strong> Fill meter → get bonus (short-cycle)</p>
+        <p class="rule"><strong>Piggy Bankin':</strong> Accumulator with visible state</p>
+        <p class="rule"><strong>Coin-pot games:</strong> Collect until threshold triggers payout</p>
+        <p class="rule"><strong>NOT like PvZ:</strong> Aztec Vault doesn't decrease — safer!</p>
+    </div>
+
+    <!-- KEY REMINDERS -->
+    <div class="section">
+        <h2">🔑 Key Reminders</h2>
+        <p class="rule">✅ Coins <strong>persist</strong> — never disappear until payout</p>
+        <p class="rule">✅ <strong>Win All</strong> = priority target (whole board + wheel)</p>
+        <p class="rule">✅ <strong>Multiple near-full columns</strong> = multiple chances</p>
+        <p class="rule">✅ Board <strong>clears after ANY column</strong> completes</p>
+        <p class="rule">❌ Don't play <strong>empty boards</strong> hoping to build them up</p>
+        <p class="rule">❌ Don't play <strong>low-value near-full</strong> columns with nothing else</p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+</body>
+</html>

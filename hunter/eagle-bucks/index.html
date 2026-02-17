@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Must-Hit-By Progressive AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a0f0a;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header { text-align: center; padding: 8px 0 12px; border-bottom: 1px solid #4a3020; margin-bottom: 12px; }
+        .header h1 { font-size: 1.2rem; color: #ff8c00; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #8b6914; margin-top: 2px; }
+        .ap-edge { background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%); border: 2px solid #2d7a2d; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .ap-edge h2 { color: #4ade80; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check { background: #166534; border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .ap-check-title { color: #4ade80; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #d1fae5; }
+        .ap-check strong { color: #fff; }
+        .quick-rule { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-top: 1px solid #2d5a2d; }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #bbf7d0; }
+        .how-it-works { background: linear-gradient(135deg, #3d2a1a 0%, #2a1a0a 100%); border: 1px solid #6b4a2a; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .how-it-works h2 { color: #ff8c00; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #f0d0a0; }
+        .how-it-works strong { color: #ffa500; }
+        .section { background: #251a10; border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid #4a3020; }
+        .section h2 { color: #ff8c00; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #4a3020; color: #c0a080; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #ff8c00; }
+        .highlight { background: rgba(255, 140, 0, 0.1); border-left: 3px solid #ff8c00; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .highlight p { font-size: 0.85rem; color: #f0d0a0; margin: 0; }
+        .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .caution { background: rgba(251, 191, 36, 0.1); border-left: 3px solid #fbbf24; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .caution p { font-size: 0.85rem; color: #fcd34d; margin: 0; }
+        .calc-box { background: #1a1a1a; border: 1px solid #444; border-radius: 8px; padding: 12px; margin: 10px 0; font-family: monospace; }
+        .calc-box .label { color: #888; font-size: 0.75rem; }
+        .calc-box .formula { color: #4ade80; font-size: 0.9rem; margin: 4px 0; }
+        .calc-box .example { color: #ffa500; font-size: 0.8rem; margin-top: 6px; }
+        .meter-visual { background: #1a1a1a; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .meter-bar { height: 24px; background: #333; border-radius: 12px; position: relative; overflow: hidden; margin: 8px 0; }
+        .meter-fill { height: 100%; background: linear-gradient(90deg, #ff4444 0%, #ff8c00 50%, #4ade80 100%); border-radius: 12px; }
+        .meter-labels { display: flex; justify-content: space-between; font-size: 0.7rem; color: #888; }
+        .footer { text-align: center; font-size: 0.7rem; color: #5a4a3a; margin-top: 16px; padding-top: 12px; border-top: 1px solid #4a3020; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Must-Hit-By Progressive</h1>
+        <p>Ainsworth (Mustang Money, Thunder Cash, etc.) • AP Reference</p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ THE CORE CONCEPT:</div>
+            <p>Progressive <strong>MUST hit</strong> before max. Higher meter = <strong>fewer spins to guaranteed payout</strong>. Calculate if EV is positive.</p>
+        </div>
+        <div class="quick-rule"><span class="icon">📊</span><p><strong>Higher meter</strong> = Less coin-in = Better EV</p></div>
+        <div class="quick-rule"><span class="icon">🧮</span><p>Calculate <strong>meter rate</strong> first ($ to move meter $1)</p></div>
+        <div class="quick-rule"><span class="icon">⚠️</span><p><strong>Bankroll needed</strong> can be HUGE — know max loss</p></div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How MHB Progressives Work</h2>
+        <p>Jackpot starts at <strong>floor</strong> ($9,000) and MUST hit by <strong>ceiling</strong> ($10,000).</p>
+        <p>Meter rises on <strong>coin-in</strong>. Typical: $250-$667 in = $1 meter rise.</p>
+        <p>Hits at <strong>random point</strong> between current and ceiling (uniform for Ainsworth).</p>
+        <p>If <strong>expected return > expected cost</strong>, you have +EV!</p>
+    </div>
+
+    <div class="section">
+        <h2>📊 Common MHB Ranges</h2>
+        <p class="rule"><strong>Penny:</strong> Minor $20-$50, Major $350-$400</p>
+        <p class="rule"><strong>Dollar:</strong> Minor $350-$500, Major $9,000-$10,000</p>
+        <div class="highlight"><p>💡 Games: Mustang Money, Thunder Cash, Ming Warrior, Rumble Rumble</p></div>
+    </div>
+
+    <div class="section">
+        <h2>🧮 The Math</h2>
+        <div class="calc-box">
+            <div class="label">STEP 1: Find meter rate</div>
+            <div class="formula">Play $30 → Note meter movement</div>
+            <div class="example">$30 → Major +$0.045 → Rate = $667/$1</div>
+        </div>
+        <div class="calc-box">
+            <div class="label">STEP 2: Max coin-in needed</div>
+            <div class="formula">(Ceiling - Current) × Rate</div>
+            <div class="example">($10K - $9,900) × $667 = $66,700 max</div>
+        </div>
+        <div class="calc-box">
+            <div class="label">STEP 3: Expected loss</div>
+            <div class="formula">Max Coin-In × 15-20% house edge</div>
+            <div class="example">$66,700 × 15% = $10,005 loss</div>
+        </div>
+        <div class="calc-box">
+            <div class="label">STEP 4: Expected jackpot</div>
+            <div class="formula">(Current + Ceiling) ÷ 2</div>
+            <div class="example">($9,900 + $10K) ÷ 2 = $9,950</div>
+        </div>
+        <div class="warning"><p>⚠️ Example: Loss $10,005 > JP $9,950 = <strong>NEGATIVE EV!</strong></p></div>
+    </div>
+
+    <div class="section">
+        <h2>📈 When to Play</h2>
+        <div class="meter-visual">
+            <div class="meter-labels"><span>$9,000 (floor)</span><span>$10,000 (ceiling)</span></div>
+            <div class="meter-bar"><div class="meter-fill" style="width: 90%;"></div></div>
+        </div>
+        <p class="rule" style="color: #ef4444;"><strong>$9,900:</strong> Usually still -EV</p>
+        <p class="rule" style="color: #fbbf24;"><strong>$9,950:</strong> Getting closer</p>
+        <p class="rule" style="color: #4ade80;"><strong>$9,980+:</strong> Usually +EV territory</p>
+        <div class="caution"><p>⚠️ EVERY machine differs! Calculate actual meter rate.</p></div>
+    </div>
+
+    <div class="section">
+        <h2>💰 Typical Meter Rates</h2>
+        <p class="rule"><strong>Major:</strong> $667 coin-in = $1 rise</p>
+        <p class="rule"><strong>Minor:</strong> $250 coin-in = $1 rise</p>
+        <p class="rule">Some newer: $667 / $222</p>
+        <div class="warning"><p>⚠️ Seen $2,000/$667 rates. ALWAYS verify!</p></div>
+    </div>
+
+    <div class="section">
+        <h2>💸 Bankroll Requirements</h2>
+        <p class="rule"><strong>Calculate:</strong> Worst-case = meter goes to ceiling</p>
+        <p class="rule"><strong>Major ($10K):</strong> Budget $30,000-$50,000</p>
+        <p class="rule"><strong>Minor ($500):</strong> Budget $2,000-$5,000</p>
+        <div class="warning"><p>⚠️ Horror stories: $35K+ lost on majors. Have bankroll or DON'T PLAY.</p></div>
+    </div>
+
+    <div class="section">
+        <h2>⚠️ Critical Warnings</h2>
+        <p class="rule"><strong>AGS (River Dragons):</strong> Almost ALWAYS hits near ceiling — AVOID!</p>
+        <p class="rule"><strong>Don't chase early:</strong> Starting at $9,580 = potential disaster</p>
+        <p class="rule"><strong>Casino closes?</strong> You lose the machine overnight</p>
+        <p class="rule"><strong>Variance brutal:</strong> Can lose 50%+ before hitting</p>
+    </div>
+
+    <div class="section">
+        <h2>✅ Quick Guide</h2>
+        <p class="rule"><strong>$10K at $9,980+:</strong> Worth calculating</p>
+        <p class="rule"><strong>$500 at $490+:</strong> Worth calculating</p>
+        <p class="rule"><strong>$10K at $9,500:</strong> Almost never +EV</p>
+        <p class="rule"><strong>AGS machines:</strong> SKIP entirely</p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+</body>
+</html>

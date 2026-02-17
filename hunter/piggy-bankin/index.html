@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Piggy Bankin' AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a0a1a;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header { text-align: center; padding: 8px 0 12px; border-bottom: 1px solid #4a2a4a; margin-bottom: 12px; }
+        .header h1 { font-size: 1.25rem; color: #ff69b4; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #8b4a8b; margin-top: 2px; }
+        .ap-edge { background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%); border: 2px solid #2d7a2d; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .ap-edge h2 { color: #4ade80; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check { background: #166534; border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .ap-check-title { color: #4ade80; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #d1fae5; }
+        .ap-check strong { color: #fff; }
+        .quick-rule { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-top: 1px solid #2d5a2d; }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #bbf7d0; }
+        .how-it-works { background: linear-gradient(135deg, #4a2a4a 0%, #2a1a2a 100%); border: 1px solid #6b3a6b; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .how-it-works h2 { color: #ff69b4; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #f0c0e0; }
+        .how-it-works strong { color: #ff99cc; }
+        .section { background: #251525; border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid #4a2a4a; }
+        .section h2 { color: #ff69b4; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #4a2a4a; color: #d0a0c0; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #ff69b4; }
+        .highlight { background: rgba(255, 105, 180, 0.1); border-left: 3px solid #ff69b4; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .highlight p { font-size: 0.85rem; color: #f0c0e0; margin: 0; }
+        .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .piggy-visual { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; margin: 10px 0; }
+        .piggy { width: 50px; height: 40px; background: #ff69b4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .piggy.empty { background: #333; opacity: 0.3; }
+        .footer { text-align: center; font-size: 0.7rem; color: #5a3a5a; margin-top: 16px; padding-top: 12px; border-top: 1px solid #4a2a4a; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Piggy Bankin' Cheat Sheet</h1>
+        <p>WMS/Williams (1996) • Classic Banking Game</p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Count the <strong>piggy banks remaining</strong> on the top screen. Fewer piggies = closer to bonus = better value!</p>
+        </div>
+        <div class="quick-rule"><span class="icon">🐷</span><p><strong>5 or fewer piggies left</strong> = PLAY (past halfway)</p></div>
+        <div class="quick-rule"><span class="icon">🐷</span><p><strong>3 or fewer piggies</strong> = STRONG PLAY</p></div>
+        <div class="quick-rule"><span class="icon">💰</span><p><strong>Check progressives</strong> — if built up, even better</p></div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How the Advantage Works</h2>
+        <p>There are <strong>9 piggy banks</strong> with a total of <strong>510 coins</strong> spread across them.</p>
+        <p>ONE random coin is the <strong>"lucky coin"</strong> — when captured, triggers the progressive pick bonus.</p>
+        <p>When <strong>3x Wild</strong> symbols hit, coins are deposited into banks. Banks get eliminated as they fill.</p>
+        <p>Fewer banks remaining = <strong>fewer coins left to find</strong> = closer to the lucky coin!</p>
+    </div>
+
+    <div class="section">
+        <h2>🐷 Visual: Piggy Banks</h2>
+        <p class="rule" style="border-bottom: none;">Example: Finding game with 4 piggies left (PLAY!)</p>
+        <div class="piggy-visual">
+            <div class="piggy empty">🐷</div>
+            <div class="piggy empty">🐷</div>
+            <div class="piggy empty">🐷</div>
+            <div class="piggy empty">🐷</div>
+            <div class="piggy empty">🐷</div>
+            <div class="piggy">🐷</div>
+            <div class="piggy">🐷</div>
+            <div class="piggy">🐷</div>
+            <div class="piggy">🐷</div>
+        </div>
+        <p class="rule">☝️ 5 eliminated (grayed), 4 remaining = past halfway point!</p>
+    </div>
+
+    <div class="section">
+        <h2>📊 Entry Thresholds</h2>
+        <p class="rule"><strong>9 piggies (full):</strong> SKIP — no advantage</p>
+        <p class="rule"><strong>6-8 piggies:</strong> Borderline — only if progressives high</p>
+        <p class="rule" style="color: #4ade80;"><strong>5 piggies (halfway):</strong> Worth a look ✓</p>
+        <p class="rule" style="color: #4ade80;"><strong>3-4 piggies:</strong> PLAY ✓</p>
+        <p class="rule" style="color: #4ade80;"><strong>1-2 piggies:</strong> STRONG PLAY ✓✓</p>
+    </div>
+
+    <div class="section">
+        <h2>🎰 Game Basics</h2>
+        <p class="rule"><strong>3-reel classic</strong> slot machine</p>
+        <p class="rule">Available in <strong>5-line and 9-line</strong> versions</p>
+        <p class="rule">Symbols: Multi-color 7s and <strong>3x Wild</strong></p>
+        <p class="rule"><strong>3x Wild</strong> multiplies line hits AND deposits coins</p>
+        <p class="rule">Two 3x Wilds = <strong>9x multiplier!</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>🪙 Coin Mechanics</h2>
+        <p class="rule"><strong>510 total coins</strong> spread across 9 banks</p>
+        <p class="rule"><strong>1 lucky coin</strong> triggers progressive bonus</p>
+        <p class="rule">3x Wild lands → deposits <strong>range of coins</strong></p>
+        <p class="rule">Bank fills up → eliminated → <strong>fewer coins remain</strong></p>
+        <p class="rule">Coin deposit amounts vary by limit (low vs high)</p>
+    </div>
+
+    <div class="section">
+        <h2>🎁 Progressive Pick Bonus</h2>
+        <p class="rule">When <strong>lucky coin captured</strong> → bonus screen</p>
+        <p class="rule">Pick piggy banks to reveal coins</p>
+        <p class="rule">Keep picking until you reveal <strong>3 coins connected to a progressive</strong></p>
+        <p class="rule">Picks are predetermined ("for entertainment purposes only")</p>
+        <div class="highlight"><p>💡 Unlike some games, you KEEP picking until you win — guaranteed progressive!</p></div>
+    </div>
+
+    <div class="section">
+        <h2>⚠️ Key Considerations</h2>
+        <p class="rule"><strong>3x Wilds come in clumps</strong> — can be streaky</p>
+        <p class="rule">Sometimes wilds <strong>won't come at all</strong> for long stretches</p>
+        <p class="rule">This is a <strong>risk/reward</strong> type game</p>
+        <p class="rule">Similar mechanic to <strong>New Year Festival</strong> (firecrackers)</p>
+        <div class="warning"><p>⚠️ Can be volatile! Even with good position, wilds may take time.</p></div>
+    </div>
+
+    <div class="section">
+        <h2>🔗 Related Games</h2>
+        <p class="rule"><strong>New Year Festival</strong> — Same concept, 15 firecrackers instead of 9 piggies</p>
+        <p class="rule"><strong>Lock It Link: Piggy Bankin'</strong> — Modern version, different mechanics</p>
+        <p class="rule">The classic WMS game is the <strong>true AP opportunity</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>👀 Scouting Tips</h2>
+        <p class="rule">Classic game — may be in <strong>older areas</strong> of casino</p>
+        <p class="rule">Look for machines with <strong>few piggies remaining</strong></p>
+        <p class="rule">Check if <strong>progressives are built up</strong></p>
+        <p class="rule">Don't confuse with modern Lock It Link version</p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+</body>
+</html>

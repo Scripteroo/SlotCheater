@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wheel of Fortune (Puzzle) AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a1628;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header { text-align: center; padding: 8px 0 12px; border-bottom: 1px solid #1e3a5f; margin-bottom: 12px; }
+        .header h1 { font-size: 1.2rem; color: #00bfff; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #4a7ea8; margin-top: 2px; }
+        .ap-edge { background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%); border: 2px solid #2d7a2d; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .ap-edge h2 { color: #4ade80; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check { background: #166534; border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .ap-check-title { color: #4ade80; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #d1fae5; }
+        .ap-check strong { color: #fff; }
+        .quick-rule { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-top: 1px solid #2d5a2d; }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #bbf7d0; }
+        .how-it-works { background: linear-gradient(135deg, #1e3a5f 0%, #0a1628 100%); border: 1px solid #2d5a8f; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .how-it-works h2 { color: #00bfff; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #a0d0f0; }
+        .how-it-works strong { color: #60c0ff; }
+        .section { background: #0f1e30; border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid #1e3a5f; }
+        .section h2 { color: #00bfff; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #1e3a5f; color: #8ab4d0; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #00bfff; }
+        .highlight { background: rgba(0, 191, 255, 0.1); border-left: 3px solid #00bfff; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .highlight p { font-size: 0.85rem; color: #a0d0f0; margin: 0; }
+        .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .puzzle-visual { background: #0a0a0a; border-radius: 8px; padding: 12px; margin: 10px 0; text-align: center; }
+        .puzzle-row { display: flex; justify-content: center; gap: 4px; margin: 4px 0; }
+        .puzzle-tile { width: 22px; height: 28px; background: #1e3a5f; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; color: #00bfff; }
+        .puzzle-tile.revealed { background: #00bfff; color: #0a1628; }
+        .puzzle-tile.blank { background: transparent; }
+        .footer { text-align: center; font-size: 0.7rem; color: #2d5a8f; margin-top: 16px; padding-top: 12px; border-top: 1px solid #1e3a5f; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Wheel of Fortune (Puzzle)</h1>
+        <p>IGT • Progressive/Puzzle Banking</p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Look at the <strong>puzzle board</strong>. More letters revealed = closer to solving = closer to progressive bonus!</p>
+        </div>
+        <div class="quick-rule"><span class="icon">🔤</span><p><strong>More letters revealed</strong> = Better value</p></div>
+        <div class="quick-rule"><span class="icon">🎡</span><p><strong>Check progressive amount</strong> — higher = more +EV</p></div>
+        <div class="quick-rule"><span class="icon">💡</span><p><strong>Partially solved puzzle</strong> = Previous player's investment</p></div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How the Advantage Works</h2>
+        <p>As you play, <strong>letters are revealed</strong> on the puzzle board one at a time.</p>
+        <p>When the puzzle is <strong>completely solved</strong>, you win the progressive jackpot!</p>
+        <p>Letters revealed <strong>persist between players</strong>. Find a partially solved puzzle = inherit their progress!</p>
+        <p>The fewer letters remaining, the <strong>fewer spins to the jackpot</strong>.</p>
+    </div>
+
+    <div class="section">
+        <h2>🧩 Visual: Puzzle Progress</h2>
+        <p class="rule" style="border-bottom: none;">Example: Finding a partially revealed puzzle</p>
+        <div class="puzzle-visual">
+            <div class="puzzle-row">
+                <div class="puzzle-tile revealed">W</div>
+                <div class="puzzle-tile revealed">H</div>
+                <div class="puzzle-tile revealed">E</div>
+                <div class="puzzle-tile revealed">E</div>
+                <div class="puzzle-tile revealed">L</div>
+                <div class="puzzle-tile blank"></div>
+                <div class="puzzle-tile revealed">O</div>
+                <div class="puzzle-tile">?</div>
+            </div>
+            <div class="puzzle-row">
+                <div class="puzzle-tile">?</div>
+                <div class="puzzle-tile revealed">O</div>
+                <div class="puzzle-tile">?</div>
+                <div class="puzzle-tile revealed">T</div>
+                <div class="puzzle-tile revealed">U</div>
+                <div class="puzzle-tile">?</div>
+                <div class="puzzle-tile revealed">E</div>
+            </div>
+        </div>
+        <p class="rule">☝️ Most letters revealed — only a few spins from jackpot!</p>
+    </div>
+
+    <div class="section">
+        <h2>📊 Entry Thresholds</h2>
+        <p class="rule"><strong>Fresh puzzle (0 letters):</strong> No advantage</p>
+        <p class="rule"><strong>~25% revealed:</strong> Borderline — depends on progressive size</p>
+        <p class="rule" style="color: #fbbf24;"><strong>~50% revealed:</strong> Worth considering</p>
+        <p class="rule" style="color: #4ade80;"><strong>~75%+ revealed:</strong> PLAY ✓</p>
+        <p class="rule" style="color: #4ade80;"><strong>Nearly complete:</strong> STRONG PLAY ✓✓</p>
+    </div>
+
+    <div class="section">
+        <h2>🎰 Game Basics</h2>
+        <p class="rule">Part of <strong>Wheel of Fortune</strong> franchise (300+ versions)</p>
+        <p class="rule">Licensed from the TV show in <strong>1996</strong></p>
+        <p class="rule"><strong>IGT</strong> has paid over $3.6 billion in jackpots</p>
+        <p class="rule">Multiple versions exist — look for <strong>puzzle banking</strong> feature</p>
+    </div>
+
+    <div class="section">
+        <h2>🔤 Letter Mechanics</h2>
+        <p class="rule">Letters revealed by <strong>landing specific symbols</strong> or bonuses</p>
+        <p class="rule">Each letter revealed <strong>persists</strong> between sessions</p>
+        <p class="rule">Puzzle solution = <strong>progressive jackpot win</strong></p>
+        <p class="rule">Progressive grows until won, then <strong>resets</strong></p>
+    </div>
+
+    <div class="section">
+        <h2">⚠️ Key Considerations</h2>
+        <p class="rule"><strong>Version matters:</strong> Not all WoF games have puzzle banking</p>
+        <p class="rule">Look for games with <strong>visible puzzle board</strong></p>
+        <p class="rule"><strong>Popular game</strong> — may be competitive to find good positions</p>
+        <p class="rule">Progressive size affects <strong>overall EV</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>👀 Scouting Tips</h2>
+        <p class="rule">Very <strong>common game</strong> — found in most casinos</p>
+        <p class="rule">Check puzzle progress on <strong>each machine</strong></p>
+        <p class="rule">Note progressive jackpot <strong>amounts</strong></p>
+        <p class="rule">Multiple bet levels may have <strong>separate puzzles</strong></p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+</body>
+</html>

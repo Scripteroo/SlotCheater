@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexbreak3r AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header {
+            text-align: center;
+            padding: 8px 0 12px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 12px;
+        }
+        .header h1 { font-size: 1.25rem; color: #00ff88; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #666; margin-top: 2px; }
+        .ap-edge {
+            background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%);
+            border: 2px solid #2d7a2d;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        .ap-edge h2 { color: #4ade80; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check {
+            background: #166534;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+        .ap-check-title { color: #4ade80; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #d1fae5; }
+        .ap-check strong { color: #fff; }
+        .quick-rule {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 8px 0;
+            border-top: 1px solid #2d5a2d;
+        }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #bbf7d0; }
+        .how-it-works {
+            background: linear-gradient(135deg, #1a3a1a 0%, #0d250d 100%);
+            border: 1px solid #2d5a2d;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        .how-it-works h2 { color: #00ff88; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #a7f3d0; }
+        .how-it-works p:last-child { margin-bottom: 0; }
+        .how-it-works strong { color: #4ade80; }
+        .section {
+            background: #151515;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #333;
+        }
+        .section h2 { color: #00ff88; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #333; color: #aaa; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #00ff88; }
+        .highlight {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 3px solid #00ff88;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .highlight p { font-size: 0.85rem; color: #a7f3d0; margin: 0; }
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .caution {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 3px solid #fbbf24;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .caution p { font-size: 0.85rem; color: #fcd34d; margin: 0; }
+        .reel-visual {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 5px;
+            margin: 8px 0;
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+        }
+        .reel-col { display: flex; flex-direction: column; align-items: center; width: 18%; }
+        .reel-label { font-size: 0.65rem; color: #666; margin-bottom: 4px; }
+        .reel-bar {
+            width: 100%;
+            background: #222;
+            border-radius: 4px;
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .reel-fill {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to top, #00ff88, #00aa55);
+            border-radius: 0 0 4px 4px;
+        }
+        .reel-height { font-size: 0.7rem; color: #00ff88; margin-top: 4px; font-weight: 600; }
+        .luck-zone {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(to bottom, #ffd700, transparent);
+            border-radius: 4px 4px 0 0;
+        }
+        .threshold-table { width: 100%; margin: 10px 0; border-collapse: collapse; font-size: 0.8rem; }
+        .threshold-table th { background: #222; color: #00ff88; padding: 8px 6px; text-align: left; font-weight: 600; }
+        .threshold-table td { padding: 8px 6px; border-bottom: 1px solid #333; color: #aaa; }
+        .threshold-table tr:last-child td { border-bottom: none; }
+        .threshold-table .play { color: #4ade80; font-weight: 600; }
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #444;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Hexbreak3r Cheat Sheet</h1>
+        <p>IGT • Advantage Play Reference</p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ QUICK CHECK:</div>
+            <p>Look at <strong>"ways to win"</strong> at bottom. Check <strong>reel heights</strong> — taller = closer to Luck Zone prizes.</p>
+        </div>
+        <div class="quick-rule">
+            <span class="icon">📊</span>
+            <p><strong>3,500+ ways</strong> = Worth playing</p>
+        </div>
+        <div class="quick-rule">
+            <span class="icon">🐱</span>
+            <p><strong>Reel 3 at height 6+</strong> = PLAY (progressive here!)</p>
+        </div>
+        <div class="quick-rule">
+            <span class="icon">🎁</span>
+            <p><strong>Any reel at 8 under BONUS</strong> = PLAY</p>
+        </div>
+        <div class="quick-rule">
+            <span class="icon">💰</span>
+            <p><strong>Reel 2 or 4 at 8</strong> under 20x+ prize = PLAY</p>
+        </div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How the Advantage Works</h2>
+        <p>Reels <strong>expand from 3 to 8 rows</strong> when horseshoes land. Taller reels = more ways to win.</p>
+        <p>When reel reaches <strong>height 8</strong>, it hits <strong>Luck Zone</strong> → awards prize → resets to 3.</p>
+        <p><strong>Reel heights persist</strong> between players! Find tall reels = close to prizes.</p>
+        <p><strong>Black cat (reel 3)</strong> = PROGRESSIVE. Moves ~1 position per 1,900 spins!</p>
+    </div>
+
+    <div class="section">
+        <h2>📊 Reel Height Example</h2>
+        <p class="rule" style="border-bottom: none; padding-bottom: 4px;">Example: Finding a playable machine</p>
+        <div class="reel-visual">
+            <div class="reel-col">
+                <span class="reel-label">R1</span>
+                <div class="reel-bar"><div class="luck-zone"></div><div class="reel-fill" style="height: 50%;"></div></div>
+                <span class="reel-height">5</span>
+            </div>
+            <div class="reel-col">
+                <span class="reel-label">R2</span>
+                <div class="reel-bar"><div class="luck-zone"></div><div class="reel-fill" style="height: 87.5%;"></div></div>
+                <span class="reel-height">7</span>
+            </div>
+            <div class="reel-col">
+                <span class="reel-label">R3 🐱</span>
+                <div class="reel-bar"><div class="luck-zone"></div><div class="reel-fill" style="height: 62.5%;"></div></div>
+                <span class="reel-height">6</span>
+            </div>
+            <div class="reel-col">
+                <span class="reel-label">R4</span>
+                <div class="reel-bar"><div class="luck-zone"></div><div class="reel-fill" style="height: 100%;"></div></div>
+                <span class="reel-height">8!</span>
+            </div>
+            <div class="reel-col">
+                <span class="reel-label">R5</span>
+                <div class="reel-bar"><div class="luck-zone"></div><div class="reel-fill" style="height: 37.5%;"></div></div>
+                <span class="reel-height">4</span>
+            </div>
+        </div>
+        <p class="rule">☝️ R4 at 8 = hitting Luck Zone! R3 at 6 = progressive close!</p>
+    </div>
+
+    <div class="section">
+        <h2>📊 Entry Thresholds</h2>
+        <table class="threshold-table">
+            <tr><th>Condition</th><th>Action</th></tr>
+            <tr><td>Ways ≥ 3,500</td><td class="play">PLAY ✓</td></tr>
+            <tr><td>Reel 3 height ≥ 6</td><td class="play">PLAY ✓</td></tr>
+            <tr><td>Any reel at 8 under BONUS</td><td class="play">PLAY ✓</td></tr>
+            <tr><td>R2 or R4 at 8, prize ≥ 20x</td><td class="play">PLAY ✓</td></tr>
+            <tr><td>Reel 3 height = 5</td><td>Borderline</td></tr>
+            <tr><td>All reels at 3-4</td><td>SKIP</td></tr>
+        </table>
+        <div class="caution">
+            <p>⚠️ Game may show "HOT BET" — unclear criteria, use with caution</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎰 Game Basics</h2>
+        <p class="rule"><strong>5 reels</strong> • Heights vary 3-8 rows each</p>
+        <p class="rule"><strong>243 to 59,049 ways</strong> depending on heights</p>
+        <p class="rule">Pays <strong>BOTH directions</strong> (L→R and R→L)</p>
+        <p class="rule"><strong>5 bet levels</strong> (80-400 credits) • Each has separate state</p>
+        <p class="rule">Typical bet: <strong>$0.80 to $4.00</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>✨ Luck Zone Prizes</h2>
+        <p class="rule">Above each reel at height 8 = <strong>Luck Zone orb</strong></p>
+        <p class="rule"><strong>Reel 3:</strong> BLACK CAT = Progressive Jackpot! 🐱</p>
+        <p class="rule"><strong>Other reels:</strong> Credit prizes OR Bonus trigger</p>
+        <p class="rule">Horseshoe on height 8 → <strong>collect prize → reset to 3</strong></p>
+        <div class="highlight">
+            <p>💡 Reel 3 at 6+ means someone invested ~11,400 spins worth!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>⚡ Reel Speed</h2>
+        <p class="rule"><strong>Reels 2 & 4:</strong> Fastest — lower prizes</p>
+        <p class="rule"><strong>Reels 1 & 5:</strong> Medium speed</p>
+        <p class="rule"><strong>Reel 3:</strong> SLOWEST — ~1 per 1,900 spins</p>
+        <div class="warning">
+            <p>⚠️ Someone speed-tapping reel 3? They're AP chasing progressive. Move on.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎁 Bonus Game</h2>
+        <p class="rule"><strong>Trigger:</strong> 3 BONUS symbols (reels 2-4) OR hit Bonus orb</p>
+        <p class="rule"><strong>Unlimited free spins</strong> until skull</p>
+        <p class="rule">Reels flip — expand <strong>downward</strong> into Jinx Zone</p>
+        <p class="rule">Guaranteed <strong>minimum 10x</strong> on any bonus</p>
+    </div>
+
+    <div class="section">
+        <h2>👀 Scouting Tips</h2>
+        <p class="rule"><strong>Check ALL 5 bet levels</strong> — separate states</p>
+        <p class="rule">Game shows which bet has <strong>tallest reels</strong></p>
+        <p class="rule">VOLATILE game — brutal with short reels</p>
+        <p class="rule">Popular among APs — <strong>check frequently</strong></p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+</body>
+</html>

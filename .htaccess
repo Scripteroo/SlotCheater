@@ -1,0 +1,74 @@
+# Enable rewrite engine
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Directory Index
+DirectoryIndex index.html
+
+# Redirects
+Redirect 301 /cheatsheet /hunter
+Redirect 301 /cheatsheet/ /hunter/
+Redirect 301 /cheats /hunter
+Redirect 301 /cheats/ /hunter/
+
+# Security Headers - Fix CSP Error
+<IfModule mod_headers.c>
+    # Remove any existing restrictive CSP headers
+    Header unset Content-Security-Policy
+    Header unset X-Content-Security-Policy
+    
+    # Set permissive CSP that allows JavaScript to run (fixes Chrome white screen)
+    Header set Content-Security-Policy "default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https:; media-src 'self' https: blob:; object-src 'none'; frame-src 'self' https:;"
+    
+    # Other security headers
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Cache Control - Prevent stale files
+<IfModule mod_headers.c>
+    # Don't cache HTML files (ensures users get latest version)
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    
+    # Cache JavaScript and CSS with content hashes for 1 year
+    <FilesMatch "\.(js|css)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Cache images and fonts for 1 year
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|webp|woff|woff2|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Cache videos for 1 week
+    <FilesMatch "\.(mp4|webm|ogg)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# MIME Types
+<IfModule mod_mime.c>
+    AddType application/javascript js
+    AddType text/css css
+    AddType video/mp4 mp4
+    AddType video/webm webm
+    AddType text/vtt vtt
+    AddType application/manifest+json json
+</IfModule>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Golden Egypt AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html { font-size: 16px; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a0a;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 8px 0 12px;
+            border-bottom: 1px solid #3d3d1a;
+            margin-bottom: 12px;
+        }
+        
+        .header h1 {
+            font-size: 1.25rem;
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 0.75rem;
+            color: #a89860;
+            margin-top: 2px;
+        }
+        
+        /* AP Edge - Most Important */
+        .ap-edge {
+            background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%);
+            border: 2px solid #2d7a2d;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .ap-edge h2 {
+            color: #4ade80;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .ap-check {
+            background: #166534;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .ap-check-title {
+            color: #4ade80;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+        
+        .ap-check p {
+            font-size: 0.9rem;
+            color: #d1fae5;
+        }
+        
+        .ap-check strong {
+            color: #fff;
+        }
+        
+        .quick-rule {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 8px 0;
+            border-top: 1px solid #2d5a2d;
+        }
+        
+        .quick-rule:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        
+        .quick-rule .icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .quick-rule p {
+            font-size: 0.85rem;
+            color: #bbf7d0;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: linear-gradient(135deg, #4a3f1a 0%, #2d2610 100%);
+            border: 1px solid #6b5a2a;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .how-it-works h2 {
+            color: #fbbf24;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .how-it-works p {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: #fef3c7;
+        }
+        
+        .how-it-works p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .how-it-works strong {
+            color: #fcd34d;
+        }
+        
+        /* Standard Sections */
+        .section {
+            background: #252515;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #3d3d1a;
+        }
+        
+        .section h2 {
+            color: #ffd700;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .rule {
+            font-size: 0.85rem;
+            padding: 6px 0;
+            border-bottom: 1px solid #3d3d1a;
+            color: #d4d4aa;
+        }
+        
+        .rule:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .rule strong {
+            color: #ffd700;
+        }
+        
+        /* Highlight box */
+        .highlight {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 3px solid #ffd700;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .highlight p {
+            font-size: 0.85rem;
+            color: #fef3c7;
+            margin: 0;
+        }
+        
+        /* Warning */
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .warning p {
+            font-size: 0.85rem;
+            color: #fca5a5;
+            margin: 0;
+        }
+        
+        /* Coin diagram */
+        .coin-diagram {
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            margin: 8px 0;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+        
+        .reel-col {
+            text-align: center;
+        }
+        
+        .reel-label {
+            font-size: 0.7rem;
+            color: #a89860;
+            margin-bottom: 4px;
+        }
+        
+        .coin-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        
+        .coin-slot {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #6b5a2a;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        
+        .coin-slot.filled {
+            background: #ffd700;
+            border-color: #ffd700;
+        }
+        
+        .coin-slot.empty {
+            background: transparent;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #5a5a3a;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #3d3d1a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Golden Egypt Cheat Sheet</h1>
+        <p>IGT • Advantage Play Reference</p>
+    </div>
+
+    <!-- AP EDGE - TOP PRIORITY -->
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Look <strong>above each reel</strong> for coin slots. Each reel has 2 slots. Check if any slots are already filled with gold coins.</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">🪙</span>
+            <p><strong>Best play:</strong> 2+ of the first 3 reels have 1 coin each (halfway to wild)</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">⭐</span>
+            <p><strong>Jackpot find:</strong> Active wild reels showing (previous player walked away mid-feature)</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">🔍</span>
+            <p><strong>Check ALL 5 bet levels</strong> — each has separate coin states</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">🚶</span>
+            <p><strong>No coins on reels 1-3?</strong> Walk away — no advantage</p>
+        </div>
+    </div>
+
+    <!-- HOW THE AP WORKS -->
+    <div class="how-it-works">
+        <h2>🔍 How the Advantage Works</h2>
+        <p>Coin symbols land on reels and fill slots <strong>above that reel</strong>. When a reel collects <strong>2 coins</strong>, it turns <strong>completely WILD for 2 spins</strong>.</p>
+        <p>Coins and wild reels <strong>persist between players</strong>. If someone walks away with coins already collected, you inherit their progress for free.</p>
+        <p><strong>Left reels (1, 2, 3) are more valuable</strong> — they create more winning combinations than reels 4-5.</p>
+    </div>
+
+    <!-- VISUAL: Coin Diagram -->
+    <div class="section">
+        <h2>🪙 What to Look For</h2>
+        <p class="rule" style="border-bottom: none; padding-bottom: 4px;">Coin slots appear <strong>above each reel</strong>:</p>
+        
+        <div class="coin-diagram">
+            <div class="reel-col">
+                <div class="reel-label">R1</div>
+                <div class="coin-slots">
+                    <div class="coin-slot filled"></div>
+                    <div class="coin-slot empty"></div>
+                </div>
+            </div>
+            <div class="reel-col">
+                <div class="reel-label">R2</div>
+                <div class="coin-slots">
+                    <div class="coin-slot filled"></div>
+                    <div class="coin-slot empty"></div>
+                </div>
+            </div>
+            <div class="reel-col">
+                <div class="reel-label">R3</div>
+                <div class="coin-slots">
+                    <div class="coin-slot empty"></div>
+                    <div class="coin-slot empty"></div>
+                </div>
+            </div>
+            <div class="reel-col">
+                <div class="reel-label">R4</div>
+                <div class="coin-slots">
+                    <div class="coin-slot empty"></div>
+                    <div class="coin-slot empty"></div>
+                </div>
+            </div>
+            <div class="reel-col">
+                <div class="reel-label">R5</div>
+                <div class="coin-slots">
+                    <div class="coin-slot empty"></div>
+                    <div class="coin-slot empty"></div>
+                </div>
+            </div>
+        </div>
+        
+        <p class="rule">☝️ <strong>Above example = PLAY</strong> — Reels 1 & 2 each have 1 coin (one spin away from wild)</p>
+    </div>
+
+    <!-- GAME BASICS -->
+    <div class="section">
+        <h2>🎰 Game Basics</h2>
+        <p class="rule"><strong>4 rows × 5 reels</strong></p>
+        <p class="rule"><strong>One payline per credit</strong> bet</p>
+        <p class="rule"><strong>5 bet levels</strong> — each has its own persistent coin state</p>
+        <p class="rule">Multiple denominations may be available</p>
+    </div>
+
+    <!-- COIN & WILD MECHANICS -->
+    <div class="section">
+        <h2>🪙 Coin & Wild Mechanics</h2>
+        <p class="rule">Coin symbol lands → fills one slot <strong>above that reel</strong></p>
+        <p class="rule"><strong>2 coins collected</strong> → reel turns WILD for <strong>next 2 spins</strong></p>
+        <p class="rule">Multiple reels can be wild <strong>simultaneously</strong></p>
+        <p class="rule">If wild reel would show scatter, you get <strong>both wild AND scatter credit</strong></p>
+        <p class="rule">Coins and wilds <strong>persist</strong> even after cash out</p>
+        
+        <div class="highlight">
+            <p>💡 <strong>Key:</strong> You must still bet to use wild spins — they're not free!</p>
+        </div>
+    </div>
+
+    <!-- BONUS GAME -->
+    <div class="section">
+        <h2>🎁 Bonus Game</h2>
+        <p class="rule"><strong>3 bonus symbols</strong> anywhere → triggers free spins</p>
+        <p class="rule">You choose your volatility:</p>
+        
+        <div class="highlight">
+            <p>🔹 <strong>15 spins</strong> with 1 wild reel (safest)<br>
+               🔸 <strong>8 spins</strong> with 2 wild reels (medium)<br>
+               🔶 <strong>3 spins</strong> with 3 wild reels (highest risk/reward)</p>
+        </div>
+        
+        <p class="rule">Wild reel <strong>position is random</strong> each spin</p>
+    </div>
+
+    <!-- ENTRY THRESHOLDS -->
+    <div class="section">
+        <h2>📊 Entry Thresholds</h2>
+        <p class="rule"><strong>PLAY</strong> if: 2+ of reels 1-3 have at least 1 coin</p>
+        <p class="rule"><strong>STRONG PLAY</strong> if: Any reel is currently wild</p>
+        <p class="rule"><strong>MARGINAL</strong>: Only reel 3 has coins (center less valuable alone)</p>
+        <p class="rule"><strong>SKIP</strong>: Only reels 4-5 have coins</p>
+        
+        <div class="warning">
+            <p>⚠️ <strong>Remember:</strong> No guarantee how many spins to land the next coin — could be 1, could be many</p>
+            <p>&nbsp;</p>
+            <p> <img src="https://SlotCheater.com/hunter/images/golden-egypt-sample.jpg" style="width: 100%; height: 100%; object-fit: cover;"/></p>
+        </div>
+    </div>
+
+    <!-- SCOUTING TIPS -->
+    <div class="section">
+        <h2>👀 Scouting Tips</h2>
+        <p class="rule"><strong>Scroll through ALL 5 bet levels</strong> without spinning — each has separate state</p>
+        <p class="rule">Check <strong>multiple denominations</strong> if available (penny, nickel, etc.)</p>
+        <p class="rule">This game is <strong>very common</strong> — high frequency of AP opportunities</p>
+        <p class="rule">Popular with regular players = coins often left behind</p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+
+</body>
+</html>

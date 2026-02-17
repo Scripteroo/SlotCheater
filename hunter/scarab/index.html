@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Scarab AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html { font-size: 16px; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a0a1a;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 8px 0 12px;
+            border-bottom: 1px solid #3d1a3d;
+            margin-bottom: 12px;
+        }
+        
+        .header h1 {
+            font-size: 1.25rem;
+            color: #c77dff;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 0.75rem;
+            color: #9a6b9a;
+            margin-top: 2px;
+        }
+        
+        /* AP Edge - Most Important */
+        .ap-edge {
+            background: linear-gradient(135deg, #1a4a1a 0%, #0d2d0d 100%);
+            border: 2px solid #2d7a2d;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .ap-edge h2 {
+            color: #4ade80;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .ap-check {
+            background: #166534;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .ap-check-title {
+            color: #4ade80;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+        
+        .ap-check p {
+            font-size: 0.9rem;
+            color: #d1fae5;
+        }
+        
+        .ap-check strong {
+            color: #fff;
+        }
+        
+        .quick-rule {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 8px 0;
+            border-top: 1px solid #2d5a2d;
+        }
+        
+        .quick-rule:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        
+        .quick-rule .icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .quick-rule p {
+            font-size: 0.85rem;
+            color: #bbf7d0;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: linear-gradient(135deg, #3d1a4a 0%, #2a1035 100%);
+            border: 1px solid #6b3a8a;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .how-it-works h2 {
+            color: #c77dff;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .how-it-works p {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: #e9d5ff;
+        }
+        
+        .how-it-works p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .how-it-works strong {
+            color: #d8b4fe;
+        }
+        
+        /* Standard Sections */
+        .section {
+            background: #251525;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #3d1a3d;
+        }
+        
+        .section h2 {
+            color: #c77dff;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .rule {
+            font-size: 0.85rem;
+            padding: 6px 0;
+            border-bottom: 1px solid #3d1a3d;
+            color: #d4aad4;
+        }
+        
+        .rule:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .rule strong {
+            color: #c77dff;
+        }
+        
+        /* Highlight box */
+        .highlight {
+            background: rgba(199, 125, 255, 0.1);
+            border-left: 3px solid #c77dff;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .highlight p {
+            font-size: 0.85rem;
+            color: #e9d5ff;
+            margin: 0;
+        }
+        
+        /* Warning */
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .warning p {
+            font-size: 0.85rem;
+            color: #fca5a5;
+            margin: 0;
+        }
+        
+        /* Threshold table */
+        .threshold-table {
+            width: 100%;
+            margin: 10px 0;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        
+        .threshold-table th {
+            background: #3d1a4a;
+            color: #c77dff;
+            padding: 8px 6px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .threshold-table td {
+            padding: 8px 6px;
+            border-bottom: 1px solid #3d1a3d;
+            color: #d4aad4;
+        }
+        
+        .threshold-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .threshold-table .play {
+            color: #4ade80;
+            font-weight: 600;
+        }
+        
+        /* Cycle visual */
+        .cycle-visual {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 5px;
+            margin: 8px 0;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+        
+        .spin-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .spin-dot.empty {
+            background: #3d1a3d;
+            color: #6b3a6b;
+        }
+        
+        .spin-dot.current {
+            background: #c77dff;
+            color: #1a0a1a;
+        }
+        
+        .spin-dot.wild {
+            background: #ffd700;
+            color: #1a0a1a;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #5a3a5a;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #3d1a3d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Scarab Cheat Sheet</h1>
+        <p>IGT • Advantage Play Reference</p>
+    </div>
+
+    <!-- AP EDGE - TOP PRIORITY -->
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        
+        <div class="ap-check">
+            <div class="ap-check-title">✓ BEFORE SITTING DOWN:</div>
+            <p>Check the <strong>spin counter</strong> (bottom right). If it says <strong>"10 of 10"</strong> = NO advantage. Look for mid-cycle with gold frames.</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">🔢</span>
+            <p><strong>Spin 1-4:</strong> Need 2+ gold frames in reels 1-3</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">🔢</span>
+            <p><strong>Spin 5-9:</strong> Need 3+ gold frames in reels 1-3</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">⭐</span>
+            <p><strong>Left reels matter most</strong> — game pays left to right</p>
+        </div>
+        
+        <div class="quick-rule">
+            <span class="icon">💰</span>
+            <p><strong>You know EXACT cost</strong> — just multiply bet × spins remaining</p>
+        </div>
+    </div>
+
+    <!-- HOW THE AP WORKS -->
+    <div class="how-it-works">
+        <h2>🔍 How the Advantage Works</h2>
+        <p>Scarab plays in <strong>10-spin cycles</strong>. When scarab symbols land, they leave <strong>gold frames</strong> in that position.</p>
+        <p>On <strong>spin 10</strong>, ALL gold-framed positions turn <strong>WILD</strong>, then the game pays out and resets.</p>
+        <p>If someone leaves mid-cycle with frames on the board, <strong>you complete the cycle</strong> and collect their wilds!</p>
+    </div>
+
+    <!-- VISUAL: Cycle Diagram -->
+    <div class="section">
+        <h2>🔄 The 10-Spin Cycle</h2>
+        <p class="rule" style="border-bottom: none; padding-bottom: 4px;">Example: Finding a game at <strong>Spin 7 of 10</strong></p>
+        
+        <div class="cycle-visual">
+            <div class="spin-dot empty">1</div>
+            <div class="spin-dot empty">2</div>
+            <div class="spin-dot empty">3</div>
+            <div class="spin-dot empty">4</div>
+            <div class="spin-dot empty">5</div>
+            <div class="spin-dot empty">6</div>
+            <div class="spin-dot current">7</div>
+            <div class="spin-dot empty">8</div>
+            <div class="spin-dot empty">9</div>
+            <div class="spin-dot wild">10</div>
+        </div>
+        
+        <p class="rule">☝️ Only <strong>3 spins to pay</strong> — then all frames turn wild on spin 10!</p>
+    </div>
+
+    <!-- ENTRY THRESHOLDS -->
+    <div class="section">
+        <h2>📊 Entry Thresholds</h2>
+        <p class="rule" style="border-bottom: none;">Minimum gold frames needed in <strong>reels 1-3</strong>:</p>
+        
+        <table class="threshold-table">
+            <tr>
+                <th>Counter Shows</th>
+                <th>Min. Frames (R1-3)</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>10 of 10</td>
+                <td>—</td>
+                <td>SKIP (new cycle)</td>
+            </tr>
+            <tr>
+                <td>1-4 of 10</td>
+                <td>2+</td>
+                <td class="play">PLAY ✓</td>
+            </tr>
+            <tr>
+                <td>5-9 of 10</td>
+                <td>3+</td>
+                <td class="play">PLAY ✓</td>
+            </tr>
+        </table>
+        
+        <div class="highlight">
+            <p>💡 Frames on reels 4-5 are bonus value but don't count toward threshold</p>
+        </div>
+    </div>
+
+    <!-- GAME BASICS -->
+    <div class="section">
+        <h2>🎰 Game Basics</h2>
+        <p class="rule"><strong>4 rows × 5 reels</strong> • 75 fixed paylines</p>
+        <p class="rule">Pays <strong>left to right only</strong></p>
+        <p class="rule"><strong>5 bet levels</strong> — each has its own cycle state</p>
+        <p class="rule">May be <strong>multi-denomination</strong> (penny, nickel, etc.)</p>
+        <p class="rule">Minimum bet: <strong>$0.75</strong> (75 lines × 1 credit)</p>
+    </div>
+
+    <!-- SCARAB MECHANICS -->
+    <div class="section">
+        <h2>🪲 Scarab Mechanics</h2>
+        <p class="rule">Scarab symbol lands → creates <strong>gold frame</strong> in that position</p>
+        <p class="rule">Frames <strong>persist</strong> for remainder of 10-spin cycle</p>
+        <p class="rule">If scarab lands on already-framed position → <strong>nothing happens</strong></p>
+        <p class="rule"><strong>Spin 10:</strong> ALL frames turn WILD → pays evaluate → cycle resets</p>
+        <p class="rule">Wilds substitute for all symbols <strong>except</strong> scarab and bonus</p>
+        
+        <div class="warning">
+            <p>⚠️ <strong>Do NOT spin after the 10th spin payout!</strong> Advantage is gone — walk away.</p>
+        </div>
+    </div>
+
+    <!-- BONUS GAME -->
+    <div class="section">
+        <h2>🎁 Bonus Game</h2>
+        <p class="rule"><strong>3+ Pyramid symbols</strong> → triggers free spins</p>
+        <p class="rule">You choose your volatility:</p>
+        
+        <div class="highlight">
+            <p>🔹 <strong>15 spins</strong> + 5 random wilds (safest)<br>
+               🔸 <strong>10 spins</strong> + 7 random wilds (medium)<br>
+               🔶 <strong>5 spins</strong> + 10 random wilds (highest risk/reward)</p>
+        </div>
+        
+        <p class="rule">Bonus is <strong>hard to trigger</strong> but typically pays 50x+ when hit</p>
+        <p class="rule">4 scatters = double the spins • 5 scatters = triple</p>
+    </div>
+
+    <!-- SCOUTING TIPS -->
+    <div class="section">
+        <h2>👀 Scouting Tips</h2>
+        <p class="rule"><strong>Scroll ALL 5 bet levels</strong> without spinning — each has separate cycle</p>
+        <p class="rule">Check <strong>all denominations</strong> if multi-denom machine</p>
+        <p class="rule">Could have <strong>5, 10, or 15+</strong> separate opportunities per machine!</p>
+        <p class="rule">Many players don't understand the cycle — <strong>they leave mid-cycle often</strong></p>
+        <p class="rule"><strong>Check back frequently</strong> — 10-spin cycles complete quickly</p>
+    </div>
+
+    <!-- WHY SCARAB IS GREAT -->
+    <div class="section">
+        <h2>✨ Why Scarab Is Ideal for AP</h2>
+        <p class="rule"><strong>Predictable cost</strong> — you know exactly how much to invest</p>
+        <p class="rule"><strong>Clear visual</strong> — gold frames easy to see and count</p>
+        <p class="rule"><strong>Spin counter</strong> — tells you exactly where you are</p>
+        <p class="rule"><strong>Multiple opportunities</strong> — check every bet level/denom</p>
+        <p class="rule"><strong>High AP potential</strong> — rated among best AP slots</p>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+    </div>
+
+</body>
+</html>

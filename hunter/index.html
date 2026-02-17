@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Slot Machines Reference | SlotCheater.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px 16px 100px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+        
+        .search-container {
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid rgba(168, 85, 247, 0.5);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .search-input:focus {
+            border-color: #06b6d4;
+        }
+        
+        .search-input::placeholder {
+            color: #6b7280;
+        }
+        
+        .machine-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .machine-card {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .machine-card.hidden {
+            display: none;
+        }
+        
+        .machine-header {
+            padding: 12px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .machine-thumb {
+            width: 100px;
+            height: 100px;
+            border-radius: 6px;
+            object-fit: contain;
+            flex-shrink: 0;
+            background: rgba(168, 85, 247, 0.1);
+        }
+        
+        .machine-info {
+            flex: 1;
+        }
+        
+        .machine-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #06b6d4;
+            margin-bottom: 4px;
+        }
+        
+        .machine-manufacturer {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+        
+        .machine-type {
+            font-size: 13px;
+            color: #10b981;
+        }
+        
+        .expand-icon {
+            font-size: 20px;
+            color: #a855f7;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .machine-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+        
+        .machine-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(10, 10, 20, 0.6);
+        }
+        
+        .machine-card.expanded .machine-details {
+            max-height: 500px;
+        }
+        
+        .machine-details-content {
+            padding: 16px;
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        
+        .details-label {
+            font-size: 12px;
+            color: #a855f7;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .details-text {
+            font-size: 14px;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+        
+        .more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border: 1.5px solid #0ff;
+            border-radius: 6px;
+            cursor: pointer;
+            background: transparent;
+            color: #0ff;
+            box-shadow: 
+                0 0 8px #0ff,
+                0 0 15px #0ff,
+                0 0 30px #0ff,
+                inset 0 0 8px rgba(0, 255, 255, 0.1);
+            text-shadow: 0 0 8px #0ff;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            float: right;
+        }
+        
+        .more-link:hover {
+            background: #0ff;
+            color: #0a0a0f;
+            text-shadow: none;
+            box-shadow: 
+                0 0 15px #0ff,
+                0 0 30px #0ff,
+                0 0 45px #0ff,
+                0 0 60px #0ff;
+        }
+        
+        .more-link .arrows {
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+        
+        .warning-icon {
+            font-size: 16px;
+            cursor: help;
+            margin-left: 4px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #9ca3af;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .no-results.show {
+            display: block;
+        }
+        
+        .definitions {
+            margin-top: 32px;
+            padding: 16px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+        }
+        
+        .definitions h2 {
+            font-size: 18px;
+            color: #a855f7;
+            margin-bottom: 12px;
+        }
+        
+        .definition-item {
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .definition-term {
+            color: #06b6d4;
+            font-weight: 600;
+        }
+        
+        .notes {
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(20, 20, 30, 0.6);
+            border: 1px solid rgba(100, 100, 120, 0.3);
+            border-radius: 8px;
+        }
+        
+        .notes h2 {
+            font-size: 16px;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+        
+        .notes ul {
+            list-style: none;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        
+        .notes li {
+            margin-bottom: 6px;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        .notes li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #a855f7;
+        }
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px;
+            text-align: center;
+            border-top: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        
+        .footer-link {
+            color: #06b6d4;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .home-button {
+            width: 44px;
+            height: 44px;
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid rgba(168, 85, 247, 0.5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .home-button:hover {
+            background: rgba(168, 85, 247, 0.2);
+            border-color: #06b6d4;
+            transform: scale(1.05);
+        }
+        
+        .home-icon {
+            width: 24px;
+            height: 24px;
+            fill: #06b6d4;
+        }
+        
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 16px;
+            margin-bottom: 20px;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 4px 12px;
+        }
+        
+        .nav-item:hover,
+        .nav-item.active {
+            color: #06b6d4;
+        }
+        
+        .nav-item svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .nav-item span {
+            font-size: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://slotcheater.com/images/cheat-sheets-header.png" alt="Advantage Play Slot Machines - Quick Reference Guide" style="width: 100%; max-width: 500px; height: auto; margin: 0 auto; display: block;">
+    </header>
+    
+    <div class="search-wrapper">
+        <a href="https://slotcheater.com" class="home-button" title="Back to SlotCheater.com">
+            <svg class="home-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+        </a>
+        <div class="search-container" style="flex: 1; margin: 0;">
+            <input 
+                type="text" 
+                class="search-input" 
+                id="searchInput"
+                placeholder="Search by name or type..."
+                autocomplete="off"
+            >
+        </div>
+    </div>
+    
+    <div class="machine-list" id="machineList">
+        <div class="machine-card" data-name="golden egypt" data-type="banking feature persistence">
+            <div class="machine-header">
+                <img src="images/golden-egypt-thumb.png" alt="Golden Egypt" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Golden Egypt</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Banking / Feature Persistence</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Look for two of the first three reels to be one coin away from turning wild, plus at least one additional coin in the "Bad Zone" (reels 4 and 5); alternatively, any machine with four or five coins total across the board is a go.</div>
+                    <a href="/hunter/golden-egypt/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="golden jungle" data-type="banking accumulator buddha symbols">
+            <div class="machine-header">
+                <img src="images/golden-jungle-thumb.png" alt="Golden Jungle" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Golden Jungle</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Banking / Accumulator (Buddha Symbols)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Count the BUDDHA SYMBOLS collected on each reel. Look for 4 Buddhas on any reel (turns that reel WILD for 4 spins). Left reels matter most (Reel 1 > 2 > 3 > 4 > 5). Good news: progress never decreases, and each bet level has separate Buddha progress.</div>
+                    <a href="/hunter/golden-jungle/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="scarab" data-type="cycle-based">
+            <div class="machine-header">
+                <img src="images/scarab-thumb.png" alt="Scarab" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Scarab</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Cycle-Based (10-game cycle)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Check the game counter for game 7, 8, or 9 with a high number of beetles already banked in positions on the reels.</div>
+                    <a href="/hunter/scarab/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="ocean magic" data-type="banking accumulator bubble">
+            <div class="machine-header">
+                <img src="images/ocean-magic-thumb.png" alt="Ocean Magic" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Ocean Magic</div>
+                    <div class="machine-manufacturer">IGT / GTECH</div>
+                    <div class="machine-type">Banking / Accumulator (Bubble)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Identify wild bubbles located in the bottom three rows of the screen or visible just below the bottom row waiting to float up on the next spin.</div>
+                    <a href="/hunter/ocean-magic/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="hexbreak3r hexbreaker" data-type="expanding reel persistence">
+            <div class="machine-header">
+                <img src="images/hexbreaker-thumb.jpg" alt="Hexbreak3r" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Hexbreak3r</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Expanding Reel Persistence</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Seek a "Ways to Win" count of 3,500 or higher in the bottom left, or a middle column (the Cat) at a height of 6 or higher.</div>
+                    <a href="/hunter/hexbreaker/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="wheel of fortune puzzle" data-type="progressive puzzle banking">
+            <div class="machine-header">
+                <img src="images/wheel-of-fortune-thumb.png" alt="Wheel of Fortune" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Wheel of Fortune (Puzzle Version)</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Progressive / Puzzle Banking</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Look for a bonus points counter showing 1,201 or higher, or points in the high 1,100s with 5 or fewer blank spaces remaining to complete the puzzle.</div>
+                    <a href="/hunter/wheel-of-fortune/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="mustang money" data-type="mhb must-hit-by progressive">
+            <div class="machine-header">
+                <img src="images/mustang-money-thumb.webp" alt="Mustang Money" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Mustang Money</div>
+                    <div class="machine-manufacturer">Ainsworth</div>
+                    <div class="machine-type">MHB (Must-Hit-By Progressive)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Locate a machine where the progressive meter is near the "Win Before" cap (e.g., a $500 cap meter sitting at $490 or a $10,000 cap sitting at $9,950).</div>
+                    <a href="/hunter/mustang-money/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="piggy bankin" data-type="banking accumulator coin bank">
+            <div class="machine-header">
+                <img src="images/piggy-bankin-thumb.png" alt="Piggy Bankin'" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Piggy Bankin'</div>
+                    <div class="machine-manufacturer">WMS / Williams (1996)</div>
+                    <div class="machine-type">Banking / Accumulator (Coin Bank)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Find a piggy bank containing 18 or more credits on $1, $2, or $5 machines, or 21 or more credits on nickel and quarter machines.</div>
+                    <a href="/hunter/piggy-bankin/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="fort knox" data-type="multi-level progressive">
+            <div class="machine-header">
+                <img src="images/fort-knox-thumb.png" alt="Fort Knox" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Fort Knox</div>
+                    <div class="machine-manufacturer">IGT (2005)</div>
+                    <div class="machine-type">Multi-Level Progressive</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Scout for a vault combination display where four or more digits have already been revealed.</div>
+                    <a href="/hunter/fort-knox/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="boom" data-type="banking accumulator">
+            <div class="machine-header">
+                <img src="images/boom-thumb.jpg" alt="Boom" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Boom</div>
+                    <div class="machine-manufacturer">WMS / Williams</div>
+                    <div class="machine-type">Banking / Accumulator</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Look for a row of 30 or more firecrackers displayed across the top of the video screen.</div>
+                    <a href="/hunter/boom/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="buccaneer's gold buccaneers gold" data-type="banking accumulator dagger collection">
+            <div class="machine-header">
+                <img src="images/buccaneers-gold-thumb.jpg" alt="Buccaneer's Gold" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Buccaneer's Gold</div>
+                    <div class="machine-manufacturer">Silicon Gaming (Odyssey)</div>
+                    <div class="machine-type">Banking / Accumulator (Dagger Collection)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Identify a counter in the lower right corner showing three or more daggers, or the rising rope on the left side of the screen having a flag nearly unfurled at the very top.</div>
+                    <a href="/hunter/buccaneers-gold/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="buffalo ascension" data-type="banking accumulator ways to win">
+            <div class="machine-header">
+                <img src="images/buffalo-ascension-thumb.png" alt="Buffalo Ascension" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Buffalo Ascension</div>
+                    <div class="machine-manufacturer">Aristocrat</div>
+                    <div class="machine-type">Banking / Accumulator (Ways to Win)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Count the HEIGHT of reels 2, 3, and 4. Calculate WAYS TO WIN using the formula: 4 × R2 × R3 × R4 × 4. Only play at ≥3,136 ways (or ≥2,688 ways if Super Stampede is visible). Skip if below 3,136 ways with no exceptions.</div>
+                    <a href="/hunter/buffalo-ascension/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="eagle bucks" data-type="mhb must-hit-by progressive">
+            <div class="machine-header">
+                <img src="images/eagle-bucks-thumb.jpeg" alt="Eagle Bucks" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Eagle Bucks</div>
+                    <div class="machine-manufacturer">Ainsworth</div>
+                    <div class="machine-type">MHB (Must-Hit-By Progressive)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Check the progressive meter values and calculate expected value (EV) based on how close each jackpot is to its Must-Hit-By cap. Look for meters near their maximum thresholds.</div>
+                    <a href="/hunter/eagle-bucks/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="the enforcer enforcer" data-type="mhb must-hit-by progressive">
+            <div class="machine-header">
+                <img src="images/the-enforcer-thumb.png" alt="The Enforcer" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">The Enforcer</div>
+                    <div class="machine-manufacturer">Ainsworth</div>
+                    <div class="machine-type">MHB (Must-Hit-By Progressive)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Monitor the progressive jackpot meters and calculate EV based on proximity to Must-Hit-By caps. Play when meters show favorable +EV conditions.</div>
+                    <a href="/hunter/the-enforcer/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="thunder cash" data-type="mhb must-hit-by progressive">
+            <div class="machine-header">
+                <img src="images/thunder-cash-thumb.jpeg" alt="Thunder Cash" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Thunder Cash</div>
+                    <div class="machine-manufacturer">Ainsworth</div>
+                    <div class="machine-type">MHB (Must-Hit-By Progressive)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Analyze the progressive jackpot meters to identify favorable EV situations. Look for meters approaching their Must-Hit-By thresholds for optimal play opportunities.</div>
+                    <a href="/hunter/thunder-cash/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="aladdin's fortune aladdins fortune 3d" data-type="banking accumulator wild letters">
+            <div class="machine-header">
+                <img src="images/aladdins-fortune-thumb.png" alt="Aladdin's Fortune 3D" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Aladdin's Fortune 3D</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Banking / Accumulator (W-I-L-D Letters)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Check the W-I-L-D letters above each reel. Look for 4 letters lit on any reel (turns that reel WILD for 4 spins). Left reels matter most (Reel 1 > 2 > 3 > 4 > 5). Good news: progress never decreases, and each bet level has separate lamp progress.</div>
+                    <a href="/hunter/aladdins-fortune/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="aztec vault" data-type="banking accumulator coin columns">
+            <div class="machine-header">
+                <img src="images/aztec-vault-thumb.png" alt="Aztec Vault" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Aztec Vault</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Banking / Accumulator (Coin Columns)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Check the COIN COLUMNS above each reel. Look for columns 1 coin from full (especially with Win All/Wheel coins), or multiple columns 70-90% full. Win All or Wheel coins in near-full columns are priority plays. Skip if all columns are mostly empty.</div>
+                    <a href="/hunter/aztec-vault/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="cleopatra's vault cleopatras vault" data-type="banking accumulator coin columns">
+            <div class="machine-header">
+                <img src="images/cleopatras-vault-thumb.png" alt="Cleopatra's Vault" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Cleopatra's Vault</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Banking / Accumulator (Coin Columns)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Check the COIN COLUMNS above each reel. Look for columns 1 coin from full (especially with WIN ALL/Wheel coins), or multiple columns 70-90% full. WIN ALL, Wheel, or 10x+ multiplier coins are priority plays. Skip if all columns are mostly empty.</div>
+                    <a href="/hunter/cleopatras-vault/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="triple double diamond" data-type="banking accumulator meters must-hit-by">
+            <div class="machine-header">
+                <img src="images/triple-double-diamond-thumb.png" alt="Triple Double Diamond" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Triple Double Diamond</div>
+                    <div class="machine-manufacturer">IGT</div>
+                    <div class="machine-type">Banking / Accumulator (Must-Hit-By Meters)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Check the THREE METERS (Red, Green, Blue) above the reels. Each must hit by 15 free games. Play Red at ≥12, Green at ≥13, Blue at ≥14. Remember: check ALL bet levels as each has separate meters!</div>
+                    <a href="/hunter/triple-double-diamond/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="machine-card" data-name="plants vs zombies plants zombies pvz" data-type="banking accumulator brain meter">
+            <div class="machine-header">
+                <img src="images/plants-zombies-thumb.png" alt="Plants vs Zombies" class="machine-thumb">
+                <div class="machine-info">
+                    <div class="machine-name">Plants vs Zombies <span class="warning-icon" title="Warning: Brain meter can decrease during play">⚠️</span></div>
+                    <div class="machine-manufacturer">Bally</div>
+                    <div class="machine-type">Banking / Accumulator (Brain Meter)</div>
+                </div>
+                <div class="expand-icon">▼</div>
+            </div>
+            <div class="machine-details">
+                <div class="machine-details-content">
+                    <div class="details-label">What to Look For:</div>
+                    <div class="details-text">Check the pink/red BRAIN METER at the top of the screen. Bonus triggers at 500 points. Look for 200+ points (standard threshold) or 150+ in competitive areas. Note: Each bet level has a separate meter, and the meter can decrease (-12 points when no brain appears).</div>
+                    <a href="/hunter/plants-zombies/index.html" class="more-link">Cheat Sheet<span class="arrows">&gt;&gt;&gt;</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="no-results" id="noResults">
+        No machines found matching your search.
+    </div>
+    
+    <div class="definitions">
+        <h2>Type Definitions</h2>
+        <div class="definition-item">
+            <span class="definition-term">RTP:</span> Return To Player — the amount as a percentage that the slot returns to players (90%, 98%, etc.)
+        </div>
+        <div class="definition-item">
+            <span class="definition-term">AP:</span> Advantage Play — exploiting persistence mechanics, playing only when the odds are in your favor
+        </div>
+        <div class="definition-item">
+            <span class="definition-term">MHB:</span> Must-Hit-By — jackpot guaranteed to trigger before stated cap
+        </div>
+        <div class="definition-item">
+            <span class="definition-term">Banking/Accumulator:</span> Stores progress (coins, symbols, etc.) between players
+        </div>
+        <div class="definition-item">
+            <span class="definition-term">Cycle-Based:</span> Fixed sequence (e.g., 10 spins) with payoff on final spin
+        </div>
+        <div class="definition-item">
+            <span class="definition-term">Expanding Reel:</span> Reels expand and persist, increasing ways to win
+        </div>
+        <div class="definition-item">
+            <span class="definition-term">Multi-Level Progressive:</span> Multiple jackpot tiers with mystery trigger
+        </div>
+    </div>
+    
+    <div class="notes">
+        <h2>Notes</h2>
+        <ul>
+            <li>Silicon Gaming was acquired by IGT in 2003, so newer versions of Buccaneer's Gold may carry IGT branding</li>
+            <li>WMS/Williams was acquired by Scientific Games in 2013, which became Light & Wonder in 2022</li>
+            <li>GTECH merged with IGT in 2015</li>
+            <li>Ainsworth remains independent and is known for the most mathematically transparent MHB progressives</li>
+        </ul>
+    </div>
+    
+    <div style="text-align: center; margin: 32px 0 24px; padding: 20px; background: rgba(20, 20, 30, 0.6); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px;">
+        <a href="https://record.genesysaffiliates.com/_dqyzXfgb2CYbMi4h7aw-u2Nd7ZgqdRLk/1/" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
+            <img src="https://media.genesysaffiliates.com/uploads/CGB_300x300.gif" alt="Casino Grand Bay" style="max-width: 300px; width: 100%; height: auto; border-radius: 6px;">
+        </a>
+        <p style="margin-top: 12px; font-size: 13px; color: #06b6d4;">🎰 Ready to practice? Play at Casino Grand Bay!</p>
+    </div>
+    
+    <footer>
+        <a href="https://slotcheater.com" class="footer-link">slotcheater.com</a>
+    </footer>
+    
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const machineCards = document.querySelectorAll('.machine-card');
+        const noResults = document.getElementById('noResults');
+        
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            let visibleCount = 0;
+            
+            machineCards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                const type = card.getAttribute('data-type');
+                const searchableText = `${name} ${type}`;
+                
+                if (searchableText.includes(searchTerm)) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            if (visibleCount === 0 && searchTerm !== '') {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        });
+        
+        // Accordion functionality
+        machineCards.forEach(card => {
+            const header = card.querySelector('.machine-header');
+            header.addEventListener('click', function() {
+                card.classList.toggle('expanded');
+            });
+        });
+    </script>
+    
+    <!-- MHB Slots Calculator Promotion -->
+    <div style="padding: 2rem 1rem 1rem; text-align: center; background: linear-gradient(to bottom, #0a0a0f, #000000);">
+        <p style="color: #e0e0e0; font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Are you learning MHB Slots (Must Hit By) and struggling with the EV and other calculations? Try the FREE MHB Slots calculator and resource list!
+        </p>
+        <a href="https://MHBSlots.com" target="_blank" rel="noopener noreferrer" style="display: inline-block; text-decoration: none; max-width: 400px;">
+            <img src="https://slotcheater.com/images/mhbslots.png" alt="MHB Slots Calculator" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(168, 85, 247, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        </a>
+    </div>
+    
+    <!-- Book Advertisement -->
+    <div style="padding: 2rem 1rem 5rem; text-align: center; background: linear-gradient(to bottom, #0a0a0f, #000000);">
+        <a href="https://amzn.to/4pP2pwy" target="_blank" rel="noopener noreferrer" style="display: inline-block; text-decoration: none; max-width: 400px;">
+            <img src="https://slotcheater.com/images/slot-machine-ap-book.jpg" alt="The Slot Machine Advantage Players Handbook" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 255, 255, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <h3 style="color: #00ffff; font-size: 1.1rem; margin-top: 1rem; font-weight: 600; line-height: 1.4;">The Slot Machine Advantage Players Handbook: Advantage play for over 200 of your favorite Slot Machines</h3>
+        </a>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="https://slotcheater.com/" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>HOME</span>
+        </a>
+        
+        <a href="https://slotcheater.com/hunter/" class="nav-item active">
+            <svg viewBox="0 0 13.478853 23.325216" fill="currentColor">
+                <path d="m 2.54891,23.22409 c -0.0628,-0.0628 -0.1016,-0.37174 -0.1016,-0.80922 0,-0.67633 -0.0201,-0.75136 -0.45475,-1.69756 -0.77534,-1.68785 -1.09983,-2.90267 -1.24367,-4.65608 -0.0718,-0.87533 -0.0999,-0.98346 -0.3297,-1.27 -0.39301,-0.49001 -0.44191,-0.92107 -0.41189,-3.63096 0.0263,-2.37106 0.0325,-2.44833 0.22071,-2.75108 0.11799,-0.18974 0.34449,-0.38449 0.57952,-0.49826 0.33205,-0.16075 0.48219,-0.18077 1.07723,-0.14364 l 0.69142,0.0431 0.1684,-0.43122 c 0.13552,-0.34703 0.24908,-0.48091 0.58163,-0.68573 0.51543,-0.31744 1.34892,-0.39845 1.86802,-0.18156 0.1799,0.0752 0.342,0.12174 0.36024,0.10351 0.0182,-0.0182 -0.35467,-0.99981 -0.82869,-2.18128 -0.73528,-1.83264 -0.86226,-2.21916 -0.86461,-2.63184 -0.004,-0.63145 0.32007,-1.18127 0.91008,-1.54604 0.35424,-0.21902 0.49753,-0.25624 0.98638,-0.25624 0.87555,0 1.19959,0.30963 1.69346,1.61815 0.14847,0.3934 0.29546,0.73103 0.32664,0.7503 0.0312,0.0193 0.20346,-0.31161 0.38286,-0.73528 0.50541,-1.19357 0.9616,-1.60949 1.77753,-1.6206 1.08463,-0.0148 1.80897,0.98839 1.55815,2.15792 -0.0503,0.23459 -0.5067,1.36556 -1.01421,2.51327 -0.50751,1.14771 -0.92275,2.13157 -0.92275,2.18635 0,0.0548 0.41074,1.15022 0.91275,2.43431 l 0.91276,2.3347 0.37841,0.24043 c 0.78525,0.49891 1.12963,1.05174 1.48682,2.38678 0.27655,1.03365 0.30119,1.8593 0.0806,2.7012 -0.24202,0.92373 -1.05236,2.4072 -2.22405,4.07155 -0.44368,0.63024 -0.44662,0.63863 -0.44662,1.27423 0,0.69672 -0.0735,0.84302 -0.42333,0.84302 -0.36668,0 -0.42334,-0.13708 -0.42334,-1.02421 v -0.821 l 0.53592,-0.7919 c 1.63175,-2.41115 2.13963,-3.44637 2.23214,-4.54983 0.0399,-0.47536 0.003,-0.72949 -0.2275,-1.56102 -0.2394,-0.86437 -0.32176,-1.04514 -0.63479,-1.3933 -0.19784,-0.22004 -0.48849,-0.445 -0.6459,-0.4999 -0.68318,-0.2383 -4.83106,-1.14205 -5.02183,-1.09417 -0.52207,0.13103 -0.64555,0.76267 -0.24269,1.24144 0.27063,0.32162 1.31121,0.84493 2.28786,1.15055 l 0.6962,0.21787 0.6373,1.03878 c 0.36125,0.58883 0.63729,1.13363 0.63729,1.25776 0,0.26079 -0.2641,0.43134 -0.55492,0.35835 -0.17057,-0.0428 -0.27993,0.0445 -0.73295,0.58501 -0.29285,0.34943 -0.73107,0.96891 -0.97381,1.37662 -0.24275,0.40771 -0.5017,0.82701 -0.57545,0.93179 -0.17938,0.25481 -0.50853,0.24712 -0.68087,-0.0159 -0.12579,-0.19197 -0.12275,-0.23465 0.0435,-0.61044 0.26647,-0.60239 1.18653,-1.94536 1.75846,-2.56672 l 0.50369,-0.54723 -0.32865,-0.50848 -0.32865,-0.50848 -0.92953,-0.30693 -0.92953,-0.30693 -0.0526,0.21964 c -0.26685,1.11327 -1.40607,1.82222 -2.46846,1.53615 -0.38727,-0.10428 -0.9896,-0.58548 -1.07681,-0.86025 -0.052,-0.16373 -0.0555,-0.16376 -0.32111,-0.003 -0.14772,0.0897 -0.39696,0.19022 -0.55389,0.22345 l -0.28531,0.0604 0.0592,0.68955 c 0.13351,1.55438 0.49285,2.84965 1.22221,4.4055 0.43097,0.91935 0.4322,0.92441 0.4322,1.78223 0,0.92851 -0.0537,1.06348 -0.42333,1.06348 -0.12108,0 -0.26586,-0.0457 -0.32174,-0.1016 z m 2.32846,-8.27698 c 0.30133,-0.18373 0.48314,-0.4862 0.5652,-0.94031 0.0461,-0.25504 0.0203,-0.33388 -0.16625,-0.508 -0.3911,-0.36506 -0.57876,-0.82841 -0.58221,-1.4375 -0.002,-0.39159 0.0408,-0.62111 0.14669,-0.78271 0.13365,-0.20398 0.14736,-0.42712 0.127,-2.0675 l -0.0228,-1.83884 -0.26814,-0.0769 c -0.37389,-0.10715 -0.96418,0.0887 -1.10609,0.36695 -0.0833,0.16334 -0.10305,0.99148 -0.0865,3.6269 l 0.0214,3.41523 0.23755,0.20427 c 0.29484,0.25353 0.75573,0.26911 1.13417,0.0384 z m -2.8416,-0.67318 0.19988,-0.16175 0.025,-2.52641 c 0.0137,-1.38953 0.003,-2.61214 -0.0228,-2.71692 -0.0425,-0.16945 -0.10059,-0.1905 -0.52628,-0.1905 -0.82223,0 -0.78822,-0.12126 -0.78822,2.81097 v 2.53073 l 0.20781,0.20782 c 0.25225,0.25224 0.62632,0.27129 0.90464,0.0461 z m 8.07771,-3.41541 c -0.11013,-0.29104 -0.73213,-1.88172 -1.38222,-3.53483 -0.65009,-1.65312 -1.45775,-3.71052 -1.79481,-4.572 -0.33707,-0.86149 -0.68913,-1.63301 -0.78237,-1.7145 -0.2136,-0.18669 -0.68419,-0.19089 -0.96241,-0.009 -0.24919,0.16328 -0.45832,0.5322 -0.45844,0.80873 -5e-5,0.10708 0.80116,2.19752 1.78048,4.64542 l 1.78057,4.45072 0.95001,0.21918 c 0.52252,0.12055 0.97689,0.22275 1.00973,0.22711 0.0328,0.004 -0.0304,-0.23019 -0.14054,-0.52123 z m -2.95157,-0.33867 c -0.0247,-0.0582 -0.28134,-0.69638 -0.57038,-1.41816 -0.28904,-0.72179 -0.53963,-1.32821 -0.55687,-1.34761 -0.0172,-0.0194 -0.0314,0.59773 -0.0314,1.3714 v 1.40669 l 0.4445,0.0311 c 0.24448,0.0171 0.51526,0.0381 0.60173,0.0468 0.0969,0.01 0.14,-0.025 0.11237,-0.0902 z m 2.91132,-7.13833 c 0.67712,-1.56925 0.72148,-1.8628 0.33926,-2.24501 -0.28078,-0.28079 -0.41784,-0.30183 -0.77227,-0.11854 -0.27116,0.14022 -0.43634,0.43333 -1.00855,1.78967 l -0.36293,0.86028 0.23577,0.62138 c 0.12967,0.34176 0.30952,0.79284 0.39966,1.00239 l 0.16389,0.381 0.20921,-0.46567 c 0.11506,-0.25612 0.47325,-1.07759 0.79596,-1.8255 z" />
+            </svg>
+            <span>CHEATS</span>
+        </a>
+        
+        <a href="https://slotcheater.com/videos" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+                <line x1="7" y1="2" x2="7" y2="22"/>
+                <line x1="17" y1="2" x2="17" y2="22"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <line x1="2" y1="7" x2="7" y2="7"/>
+                <line x1="2" y1="17" x2="7" y2="17"/>
+                <line x1="17" y1="17" x2="22" y2="17"/>
+                <line x1="17" y1="7" x2="22" y2="7"/>
+            </svg>
+            <span>VIDEOS</span>
+        </a>
+        
+        <a href="https://slotcheater.com/play" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="6" y1="4" x2="6" y2="8"/>
+                <line x1="6" y1="16" x2="6" y2="20"/>
+                <line x1="18" y1="4" x2="18" y2="8"/>
+                <line x1="18" y1="16" x2="18" y2="20"/>
+                <rect x="2" y="8" width="20" height="8" rx="2"/>
+            </svg>
+            <span>PLAY</span>
+        </a>
+        
+        <a href="https://slotcheater.com/chat" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span>CHAT</span>
+        </a>
+    </nav>
+</body>
+</html>
