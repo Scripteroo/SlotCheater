@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Money Galaxy AP Cheat Sheet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #1a0a2e 0%, #0a0a1a 100%);
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 12px;
+            padding-bottom: 40px;
+        }
+        .header { text-align: center; padding: 8px 0 12px; border-bottom: 1px solid #3a2a5a; margin-bottom: 12px; }
+        .header h1 { font-size: 1.2rem; color: #00d9ff; font-weight: 600; }
+        .header p { font-size: 0.75rem; color: #ffd700; margin-top: 2px; }
+
+        .ap-edge { background: linear-gradient(135deg, #1f1240 0%, #0f0a20 100%); border: 2px solid #00d9ff; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .ap-edge h2 { color: #00d9ff; font-size: 1rem; margin-bottom: 10px; }
+        .ap-check { background: rgba(0, 217, 255, 0.12); border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .ap-check-title { color: #00d9ff; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .ap-check p { font-size: 0.9rem; color: #b8eaff; }
+        .ap-check strong { color: #fff; }
+        .quick-rule { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-top: 1px solid #2a1f4a; }
+        .quick-rule:first-of-type { border-top: none; padding-top: 0; }
+        .quick-rule .icon { font-size: 1rem; flex-shrink: 0; width: 24px; text-align: center; }
+        .quick-rule p { font-size: 0.85rem; color: #c4b5fd; }
+
+        .clone-box { background: linear-gradient(135deg, #2a1f4a 0%, #150d2a 100%); border: 2px solid #ffd700; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .clone-box h2 { color: #ffd700; font-size: 1rem; margin-bottom: 10px; }
+        .clone-box p { font-size: 0.85rem; color: #f0e0a0; margin-bottom: 6px; }
+        .clone-box strong { color: #00d9ff; }
+
+        .safe-box { background: linear-gradient(135deg, #1a3a2a 0%, #0d2a1a 100%); border: 2px solid #4ade80; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .safe-box h2 { color: #4ade80; font-size: 1rem; margin-bottom: 10px; }
+        .safe-box p { font-size: 0.85rem; color: #a7f3d0; margin-bottom: 6px; }
+        .safe-box strong { color: #fff; }
+
+        .how-it-works { background: linear-gradient(135deg, #150d2a 0%, #08051a 100%); border: 1px solid #3a2a5a; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+        .how-it-works h2 { color: #00d9ff; font-size: 1rem; margin-bottom: 10px; }
+        .how-it-works p { font-size: 0.85rem; margin-bottom: 8px; color: #c4b5fd; }
+        .how-it-works strong { color: #ffd700; }
+
+        .section { background: #150d2a; border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid #3a2a5a; }
+        .section h2 { color: #00d9ff; font-size: 0.95rem; margin-bottom: 10px; }
+        .rule { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #2a1f4a; color: #c4b5fd; }
+        .rule:last-child { border-bottom: none; padding-bottom: 0; }
+        .rule strong { color: #ffd700; }
+
+        .caution { background: rgba(251, 191, 36, 0.1); border-left: 3px solid #fbbf24; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .caution p { font-size: 0.85rem; color: #fcd34d; margin: 0; }
+        .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .warning p { font-size: 0.85rem; color: #fca5a5; margin: 0; }
+        .highlight { background: rgba(0, 217, 255, 0.1); border-left: 3px solid #00d9ff; padding: 10px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+        .highlight p { font-size: 0.85rem; color: #b8eaff; margin: 0; }
+
+        .footer { text-align: center; font-size: 0.7rem; color: #4a3a6a; margin-top: 16px; padding-top: 12px; border-top: 1px solid #3a2a5a; }
+        .footer p { margin: 4px 0; }
+        .footer .verify-note { max-width: 480px; margin: 8px auto 0; color: #5a4a7a; font-style: italic; }
+    </style>
+    <link rel="stylesheet" href="/assets/cheat-nav.css">
+    <!-- SC-SEO BEGIN -->
+    <link rel="canonical" href="https://slotcheater.com/hunter/money-galaxy/">
+    <meta name="description" content="Money Galaxy advantage play cheat sheet — Konami's persistent coin-collection banking pattern, with framework for spotting +EV cabinets.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Money Galaxy AP Cheat Sheet">
+    <meta property="og:description" content="Money Galaxy advantage play cheat sheet — Konami's persistent coin-collection banking pattern, with framework for spotting +EV cabinets.">
+    <meta property="og:url" content="https://slotcheater.com/hunter/money-galaxy/">
+    <meta property="og:image" content="https://slotcheater.com/hunter/images/money-galaxy-thumb.png">
+    <meta property="og:site_name" content="SlotCheater">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Money Galaxy AP Cheat Sheet">
+    <meta name="twitter:description" content="Money Galaxy advantage play cheat sheet — Konami's persistent coin-collection banking pattern, with framework for spotting +EV cabinets.">
+    <meta name="twitter:image" content="https://slotcheater.com/hunter/images/money-galaxy-thumb.png">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Money Galaxy AP Cheat Sheet",
+  "description": "Money Galaxy advantage play cheat sheet — Konami's persistent coin-collection banking pattern, with framework for spotting +EV cabinets.",
+  "image": "https://slotcheater.com/hunter/images/money-galaxy-thumb.png",
+  "author": {
+    "@type": "Organization",
+    "name": "SlotCheater"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SlotCheater",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://slotcheater.com/icon-512.png"
+    }
+  }
+}
+    </script>
+    <!-- SC-SEO END -->
+</head>
+<body>
+    <div class="header">
+        <h1>🌌 Money Galaxy</h1>
+        <p>Konami's persistent coin-collection family</p>
+    </div>
+
+    <div class="ap-badge ap-badge-confirmed" style="background: rgba(74, 222, 128, 0.15); border: 1px solid rgba(74, 222, 128, 0.5); border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; text-align: center;">
+        <span style="color: #4ade80; font-size: 0.85rem; font-weight: 600;">✅ Confirmed Advantage Play • Banking Pattern</span>
+    </div>
+
+    <div class="caution" style="background: rgba(251, 191, 36, 0.15); border-left: 4px solid #fbbf24; padding: 12px; margin-bottom: 12px; border-radius: 0 6px 6px 0;">
+        <p style="font-size: 0.85rem; color: #fcd34d; margin: 0;">
+            <strong>📋 Specific thresholds being verified.</strong> Money Galaxy is a confirmed banking-pattern game (Konami documents persistent coin-collection state), but exact "must-play" thresholds vary by theme and aren't widely published. Use the framework below as a guide and observe each cabinet before committing significant play.
+        </p>
+    </div>
+
+    <div class="ap-edge">
+        <h2>🎯 Advantage Play Edge</h2>
+        <div class="ap-check">
+            <div class="ap-check-title">✓ THE BANKING EDGE:</div>
+            <p>Previous players walking away mid-collection leave behind <strong>persistent coin progress</strong>. The next player at the cabinet inherits that progress and can capitalize on a near-trigger state without paying the full cost-to-cover from zero.</p>
+        </div>
+        <div class="quick-rule"><span class="icon">🪙</span><p>Look for a <strong>visible coin counter / meter</strong> on the cabinet</p></div>
+        <div class="quick-rule"><span class="icon">📊</span><p>Higher progress = closer to trigger = stronger entry</p></div>
+        <div class="quick-rule"><span class="icon">💰</span><p>Verify the <strong>bet level</strong> the meter was built at — state is typically per-bet</p></div>
+        <div class="quick-rule"><span class="icon">❌</span><p>Counter at base level = <strong>SKIP</strong> — full cost-to-cover from zero</p></div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>🔍 How the Mechanic Works</h2>
+        <p>Money Galaxy is Konami's family of <strong>persistent-state coin-collection</strong> games (Pharaoh's Power, Radiant Witch, and others share the mechanic with different themes). Coin symbols accumulate toward a <strong>3-level stand-alone progressive feature</strong>. When the collection threshold is reached, the bonus triggers — awarding credit prizes plus access to Mini, Minor, or Major progressives. After the bonus pays, the coin counter resets to its base level for that bet.</p>
+    </div>
+
+    <div class="clone-box">
+        <h2>👀 What to Look For</h2>
+        <p><strong>Visible coin counter or meter</strong> on the screen showing collection progress</p>
+        <p><strong>Higher progress = closer to trigger</strong> = more potential value to the next player</p>
+        <p><strong>Check the bet level</strong> the previous player was using — the persistent state typically applies per bet level</p>
+        <p><strong>Multi-cabinet bank scouting</strong> — check every cabinet, not just the most colorful one</p>
+        <p><strong>Mini / Minor / Major progressive values</strong> — note the current displayed amounts</p>
+    </div>
+
+    <div class="safe-box">
+        <h2>🛡️ When to Walk Away</h2>
+        <p>Don't play if the <strong>coin counter is at or near base level</strong> — you're paying full cost-to-cover</p>
+        <p>Don't <strong>increase bet beyond the level the meter was built at</strong> — you may not get credit for previous progress</p>
+        <p>Set a <strong>hard walk-away point</strong> — if you've spent your estimated cost-to-cover and haven't triggered, leave</p>
+        <p>The bonus triggers and the meter <strong>resets</strong> — re-evaluate before continuing</p>
+    </div>
+
+    <div class="section">
+        <h2>📋 Banking Strategy Framework</h2>
+        <p class="rule"><strong>1. Scout for visible meter progress.</strong> Walk the bank; look at every cabinet's coin counter before sitting.</p>
+        <p class="rule"><strong>2. Estimate remaining cost-to-cover</strong> based on observed progress vs the trigger threshold.</p>
+        <p class="rule"><strong>3. Verify bet level.</strong> Make sure your bet matches the level the displayed progress was built at.</p>
+        <p class="rule"><strong>4. Calculate +EV.</strong> Potential bonus value (credit prizes + progressives) vs cost-to-cover.</p>
+        <p class="rule"><strong>5. Walk away cleanly</strong> after a triggered feature pays — the meter resets, and you should re-evaluate before continuing.</p>
+    </div>
+
+    <div class="section">
+        <h2>🎨 Variants</h2>
+        <p class="rule"><strong>Money Galaxy: Pharaoh's Power</strong></p>
+        <p class="rule"><strong>Money Galaxy: Radiant Witch</strong></p>
+        <p class="rule">Different themes share the same persistent-state mechanic but specific math may vary by cabinet.</p>
+        <div class="highlight">
+            <p>💡 Treat each cabinet as its own scout — identical theming doesn't guarantee identical thresholds.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>SlotCheater.com • For educational purposes only</p>
+        <p>Gamble responsibly • Know your limits</p>
+        <p class="verify-note">Casinos can adjust machine settings, denominations, and bonus structures at any time. Always verify current conditions on the machine itself before applying any strategy.</p>
+        <p class="verify-note">Specific thresholds for Money Galaxy variants are not widely published in AP communities. The framework above applies to the family, but individual cabinets may behave differently.</p>
+    </div>
+    <script src="/assets/cheat-nav.js" defer></script>
+</body>
+</html>

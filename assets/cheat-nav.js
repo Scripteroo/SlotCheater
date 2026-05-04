@@ -13,6 +13,7 @@
         { slug: "golden-egypt", name: "Golden Egypt" },
         { slug: "golden-jungle", name: "Golden Jungle" },
         { slug: "hexbreaker", name: "Hexbreak3r" },
+        { slug: "money-galaxy", name: "Money Galaxy" },
         { slug: "mustang-money", name: "Mustang Money" },
         { slug: "ocean-magic", name: "Ocean Magic" },
         { slug: "piggy-bankin", name: "Piggy Bankin'" },
@@ -79,12 +80,12 @@
         if (document.querySelector('.sc-nav-top')) return;
         var slug = currentSlug();
         if (!slug) return;
+        document.body.insertBefore(buildTop(), document.body.firstChild);
         var idx = -1;
         for (var i = 0; i < MACHINES.length; i++) if (MACHINES[i].slug === slug) { idx = i; break; }
         if (idx === -1) return;
         var prev = idx > 0 ? MACHINES[idx - 1] : null;
         var next = idx < MACHINES.length - 1 ? MACHINES[idx + 1] : null;
-        document.body.insertBefore(buildTop(), document.body.firstChild);
         document.body.appendChild(buildBottom(prev, next));
     }
 
