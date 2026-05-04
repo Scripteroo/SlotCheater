@@ -111,6 +111,13 @@
         .cheats-footer { text-align: center; padding: 2rem 1.5rem 1rem; border-top: 1px solid rgba(139, 92, 246, 0.2); margin-top: 1rem; }
         .cheats-footer-note { color: #9CA3AF; font-size: 0.8rem; line-height: 1.6; margin-bottom: 0.5rem; }
         .cheats-footer-sub { color: #6B7280; font-size: 0.72rem; }
+        .machine-card-not-ap { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.15); }
+        .machine-card-not-ap:hover { border-color: rgba(239, 68, 68, 0.4); }
+        .not-ap-badge { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 20px; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; white-space: nowrap; }
+        .machine-not-ap-reason { color: #9CA3AF; font-size: 0.75rem; font-style: italic; margin-top: 3px; }
+        .cheats-section-header { padding: 1.5rem 0 0.75rem; border-top: 1px solid rgba(239, 68, 68, 0.2); margin-top: 0.5rem; }
+        .cheats-section-title { color: #EF4444; font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .cheats-section-sub { color: #6B7280; font-size: 0.78rem; line-height: 1.5; }
 
         /* ===== VIDEOS ===== */
         .videos-header { margin-bottom: 1.5rem; }
@@ -772,6 +779,38 @@
                 return items.map(renderMachineCard).join('');
             }
 
+            function renderNotApCard(m) {
+                var thumbHtml = m.thumb
+                    ? '<img src="./' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="var p=this.parentNode;p.innerHTML=\'🚫\';">'
+                    : '🚫';
+                return ''
+                    + '<div class="machine-card machine-card-not-ap">'
+                    + '  <div class="machine-card-top">'
+                    + '    <div class="machine-thumb">' + thumbHtml + '</div>'
+                    + '    <div class="machine-info">'
+                    + '      <div class="machine-name">' + escapeHtml(m.name) + '</div>'
+                    + '      <div class="machine-mfg">' + escapeHtml(m.manufacturer || '') + '</div>'
+                    + '      <div class="machine-not-ap-reason">' + escapeHtml(m.reason || '') + '</div>'
+                    + '    </div>'
+                    + '    <span class="not-ap-badge">🚫 NOT AP</span>'
+                    + '  </div>'
+                    + '</div>';
+            }
+
+            function renderNotApSection() {
+                if (!machinesData || !machinesData.notAp || machinesData.notAp.length === 0) return '';
+                var items = machinesData.notAp.slice().sort(function (a, b) {
+                    return a.name.localeCompare(b.name);
+                });
+                var cards = items.map(renderNotApCard).join('');
+                return ''
+                    + '<div class="cheats-section-header">'
+                    + '<h2 class="cheats-section-title">⚠️ Not Advantage Play</h2>'
+                    + '<p class="cheats-section-sub">These machines are commonly mistaken for AP opportunities but have no confirmed edge.</p>'
+                    + '</div>'
+                    + '<div class="cheats-list">' + cards + '</div>';
+            }
+
             function renderCheats() {
                 if (machinesError) {
                     return '<section class="view view-cheats"><div class="state-error">Failed to load machines. Please refresh.</div></section>';
@@ -790,6 +829,9 @@
                     + '  </header>'
                     + '  <input id="cheats-search" class="cheats-search" type="search" placeholder="Search by name or type..." autocomplete="off" value="' + escapeHtml(searchQuery) + '">'
                     + '  <div id="cheats-list" class="cheats-list">' + renderCheatsList(searchQuery) + '</div>'
+                    + '  <div id="not-ap-section"' + (searchQuery ? ' style="display:none"' : '') + '>'
+                    +      renderNotApSection()
+                    + '  </div>'
                     + '<div class="cheats-footer">'
                     + '<p class="cheats-footer-note">New cheat sheets added regularly. '
                     + 'Always gamble responsibly — AP is legal but requires practice '
@@ -807,6 +849,8 @@
                     input.addEventListener('input', function (e) {
                         searchQuery = e.target.value;
                         if (list) list.innerHTML = renderCheatsList(searchQuery);
+                        var notAp = document.getElementById('not-ap-section');
+                        if (notAp) notAp.style.display = searchQuery ? 'none' : '';
                     });
                 }
                 if (list) {

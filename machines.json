@@ -23,10 +23,10 @@
     { "slug": "wheel-of-fortune", "name": "Wheel of Fortune", "manufacturer": "IGT", "apType": "Must-Hit-By Progressive", "thumb": "images/wheel-of-fortune-thumb.png", "hint": "Check the must-hit-by progressive meter displayed on the machine. When the jackpot is close to the cap (within 10-15%), the edge is yours." }
   ],
   "notAp": [
-    { "slug": "aftershock", "name": "Aftershock", "manufacturer": "WMS", "reason": "Random multiplier, no persistent state" },
-    { "slug": "all-aboard", "name": "All Aboard", "manufacturer": "Konami", "reason": "Linked progressive, not must-hit-by" },
-    { "slug": "buffalo-hot-property", "name": "Buffalo Hot Property", "manufacturer": "Aristocrat", "reason": "No documented AP edge" },
-    { "slug": "lock-it-link", "name": "Lock It Link", "manufacturer": "Light & Wonder", "reason": "Random-hit progressives, no persistent state" },
-    { "slug": "money-vault", "name": "Money Vault", "manufacturer": "Various", "reason": "No confirmed AP mechanic" }
+    { "slug": "aftershock", "name": "Aftershock", "manufacturer": "WMS", "reason": "Random multiplier, no persistent state", "thumb": "images/aftershock-thumb.png" },
+    { "slug": "all-aboard", "name": "All Aboard", "manufacturer": "Konami", "reason": "Linked progressive, not must-hit-by", "thumb": "images/all-aboard-thumb.png" },
+    { "slug": "buffalo-hot-property", "name": "Buffalo Hot Property", "manufacturer": "Aristocrat", "reason": "No documented AP edge", "thumb": "images/buffalo-hot-property-thumb.png" },
+    { "slug": "lock-it-link", "name": "Lock It Link", "manufacturer": "Light & Wonder", "reason": "Random-hit progressives, no persistent state", "thumb": "images/lock-it-link-thumb.png" },
+    { "slug": "money-vault", "name": "Money Vault", "manufacturer": "Various", "reason": "No confirmed AP mechanic", "thumb": "images/money-vault-thumb.png" }
   ]
 }
