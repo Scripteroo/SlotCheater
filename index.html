@@ -287,7 +287,7 @@
             function loadMachines() {
                 if (machinesData) return Promise.resolve(machinesData);
                 if (machinesPromise) return machinesPromise;
-                machinesPromise = loadJSON('/machines.json').then(function (d) {
+                machinesPromise = loadJSON('./machines.json').then(function (d) {
                     machinesData = d; machinesError = null; return d;
                 }).catch(function (err) {
                     machinesError = err; machinesPromise = null; throw err;
@@ -298,7 +298,7 @@
             function loadVideos() {
                 if (videosData) return Promise.resolve(videosData);
                 if (videosPromise) return videosPromise;
-                videosPromise = loadJSON('/videos.json').then(function (d) {
+                videosPromise = loadJSON('./videos.json').then(function (d) {
                     videosData = d; videosError = null; return d;
                 }).catch(function (err) {
                     videosError = err; videosPromise = null; throw err;
