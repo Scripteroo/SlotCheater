@@ -346,6 +346,66 @@
           color: #888;
           margin: 0;
         }
+
+        /* ===== TOP CONTROLS (info + share) ===== */
+        #top-controls { position: fixed; top: calc(12px + env(safe-area-inset-top)); right: 12px; z-index: 200; display: flex; gap: 8px; }
+        #top-controls button {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(20, 20, 30, 0.55);
+            border: 1px solid rgba(139, 92, 246, 0.45);
+            color: #F9FAFB; font-size: 1rem; line-height: 1;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; padding: 0;
+            -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+        #top-controls button:hover { background: rgba(139, 92, 246, 0.25); border-color: #8B5CF6; color: #fff; }
+
+        /* ===== INFO MODAL ===== */
+        #info-modal { position: fixed; inset: 0; z-index: 1000; }
+        #info-modal[hidden] { display: none; }
+        .info-modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.7); animation: fadeIn 0.2s ease-out; }
+        .info-modal-panel {
+            position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+            width: min(440px, 92vw);
+            background: #0D0D1A; border: 1px solid #2D2D4E;
+            border-radius: 16px 16px 0 0;
+            padding: 1.5rem 1.25rem 2rem;
+            text-align: center;
+            animation: slideUp 0.25s ease-out;
+            padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translate(-50%, 100%); } to { transform: translate(-50%, 0); } }
+        #info-modal-close {
+            position: absolute; top: 0.5rem; right: 0.65rem;
+            width: 32px; height: 32px; border-radius: 50%;
+            background: transparent; border: 0; color: #9CA3AF;
+            font-size: 1.05rem; cursor: pointer; line-height: 1;
+        }
+        #info-modal-close:hover { color: #F9FAFB; }
+        .info-modal-logo { width: 110px; margin: 0.25rem auto 1rem; display: block; }
+        .info-modal-tagline { color: #06B6D4; font-size: 1rem; font-weight: 700; margin: 0 auto 1.25rem; line-height: 1.4; max-width: 320px; }
+        .info-modal-links { display: flex; justify-content: center; gap: 1.25rem; margin-bottom: 1rem; }
+        .info-modal-links a { color: #8B5CF6; font-size: 0.9rem; text-decoration: none; font-weight: 600; }
+        .info-modal-links a:hover { text-decoration: underline; }
+        .info-modal-version { color: #9CA3AF; font-size: 0.8rem; margin-bottom: 0.4rem; }
+        .info-modal-contact { color: #9CA3AF; font-size: 0.8rem; margin: 0; }
+        .info-modal-contact a { color: #06B6D4; }
+
+        /* ===== TOAST ===== */
+        #toast {
+            position: fixed; bottom: calc(90px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+            background: rgba(13, 13, 26, 0.95); color: #F9FAFB;
+            padding: 0.65rem 1.25rem; border-radius: 999px;
+            border: 1px solid #8B5CF6;
+            font-size: 0.9rem; font-weight: 600;
+            z-index: 1100;
+            -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+            animation: toastIn 0.2s ease-out;
+        }
+        #toast[hidden] { display: none; }
+        @keyframes toastIn { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }
     </style>
 </head>
 <body>
@@ -368,6 +428,28 @@
         <a href="#play" data-tab="play"><span class="nav-icon">🎮</span><span>Play</span></a>
         <a href="#chat" data-tab="chat"><span class="nav-icon">💬</span><span>Chat</span></a>
     </nav>
+
+    <div id="top-controls" aria-label="Page controls">
+        <button id="btn-info" type="button" aria-label="App info">ⓘ</button>
+        <button id="btn-share" type="button" aria-label="Share SlotCheater">⤴</button>
+    </div>
+
+    <div id="info-modal" hidden role="dialog" aria-modal="true" aria-labelledby="info-modal-title" aria-hidden="true">
+        <div class="info-modal-backdrop" id="info-modal-backdrop"></div>
+        <div class="info-modal-panel" role="document">
+            <button id="info-modal-close" type="button" aria-label="Close">✕</button>
+            <img src="./images/slotcheater-logo.png" alt="SlotCheater" class="info-modal-logo" onerror="this.style.display='none'">
+            <h2 id="info-modal-title" class="info-modal-tagline">The #1 resource for Slot Hustling &amp; Advantage Play</h2>
+            <div class="info-modal-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/tos">Terms of Service</a>
+            </div>
+            <p class="info-modal-version">App version: v1.0.9</p>
+            <p class="info-modal-contact">Contact: <a href="mailto:hello@slotcheater.com">hello@slotcheater.com</a></p>
+        </div>
+    </div>
+
+    <div id="toast" hidden role="status" aria-live="polite"></div>
 
     <script>
         (function () {
@@ -519,7 +601,7 @@
                     +     "Every day people are learning the art of <span style='color:#06B6D4'>&lsquo;Slot Hustling&rsquo;</span> and discovering Advantage Play strategies, tactics and gambits to win money."
                     + '  </p>'
                     + '  <button type="button" class="home-banner-card" data-go="cheats">'
-                    + '    <img src="./images/cheat-sheets-banner.png" alt="Cheat Sheets" onerror="var c=this.closest(\'.home-banner-card\'); if(c) c.style.display=\'none\';">'
+                    + '    <img src="./images/cheat-sheets-banner.png?v=2" alt="Cheat Sheets" onerror="var c=this.closest(\'.home-banner-card\'); if(c) c.style.display=\'none\';">'
                     + '    <div class="home-banner-caption">Click Here for Cheat Sheets!</div>'
                     + '  </button>'
                     + '  <div class="home-crypto-card">'
@@ -535,7 +617,7 @@
                     + '    </a>'
                     + '  </div>'
                     + '  <div class="home-crypto-banner">'
-                    + '    <img src="./images/crypto-casino-banner.png" alt="Crypto Casino" onerror="var c=this.closest(\'.home-crypto-banner\'); if(c) c.style.display=\'none\';">'
+                    + '    <img src="./images/crypto-casino-banner.png?v=2" alt="Crypto Casino" onerror="this.style.display=\'none\'">'
                     + '  </div>'
                     + '  <button type="button" class="home-install-card" id="home-install-btn">'
                     + '    <span class="home-install-icon" aria-hidden="true">⬇️</span>'
@@ -933,6 +1015,53 @@
             }
             setTimeout(dismissLoading, 3000);
             loadMachines().then(dismissLoading, dismissLoading);
+
+            // ---------- Top controls: info modal + share ----------
+            var toastTimer = null;
+            function showToast(msg) {
+                var t = document.getElementById('toast');
+                if (!t) return;
+                t.textContent = msg;
+                t.hidden = false;
+                if (toastTimer) clearTimeout(toastTimer);
+                toastTimer = setTimeout(function () { t.hidden = true; }, 2000);
+            }
+            function openInfoModal() {
+                var m = document.getElementById('info-modal');
+                if (!m) return;
+                m.hidden = false;
+                m.setAttribute('aria-hidden', 'false');
+            }
+            function closeInfoModal() {
+                var m = document.getElementById('info-modal');
+                if (!m) return;
+                m.hidden = true;
+                m.setAttribute('aria-hidden', 'true');
+            }
+            function shareApp() {
+                var url = 'https://slotcheater.com/';
+                var payload = { title: 'SlotCheater', text: 'The #1 resource for Slot Hustling & Advantage Play', url: url };
+                if (navigator.share && typeof navigator.share === 'function') {
+                    navigator.share(payload).catch(function () { /* user cancelled or failed */ });
+                    return;
+                }
+                if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                    navigator.clipboard.writeText(url).then(function () { showToast('Copied!'); }, function () { showToast('Copy failed'); });
+                    return;
+                }
+                showToast(url);
+            }
+            var btnInfo = document.getElementById('btn-info');
+            var btnShare = document.getElementById('btn-share');
+            var infoClose = document.getElementById('info-modal-close');
+            var infoBackdrop = document.getElementById('info-modal-backdrop');
+            if (btnInfo) btnInfo.addEventListener('click', openInfoModal);
+            if (btnShare) btnShare.addEventListener('click', shareApp);
+            if (infoClose) infoClose.addEventListener('click', closeInfoModal);
+            if (infoBackdrop) infoBackdrop.addEventListener('click', closeInfoModal);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeInfoModal();
+            });
         })();
     </script>
 
