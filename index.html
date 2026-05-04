@@ -81,6 +81,10 @@
         .cheats-title-line1 { color: #06B6D4; font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
         .cheats-title-line2 { color: #F9FAFB; font-style: italic; font-size: 0.95rem; margin-top: 2px; }
 
+        .cheats-filter-pills { display: flex; gap: 8px; overflow-x: auto; padding: 0 0 12px; scrollbar-width: none; -ms-overflow-style: none; }
+        .cheats-filter-pills::-webkit-scrollbar { display: none; }
+        .filter-pill { background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); color: #A78BFA; border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+        .filter-pill.active { background: rgba(139, 92, 246, 0.3); border-color: #8B5CF6; color: #fff; }
         .cheats-search { width: 100%; padding: 0.75rem 1rem; background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 10px; color: #F9FAFB; font: inherit; font-size: 1rem; outline: none; margin-bottom: 1rem; transition: border-color 0.15s; }
         .cheats-search:focus { border-color: #8B5CF6; }
         .cheats-search::placeholder { color: #6B7280; }
@@ -589,7 +593,18 @@
             var machinesData = null, machinesPromise = null, machinesError = null;
             var videosData = null, videosPromise = null, videosError = null;
             var searchQuery = '';
+            var activeMfr = 'all';
             var quizState = { currentQ: 0, userAnswers: [-1, -1, -1, -1, -1], finished: false };
+
+            var MFR_PILLS = [
+                { id: 'all', label: 'All' },
+                { id: 'IGT', label: 'IGT' },
+                { id: 'WMS', label: 'WMS' },
+                { id: 'Aristocrat', label: 'Aristocrat' },
+                { id: 'Ainsworth', label: 'Ainsworth' },
+                { id: 'Konami', label: 'Konami' },
+                { id: 'Silicon Gaming', label: 'Silicon' }
+            ];
 
             // ---------- Helpers ----------
             function escapeHtml(s) {
@@ -754,7 +769,7 @@
                     + '</div>'
                     : '';
                 return ''
-                    + '<div class="machine-card">'
+                    + '<div class="machine-card" data-manufacturer="' + escapeHtml(m.manufacturer || '') + '">'
                     + '  <div class="machine-card-top">'
                     + '    <div class="machine-thumb">' + thumbHtml + '</div>'
                     + '    <div class="machine-info">'
@@ -771,14 +786,34 @@
                     + '</div>';
             }
 
-            function renderCheatsList(query) {
+            function renderCheatsList() {
+                if (!machinesData) return '';
                 var items = machinesData.ap.slice().sort(function (a, b) {
                     return a.name.localeCompare(b.name);
-                }).filter(function (m) { return machineMatchesQuery(m, query); });
-                if (items.length === 0) {
-                    return '<div class="cheats-empty">No machines match &ldquo;' + escapeHtml(query) + '&rdquo;.</div>';
-                }
+                });
                 return items.map(renderMachineCard).join('');
+            }
+
+            function renderFilterPills() {
+                return MFR_PILLS.map(function (p) {
+                    var active = (activeMfr === p.id) ? ' active' : '';
+                    return '<button class="filter-pill' + active + '" type="button" data-mfr="' + escapeHtml(p.id) + '">' + escapeHtml(p.label) + '</button>';
+                }).join('');
+            }
+
+            function applyCheatsFilters() {
+                var query = (searchQuery || '').toLowerCase().trim();
+                var list = document.getElementById('cheats-list');
+                if (!list) return;
+                var cards = list.querySelectorAll('.machine-card');
+                for (var i = 0; i < cards.length; i++) {
+                    var card = cards[i];
+                    var mfr = card.getAttribute('data-manufacturer') || '';
+                    var hay = (card.textContent || '').toLowerCase();
+                    var mfrMatch = activeMfr === 'all' || mfr === activeMfr;
+                    var queryMatch = !query || hay.indexOf(query) !== -1;
+                    card.style.display = (mfrMatch && queryMatch) ? '' : 'none';
+                }
             }
 
             function renderNotApCard(m) {
@@ -836,8 +871,9 @@
                     + '      <div class="cheats-title-line2">Cheat Sheets</div>'
                     + '    </div>'
                     + '  </header>'
+                    + '  <div class="cheats-filter-pills">' + renderFilterPills() + '</div>'
                     + '  <input id="cheats-search" class="cheats-search" type="search" placeholder="Search by name or type..." autocomplete="off" value="' + escapeHtml(searchQuery) + '">'
-                    + '  <div id="cheats-list" class="cheats-list">' + renderCheatsList(searchQuery) + '</div>'
+                    + '  <div id="cheats-list" class="cheats-list">' + renderCheatsList() + '</div>'
                     + '  <div id="not-ap-section"' + (searchQuery ? ' style="display:none"' : '') + '>'
                     +      renderNotApSection()
                     + '  </div>'
@@ -854,12 +890,25 @@
             function attachCheatsHandlers() {
                 var input = document.getElementById('cheats-search');
                 var list = document.getElementById('cheats-list');
+                var pillsContainer = document.querySelector('.cheats-filter-pills');
                 if (input) {
                     input.addEventListener('input', function (e) {
                         searchQuery = e.target.value;
-                        if (list) list.innerHTML = renderCheatsList(searchQuery);
+                        applyCheatsFilters();
                         var notAp = document.getElementById('not-ap-section');
                         if (notAp) notAp.style.display = searchQuery ? 'none' : '';
+                    });
+                }
+                if (pillsContainer) {
+                    pillsContainer.addEventListener('click', function (e) {
+                        var t = e.target;
+                        var btn = t && t.closest ? t.closest('.filter-pill') : null;
+                        if (!btn) return;
+                        var pills = pillsContainer.querySelectorAll('.filter-pill');
+                        for (var i = 0; i < pills.length; i++) pills[i].classList.remove('active');
+                        btn.classList.add('active');
+                        activeMfr = btn.getAttribute('data-mfr') || 'all';
+                        applyCheatsFilters();
                     });
                 }
                 if (list) {
@@ -876,6 +925,7 @@
                         if (hint) hint.classList.toggle('open');
                     });
                 }
+                applyCheatsFilters();
             }
 
             // ---------- Render: Videos ----------
