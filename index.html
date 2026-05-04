@@ -89,8 +89,8 @@
         .machine-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 0.65rem; transition: border-color 0.15s; }
         .machine-card:hover { border-color: #8B5CF6; }
         .machine-card-top { display: flex; align-items: center; gap: 10px; position: relative; }
-        .machine-thumb { width: 90px; height: 64px; min-width: 90px; flex-shrink: 0; background: #14142B; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; }
-        .machine-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+        .machine-thumb { width: 80px; height: 80px; min-width: 80px; border-radius: 8px; overflow: hidden; background: #14142B; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+        .machine-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
         .machine-info { flex: 1; min-width: 0; padding-right: 2.25rem; }
         .machine-name { color: #06B6D4; font-weight: 700; font-size: 1.05rem; line-height: 1.2; margin-bottom: 2px; }
         .machine-mfg { color: #9CA3AF; font-size: 0.85rem; margin-bottom: 2px; }
@@ -108,6 +108,9 @@
         .machine-cta .arrows { letter-spacing: -0.05em; font-weight: 400; }
         .cheats-empty { text-align: center; color: #9CA3AF; padding: 2rem 1rem; }
         .view-cheats { padding-bottom: 80px; }
+        .cheats-footer { text-align: center; padding: 2rem 1.5rem 1rem; border-top: 1px solid rgba(139, 92, 246, 0.2); margin-top: 1rem; }
+        .cheats-footer-note { color: #9CA3AF; font-size: 0.8rem; line-height: 1.6; margin-bottom: 0.5rem; }
+        .cheats-footer-sub { color: #6B7280; font-size: 0.72rem; }
 
         /* ===== VIDEOS ===== */
         .videos-header { margin-bottom: 1.5rem; }
@@ -242,7 +245,7 @@
         .home-learn-card-text { color: #8B5CF6; font-size: 0.9rem; font-weight: 600; }
 
         @media (max-width: 480px) {
-            .machine-thumb { width: 72px; height: 52px; min-width: 72px; }
+            .machine-thumb { width: 64px; height: 64px; min-width: 64px; }
         }
 
         @media (max-width: 360px) {
@@ -787,6 +790,13 @@
                     + '  </header>'
                     + '  <input id="cheats-search" class="cheats-search" type="search" placeholder="Search by name or type..." autocomplete="off" value="' + escapeHtml(searchQuery) + '">'
                     + '  <div id="cheats-list" class="cheats-list">' + renderCheatsList(searchQuery) + '</div>'
+                    + '<div class="cheats-footer">'
+                    + '<p class="cheats-footer-note">New cheat sheets added regularly. '
+                    + 'Always gamble responsibly — AP is legal but requires practice '
+                    + 'and bankroll discipline.</p>'
+                    + '<p class="cheats-footer-sub">SlotCheater.com · For educational '
+                    + 'purposes only</p>'
+                    + '</div>'
                     + '</section>';
             }
 
