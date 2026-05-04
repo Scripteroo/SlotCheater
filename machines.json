@@ -28,8 +28,8 @@
     { "slug": "all-aboard", "name": "All Aboard", "manufacturer": "Konami", "reason": "Linked progressive, not must-hit-by", "thumb": "images/all-aboard-thumb.png" },
     { "slug": "buffalo-hot-property", "name": "Buffalo Hot Property", "manufacturer": "Aristocrat", "reason": "No documented AP edge", "thumb": "images/buffalo-hot-property-thumb.png" },
     { "slug": "dancing-drums", "name": "Dancing Drums", "manufacturer": "SG Gaming", "thumb": "images/dancing-drums-thumb.png", "reason": "Pot filling is visual only — no exploitable persistent state" },
-    { "slug": "dragon-link", "name": "Dragon Link", "manufacturer": "Aristocrat", "thumb": "images/dragon-link-thumb.png", "reason": "Same as Lightning Link — no persistent state, not exploitable" },
-    { "slug": "icy-wilds", "name": "Icy Wilds", "manufacturer": "IGT", "thumb": "images/icy-wilds-thumb.png", "reason": "Wild persists for one spin only — minimal to no exploitable edge" },
+    { "slug": "dragon-link", "name": "Dragon Link", "manufacturer": "Aristocrat", "thumb": "images/dragon-link-thumb.png", "reason": "No persistent state — same RNG mechanic as Lightning Link" },
+    { "slug": "icy-wilds", "name": "Icy Wilds", "manufacturer": "IGT", "thumb": "images/icy-wilds-thumb.png", "reason": "Wild persists for one spin only — no meaningful exploitable edge" },
     { "slug": "lightning-link", "name": "Lightning Link", "manufacturer": "Aristocrat", "thumb": "images/lightning-link-thumb.png", "reason": "No persistent state — pure RNG, no accumulator mechanic" },
     { "slug": "lock-it-link", "name": "Lock It Link", "manufacturer": "Light & Wonder", "reason": "Random-hit progressives, no persistent state", "thumb": "images/lock-it-link-thumb.png" },
     { "slug": "money-vault", "name": "Money Vault", "manufacturer": "Various", "reason": "No confirmed AP mechanic", "thumb": "images/money-vault-thumb.png" }
