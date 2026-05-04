@@ -40,8 +40,8 @@ jobs:
       - name: Sync to GoDaddy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
+          server: ftp.reignsnap.io
+          username: deploy@reignsnap.io
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           protocol: ftps
