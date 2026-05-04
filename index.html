@@ -58,7 +58,7 @@
         button { font: inherit; cursor: pointer; border: 0; background: transparent; color: inherit; }
         img { max-width: 100%; display: block; }
 
-        #app { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 1rem; }
+        #app { max-width: 720px; margin: 0 auto; padding: calc(52px + env(safe-area-inset-top)) 1rem 1rem; }
 
         .view { animation: fadeIn 0.18s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
@@ -219,6 +219,7 @@
         .home-banner-card img { width: 100%; display: block; }
         .home-banner-caption { color: #9CA3AF; font-size: 0.85rem; padding: 0.65rem; }
         .home-crypto-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 14px; padding: 1rem; max-width: 560px; margin: 1.5rem auto; }
+        .home-crypto-gif-wrap { display: block; max-width: 320px; margin: 1rem auto; cursor: pointer; }
         .home-crypto-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
         .home-crypto-header img { width: 40px; height: 40px; flex-shrink: 0; object-fit: contain; }
         .home-crypto-title { color: #F59E0B; font-weight: 900; letter-spacing: 0.1em; font-size: 1rem; }
@@ -351,19 +352,51 @@
           margin: 0;
         }
 
-        /* ===== TOP CONTROLS (info + share) ===== */
-        #top-controls { position: fixed; top: calc(12px + env(safe-area-inset-top)); right: 12px; z-index: 200; display: flex; gap: 8px; }
-        #top-controls button {
-            width: 36px; height: 36px; border-radius: 50%;
-            background: rgba(20, 20, 30, 0.55);
-            border: 1px solid rgba(139, 92, 246, 0.45);
-            color: #F9FAFB; font-size: 1rem; line-height: 1;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; padding: 0;
-            -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        /* ===== TOP BAR (browser-style header) ===== */
+        #top-bar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+            box-sizing: border-box;
+            height: calc(52px + env(safe-area-inset-top));
+            padding: env(safe-area-inset-top) 12px 0;
+            background: rgba(13, 13, 26, 0.95);
+            -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            display: flex; align-items: center; gap: 8px;
         }
-        #top-controls button:hover { background: rgba(139, 92, 246, 0.25); border-color: #8B5CF6; color: #fff; }
+        #top-bar-menu, #top-bar-share {
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; padding: 0; flex-shrink: 0;
+            transition: background 0.15s;
+        }
+        #top-bar-menu { border: 1.5px solid rgba(139, 92, 246, 0.5); background: rgba(139, 92, 246, 0.15); color: #F9FAFB; }
+        #top-bar-menu:hover { background: rgba(139, 92, 246, 0.3); }
+        #top-bar-share { border: 1.5px solid rgba(0, 200, 150, 0.5); background: rgba(0, 200, 150, 0.15); color: #00C896; }
+        #top-bar-share:hover { background: rgba(0, 200, 150, 0.3); }
+        #top-bar-domain {
+            flex: 1; text-align: center;
+            font-size: 15px; font-weight: 600; color: #fff;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 6px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            min-width: 0;
+        }
+        #top-bar-install {
+            background: #00C8C8; color: #000; font-weight: 700;
+            border: 0; border-radius: 20px;
+            padding: 6px 14px; font-size: 13px;
+            cursor: pointer; flex-shrink: 0;
+            display: flex; align-items: center; gap: 4px;
+            transition: background 0.15s;
+        }
+        #top-bar-install:hover { background: #00DCDC; }
+        @media (max-width: 380px) {
+            #top-bar { gap: 6px; padding: env(safe-area-inset-top) 8px 0; }
+            #top-bar-domain { font-size: 14px; padding: 6px 10px; }
+            #top-bar-install { padding: 6px 10px; font-size: 12px; }
+        }
 
         /* ===== INFO MODAL ===== */
         #info-modal { position: fixed; inset: 0; z-index: 1000; }
@@ -433,10 +466,26 @@
         <a href="#chat" data-tab="chat"><span class="nav-icon">💬</span><span>Chat</span></a>
     </nav>
 
-    <div id="top-controls" aria-label="Page controls">
-        <button id="btn-info" type="button" aria-label="App info">ⓘ</button>
-        <button id="btn-share" type="button" aria-label="Share SlotCheater">⤴</button>
-    </div>
+    <header id="top-bar" aria-label="App header">
+        <button id="top-bar-menu" type="button" aria-label="Menu">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+        <div id="top-bar-domain">SlotCheater.com</div>
+        <button id="top-bar-share" type="button" aria-label="Share">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/>
+                <polyline points="16 6 12 2 8 6"/>
+                <line x1="12" y1="2" x2="12" y2="15"/>
+            </svg>
+        </button>
+        <button id="top-bar-install" type="button" aria-label="Install app">
+            <span aria-hidden="true">⬇</span> Install
+        </button>
+    </header>
 
     <div id="info-modal" hidden role="dialog" aria-modal="true" aria-labelledby="info-modal-title" aria-hidden="true">
         <div class="info-modal-backdrop" id="info-modal-backdrop"></div>
@@ -620,6 +669,9 @@
                     + '      <div class="home-crypto-bonus">+ 55 FREE SPINS</div>'
                     + '    </a>'
                     + '  </div>'
+                    + '  <a href="#" id="crypto-gif-link" class="home-crypto-gif-wrap">'
+                    + '    <img src="./images/bigdollarcasino.gif" alt="$BIG Dollar Casino - 300% Welcome Bonus" style="width:100%;max-width:320px;display:block;margin:0 auto;border-radius:8px;">'
+                    + '  </a>'
                     + '  <div class="home-crypto-banner">'
                     + '    <img src="./images/crypto-casino-banner.png?v=2" alt="Crypto Casino" onerror="this.style.display=\'none\'">'
                     + '  </div>'
@@ -662,6 +714,10 @@
                 var crypto = document.getElementById('crypto-casino-link');
                 if (crypto) {
                     crypto.addEventListener('click', function (e) { e.preventDefault(); /* TODO: replace with real affiliate URL */ });
+                }
+                var cryptoGif = document.getElementById('crypto-gif-link');
+                if (cryptoGif) {
+                    cryptoGif.addEventListener('click', function (e) { e.preventDefault(); /* TODO: replace with real affiliate URL */ });
                 }
             }
 
@@ -1055,12 +1111,32 @@
                 }
                 showToast(url);
             }
-            var btnInfo = document.getElementById('btn-info');
-            var btnShare = document.getElementById('btn-share');
+            function triggerInstall() {
+                if (window.deferredPrompt && typeof window.deferredPrompt.prompt === 'function') {
+                    window.deferredPrompt.prompt();
+                    if (window.deferredPrompt.userChoice && typeof window.deferredPrompt.userChoice.then === 'function') {
+                        window.deferredPrompt.userChoice.then(function () { window.deferredPrompt = null; });
+                    }
+                    return;
+                }
+                if (navigator.share && typeof navigator.share === 'function') {
+                    navigator.share({
+                        title: 'SlotCheater',
+                        text: 'Add SlotCheater to your Home Screen for instant access!',
+                        url: 'https://slotcheater.com'
+                    }).catch(function () { showToast('Tap Share then Add to Home Screen'); });
+                    return;
+                }
+                showToast('Tap Share then Add to Home Screen');
+            }
+            var topBarMenu = document.getElementById('top-bar-menu');
+            var topBarShare = document.getElementById('top-bar-share');
+            var topBarInstall = document.getElementById('top-bar-install');
             var infoClose = document.getElementById('info-modal-close');
             var infoBackdrop = document.getElementById('info-modal-backdrop');
-            if (btnInfo) btnInfo.addEventListener('click', openInfoModal);
-            if (btnShare) btnShare.addEventListener('click', shareApp);
+            if (topBarMenu) topBarMenu.addEventListener('click', openInfoModal);
+            if (topBarShare) topBarShare.addEventListener('click', shareApp);
+            if (topBarInstall) topBarInstall.addEventListener('click', triggerInstall);
             if (infoClose) infoClose.addEventListener('click', closeInfoModal);
             if (infoBackdrop) infoBackdrop.addEventListener('click', closeInfoModal);
             document.addEventListener('keydown', function (e) {
