@@ -513,7 +513,7 @@
                 <a href="/privacy">Privacy Policy</a>
                 <a href="/tos">Terms of Service</a>
             </div>
-            <p class="info-modal-version">App version: v1.0.10</p>
+            <p class="info-modal-version">App version: v1.0.25</p>
             <p class="info-modal-contact">Contact: <a href="mailto:hello@slotcheater.com">hello@slotcheater.com</a></p>
         </div>
     </div>
@@ -603,6 +603,7 @@
                 { id: 'Aristocrat', label: 'Aristocrat' },
                 { id: 'Ainsworth', label: 'Ainsworth' },
                 { id: 'Konami', label: 'Konami' },
+                { id: 'SG Gaming', label: 'SG Gaming' },
                 { id: 'Silicon Gaming', label: 'Silicon' },
                 { id: 'AGS', label: 'AGS' },
                 { id: 'Various', label: 'Various' }
@@ -751,12 +752,6 @@
             }
 
             // ---------- Render: Cheats ----------
-            function machineMatchesQuery(m, q) {
-                if (!q) return true;
-                var hay = (m.name + ' ' + (m.manufacturer || '') + ' ' + (m.apType || '')).toLowerCase();
-                return hay.indexOf(q.toLowerCase()) !== -1;
-            }
-
             function renderMachineCard(m) {
                 var thumbHtml = m.thumb
                     ? '<img src="./' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="var p=this.parentNode;p.innerHTML=\'🎰\';">'
@@ -808,14 +803,19 @@
                 var list = document.getElementById('cheats-list');
                 if (!list) return;
                 var cards = list.querySelectorAll('.machine-card');
+                var visibleCount = 0;
                 for (var i = 0; i < cards.length; i++) {
                     var card = cards[i];
                     var mfr = card.getAttribute('data-manufacturer') || '';
                     var hay = (card.textContent || '').toLowerCase();
                     var mfrMatch = activeMfr === 'all' || mfr === activeMfr;
                     var queryMatch = !query || hay.indexOf(query) !== -1;
-                    card.style.display = (mfrMatch && queryMatch) ? '' : 'none';
+                    var show = mfrMatch && queryMatch;
+                    card.style.display = show ? '' : 'none';
+                    if (show) visibleCount++;
                 }
+                var empty = document.getElementById('cheats-empty');
+                if (empty) empty.style.display = (cards.length > 0 && visibleCount === 0) ? '' : 'none';
             }
 
             function renderNotApCard(m) {
@@ -876,6 +876,7 @@
                     + '  <div class="cheats-filter-pills">' + renderFilterPills() + '</div>'
                     + '  <input id="cheats-search" class="cheats-search" type="search" placeholder="Search by name or type..." autocomplete="off" value="' + escapeHtml(searchQuery) + '">'
                     + '  <div id="cheats-list" class="cheats-list">' + renderCheatsList() + '</div>'
+                    + '  <div id="cheats-empty" class="cheats-empty" style="display:none">No machines match your search.</div>'
                     + '  <div id="not-ap-section"' + (searchQuery ? ' style="display:none"' : '') + '>'
                     +      renderNotApSection()
                     + '  </div>'
