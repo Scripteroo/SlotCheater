@@ -246,6 +246,106 @@
             .machine-thumb { width: 76px; height: 76px; min-width: 76px; }
             .home-press-start { font-size: 2rem; }
         }
+
+        /* ── Videos Tab ── */
+        .videos-inner { padding: 16px; }
+
+        .vid-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 20px;
+        }
+        .vid-pill {
+          padding: 6px 14px;
+          border-radius: 20px;
+          border: 1px solid #444;
+          background: transparent;
+          color: #ccc;
+          font-size: 13px;
+          cursor: pointer;
+          transition: all 0.15s;
+        }
+        .vid-pill.active, .vid-pill:hover {
+          background: #8B5CF6;
+          border-color: #8B5CF6;
+          color: #fff;
+        }
+
+        .vid-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 16px;
+        }
+        .vid-card {
+          background: #1a1a1a;
+          border-radius: 12px;
+          overflow: hidden;
+          text-decoration: none;
+          color: inherit;
+          display: flex;
+          flex-direction: column;
+          transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .vid-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
+        .vid-thumb-wrap {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16/9;
+          background: #111;
+          overflow: hidden;
+        }
+        .vid-thumb {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .vid-play-btn {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 36px;
+          color: rgba(255,255,255,0.85);
+          opacity: 0;
+          transition: opacity 0.15s;
+          background: rgba(0,0,0,0.3);
+        }
+        .vid-card:hover .vid-play-btn { opacity: 1; }
+
+        .vid-info { padding: 10px 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+        .vid-cat-badge {
+          display: inline-block;
+          padding: 2px 8px;
+          border-radius: 10px;
+          font-size: 10px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          width: fit-content;
+          margin-bottom: 2px;
+        }
+        .vid-cat-advantage-play { background: #1d3a1d; color: #4ade80; }
+        .vid-cat-progressives   { background: #1d2e3a; color: #60a5fa; }
+        .vid-cat-strategy       { background: #2a1d3a; color: #c084fc; }
+        .vid-cat-beginner-tips  { background: #3a2e1d; color: #fbbf24; }
+        .vid-cat-hustling       { background: #3a1d1d; color: #f87171; }
+
+        .vid-title {
+          font-size: 13px;
+          font-weight: 600;
+          color: #f0f0f0;
+          line-height: 1.4;
+          margin: 0;
+        }
+        .vid-channel {
+          font-size: 11px;
+          color: #888;
+          margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -591,29 +691,71 @@
             }
 
             function renderVideos() {
-                if (videosError) {
-                    return '<section class="view view-videos"><div class="state-error">Failed to load videos. Please refresh.</div></section>';
-                }
-                if (!videosData) {
-                    return '<section class="view view-videos"><div class="state-loading"><div class="spinner"></div><p>Loading videos…</p></div></section>';
-                }
-                var sections = (videosData.categories || []).map(function (cat) {
-                    var cards = (cat.videos || []).map(renderVideoCard).join('');
-                    return ''
-                        + '<div class="video-section">'
-                        + '  <div class="video-section-label">' + escapeHtml(cat.label) + '</div>'
-                        + '  <div class="video-list">' + cards + '</div>'
-                        + '</div>';
-                }).join('');
-                return ''
-                    + '<section class="view view-videos">'
-                    + '  <header class="videos-header">'
-                    + '    <h1 class="videos-title">🎬 Video Library</h1>'
-                    + '    <p class="videos-subtitle">Curated AP strategy videos — sorted by topic and machine</p>'
-                    + '  </header>'
-                    + sections
-                    + '  <p class="videos-footer-note">More videos are being added to each individual cheat sheet page soon.</p>'
-                    + '</section>';
+              fetch('videos.json')
+                .then(r => r.json())
+                .then(videos => {
+                  const section = document.getElementById('videos');
+                  if (!section) return;
+
+                  const categories = [
+                    { id: 'all',            label: 'All' },
+                    { id: 'advantage-play', label: 'Advantage Play' },
+                    { id: 'progressives',   label: 'Progressives' },
+                    { id: 'strategy',       label: 'Strategy' },
+                    { id: 'beginner-tips',  label: 'Beginner Tips' },
+                    { id: 'hustling',       label: 'Hustling' }
+                  ];
+
+                  let activeFilter = 'all';
+
+                  function getFiltered() {
+                    return activeFilter === 'all' ? videos : videos.filter(v => v.category === activeFilter);
+                  }
+
+                  function renderGrid() {
+                    const filtered = getFiltered();
+                    grid.innerHTML = filtered.map(v => `
+                      <a class="vid-card" href="https://www.youtube.com/watch?v=${v.youtubeId}" target="_blank" rel="noopener">
+                        <div class="vid-thumb-wrap">
+                          <img class="vid-thumb" src="https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg" alt="${v.title}" loading="lazy">
+                          <div class="vid-play-btn">▶</div>
+                        </div>
+                        <div class="vid-info">
+                          <span class="vid-cat-badge vid-cat-${v.category}">${categories.find(c=>c.id===v.category)?.label||v.category}</span>
+                          <p class="vid-title">${v.title}</p>
+                          <p class="vid-channel">${v.channel}</p>
+                        </div>
+                      </a>
+                    `).join('');
+                  }
+
+                  section.innerHTML = `<div class="videos-inner"></div>`;
+                  const inner = section.querySelector('.videos-inner');
+
+                  inner.innerHTML = `
+                    <div class="vid-pills" id="vid-pills"></div>
+                    <div class="vid-grid" id="vid-grid"></div>
+                  `;
+
+                  const pillsEl = inner.querySelector('#vid-pills');
+                  const grid = inner.querySelector('#vid-grid');
+
+                  function renderPills() {
+                    pillsEl.innerHTML = categories.map(c => `
+                      <button class="vid-pill ${c.id === activeFilter ? 'active' : ''}" data-cat="${c.id}">${c.label}</button>
+                    `).join('');
+                    pillsEl.querySelectorAll('.vid-pill').forEach(btn => {
+                      btn.addEventListener('click', () => {
+                        activeFilter = btn.dataset.cat;
+                        renderPills();
+                        renderGrid();
+                      });
+                    });
+                  }
+
+                  renderPills();
+                  renderGrid();
+                });
             }
 
             // ---------- Render: Play (Quiz) ----------
@@ -755,12 +897,8 @@
                     app.innerHTML = renderCheats();
                     attachCheatsHandlers();
                 } else if (tab === 'videos') {
-                    if (!videosData && !videosError) {
-                        app.innerHTML = '<section class="view"><div class="state-loading"><div class="spinner"></div><p>Loading videos…</p></div></section>';
-                        loadVideos().then(render).catch(function () { render(); });
-                        return;
-                    }
-                    app.innerHTML = renderVideos();
+                    app.innerHTML = '<section id="videos" class="view"><div class="state-loading"><div class="spinner"></div><p>Loading videos…</p></div></section>';
+                    renderVideos();
                 } else if (tab === 'play') {
                     app.innerHTML = renderPlay();
                     attachQuizHandlers();

@@ -1,24 +1,26 @@
-{
-  "categories": [
-    {
-      "id": "general",
-      "label": "Advantage Play Fundamentals",
-      "videos": [
-        { "id": "v1", "title": "Mikki Mase - Won $32 Million Hustling Slots", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "Mikki Mase", "machineSlug": null },
-        { "id": "v2", "title": "How Banking Slots Work - Complete Guide", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "TheBigPayback", "machineSlug": null },
-        { "id": "v3", "title": "Must-Hit-By Progressives Explained", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "Slot Cats", "machineSlug": null },
-        { "id": "v4", "title": "How to Spot an AP Machine in a Casino", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "VegasLowRoller", "machineSlug": null }
-      ]
-    },
-    {
-      "id": "by-machine",
-      "label": "Machine-Specific Videos",
-      "videos": [
-        { "id": "v5", "title": "Golden Egypt - How to Spot a Good Machine", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "TheBigPayback", "machineSlug": "golden-egypt" },
-        { "id": "v6", "title": "Scarab Slot - Cycle Play Strategy", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "Slot Cats", "machineSlug": "scarab" },
-        { "id": "v7", "title": "Ocean Magic - Symbol Line-Up AP Strategy", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "VegasLowRoller", "machineSlug": "ocean-magic" },
-        { "id": "v8", "title": "Piggy Bankin' - The OG Banking Slot", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "RandomSlots", "machineSlug": "piggy-bankin" }
-      ]
-    }
-  ]
-}
+[
+  { "id": "vid-01", "youtubeId": "GocSRE00Ulw",  "title": "Best & Worst Advantage Play Slot Machines", "channel": "Cowboy Slots",          "category": "advantage-play" },
+  { "id": "vid-02", "youtubeId": "_NAnA6W-OBo",  "title": "Advantage Play!",                           "channel": "Jay Fructose",           "category": "advantage-play" },
+  { "id": "vid-03", "youtubeId": "NEIM7vv0obI",  "title": "How To Take Advantage Of Someone Else's Slot Machine Mistake!", "channel": "Let's Go Handpay", "category": "advantage-play" },
+  { "id": "vid-04", "youtubeId": "VBR4e2WHzw0",  "title": "The Legal Slot Machine Hack That Made $10 Million", "channel": "The Overnight Millionaire", "category": "hustling" },
+  { "id": "vid-05", "youtubeId": "3JzX5CJ3_Hk",  "title": "Mikki Mase Drops the Key to Winning Millions on Slots", "channel": "The Cash King", "category": "hustling" },
+  { "id": "vid-06", "youtubeId": "Ts70LHeJXU4",  "title": "This Man Spent Decades Outsmarting Vegas Slot Machines", "channel": "Cheating Vegas Wonder", "category": "hustling" },
+  { "id": "vid-07", "youtubeId": "TSupCudo_MI",  "title": "Must Hit By Slots",                          "channel": "Cowboy Slots",           "category": "progressives" },
+  { "id": "vid-08", "youtubeId": "tpQyU5Ie3vY",  "title": "The Secrets of Progressive Slot Machines",  "channel": "Incubator",              "category": "progressives" },
+  { "id": "vid-09", "youtubeId": "rlNcgNLyrHc",  "title": "The Slot Strategy That Never Loses",         "channel": "SuccessFuel",            "category": "strategy" },
+  { "id": "vid-10", "youtubeId": "TMP7wMLSNH4",  "title": "Can You Tell When a Slot Machine Is Going To Pay?", "channel": "Vegas Matt",    "category": "strategy" },
+  { "id": "vid-11", "youtubeId": "W69-i9nTtbg",  "title": "How To Spot Hot and Cold Slot Machines",    "channel": "Gamble Smart",           "category": "strategy" },
+  { "id": "vid-12", "youtubeId": "YKOKUgEzYTw",  "title": "Ex-Casino Employee Reveals How To Spot Slot Machines That Pay", "channel": "Behind The Casino", "category": "strategy" },
+  { "id": "vid-13", "youtubeId": "M2z9nX44k84",  "title": "How to Win on Slot Machines Every Time — 4 Step Process", "channel": "The Collector", "category": "strategy" },
+  { "id": "vid-14", "youtubeId": "vpmdkT1q5oo",  "title": "How to Pick Winning Slot Machines Revealed!", "channel": "RAZORLINK SLOTS",     "category": "strategy" },
+  { "id": "vid-15", "youtubeId": "m8Suu36xWYQ",  "title": "My Son Cracked the Code to Always Win at Slots", "channel": "Vegas Matt",       "category": "strategy" },
+  { "id": "vid-16", "youtubeId": "QImhVbJK1-E",  "title": "The $1 Trick That Changes Dragon Link Forever!", "channel": "Las Vegas Slots",  "category": "strategy" },
+  { "id": "vid-17", "youtubeId": "iAv9N17yeLI",  "title": "The BEST Method to Win at Slots!",           "channel": "Zac Hale",             "category": "strategy" },
+  { "id": "vid-18", "youtubeId": "qJlI56Y57i4",  "title": "This ULTIMATE SLOT STRATEGY Is the BIBLE for Every Gambler!", "channel": "Casquad", "category": "strategy" },
+  { "id": "vid-19", "youtubeId": "zCE5Djms5yU",  "title": "We Put the 3-5 Spin Method to the Test!",   "channel": "Desert Degens",          "category": "strategy" },
+  { "id": "vid-20", "youtubeId": "90BI8UjZhbc",  "title": "We WON on Slot Machines Using a YouTube Strategy", "channel": "Turn It Up World", "category": "strategy" },
+  { "id": "vid-21", "youtubeId": "ZQFMiSMe2TU",  "title": "10 Casino Tips! How to Win on Slots!",       "channel": "Slot Hunters",           "category": "beginner-tips" },
+  { "id": "vid-22", "youtubeId": "cV1wHkI_IvE",  "title": "7 Slot Machine Secrets Casinos Don't Want You to Know", "channel": "Vegas Education", "category": "beginner-tips" },
+  { "id": "vid-23", "youtubeId": "X0r0uLzjElA",  "title": "The #1 Slot Hack Beginners Need to Know",   "channel": "Adrenaline Slots",       "category": "beginner-tips" },
+  { "id": "vid-24", "youtubeId": "OxBv3v4mZ3Y",  "title": "Tips to Play and Win with $100 at Slots!",   "channel": "Cowboy Slots",           "category": "beginner-tips" }
+]
