@@ -1,0 +1,84 @@
+name: Deploy to Production (GoDaddy)
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "deploy" to confirm production deploy'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: FTPS sync to slotcheater.com
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://slotcheater.com
+    steps:
+      - name: Validate manual trigger input
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if [ "${{ github.event.inputs.confirm }}" != "deploy" ]; then
+            echo "::error::Manual deploy requires typing 'deploy' in the confirm field."
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync to GoDaddy via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftps
+          server-dir: ./
+          local-dir: ./
+          state-name: .ftp-deploy-sync-state.json
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.DS_Store
+            **/node_modules/**
+            **/.vscode/**
+            **/.idea/**
+            **/*.md
+            **/.gitignore
+            **/.gitattributes
+            **/.editorconfig
+            **/.npmrc
+            **/yarn.lock
+            **/package-lock.json
+            **/.env
+            **/.env.*
+
+      - name: Smoke test
+        run: |
+          echo "Waiting 10s for changes to propagate..."
+          sleep 10
+          set -e
+          echo "Testing homepage..."
+          curl -sfI https://slotcheater.com/ | head -1
+          echo "Testing a cheat sheet..."
+          curl -sfI https://slotcheater.com/hunter/golden-jungle/ | head -1
+          echo "Testing nav assets..."
+          curl -sfI https://slotcheater.com/assets/cheat-nav.js | head -1
+          curl -sfI https://slotcheater.com/assets/cheat-nav.css | head -1
+          echo "Testing sitemap..."
+          curl -sfI https://slotcheater.com/sitemap.xml | head -1
+          echo "All smoke tests passed."
