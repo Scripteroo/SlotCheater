@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "id": "general",
+      "label": "Advantage Play Fundamentals",
+      "videos": [
+        { "id": "v1", "title": "Mikki Mase - Won $32 Million Hustling Slots", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "Mikki Mase", "machineSlug": null },
+        { "id": "v2", "title": "How Banking Slots Work - Complete Guide", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "TheBigPayback", "machineSlug": null },
+        { "id": "v3", "title": "Must-Hit-By Progressives Explained", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "Slot Cats", "machineSlug": null },
+        { "id": "v4", "title": "How to Spot an AP Machine in a Casino", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "VegasLowRoller", "machineSlug": null }
+      ]
+    },
+    {
+      "id": "by-machine",
+      "label": "Machine-Specific Videos",
+      "videos": [
+        { "id": "v5", "title": "Golden Egypt - How to Spot a Good Machine", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "TheBigPayback", "machineSlug": "golden-egypt" },
+        { "id": "v6", "title": "Scarab Slot - Cycle Play Strategy", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "Slot Cats", "machineSlug": "scarab" },
+        { "id": "v7", "title": "Ocean Magic - Symbol Line-Up AP Strategy", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "VegasLowRoller", "machineSlug": "ocean-magic" },
+        { "id": "v8", "title": "Piggy Bankin' - The OG Banking Slot", "url": "https://www.youtube.com/watch?v=PLACEHOLDER", "channel": "RandomSlots", "machineSlug": "piggy-bankin" }
+      ]
+    }
+  ]
+}

@@ -24,19 +24,17 @@
     <meta property="twitter:description" content="Learn to be a Slot Hustler by playing games. Master Advantage Play, MHB, RTP slots and join the winners!" />
     <meta property="twitter:image" content="https://slotcheater.com/og-image.png" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
 
     <title>SlotCheater.com - Learn Slot Hustling</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3JT90V79M"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -46,193 +44,270 @@
     </script>
 
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { background: #0B0B0D; color: #e5e5e5; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
-        body { min-height: 100vh; min-height: 100svh; padding-bottom: 84px; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            background: #0B0B0D;
+            color: #F9FAFB;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            min-height: 100svh;
+        }
+        body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
         a { color: inherit; text-decoration: none; }
-        button { font: inherit; cursor: pointer; }
+        button { font: inherit; cursor: pointer; border: 0; background: transparent; color: inherit; }
+        img { max-width: 100%; display: block; }
 
-        #app { max-width: 1100px; margin: 0 auto; padding: 24px 16px 8px; }
+        #app { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 1rem; }
 
         .view { animation: fadeIn 0.18s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* HOME */
-        .view-home { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 130px); min-height: calc(100svh - 130px); padding: 16px 0; }
-        .hero { text-align: center; max-width: 560px; }
-        .hero h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(135deg, #8B5CF6 0%, #F59E0B 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
-        .hero .tagline { font-size: 1.15rem; font-weight: 600; color: #f5f5f5; margin-bottom: 16px; line-height: 1.4; }
-        .hero .explainer { font-size: 0.95rem; color: #a0a0a0; line-height: 1.6; margin-bottom: 24px; }
-        .cta { display: inline-block; padding: 14px 28px; background: #8B5CF6; color: #fff; font-weight: 700; font-size: 1rem; border-radius: 10px; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3); }
-        .cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(139, 92, 246, 0.45); }
-        .footnote { margin-top: 28px; font-size: 0.8rem; color: #707070; }
+        /* ===== HOME ===== */
+        .home-logo { width: 260px; margin: 2rem auto; display: block; }
+        .home-headline { font-size: 2.5rem; font-weight: 800; color: #EC4899; text-align: center; line-height: 1.05; margin: 0.5rem 0 1.5rem; letter-spacing: -0.02em; }
+        .home-body { font-size: 1.05rem; line-height: 1.6; color: #F9FAFB; text-align: center; margin: 0 auto 2rem; max-width: 560px; padding: 0 0.5rem; }
+        .home-video-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 14px; overflow: hidden; margin: 0 auto 1rem; max-width: 560px; }
+        .home-video-header { background: #14142B; padding: 0.75rem 1rem; color: #F9FAFB; font-weight: 700; font-size: 0.95rem; border-bottom: 1px solid #2D2D4E; }
+        .home-video-stage { aspect-ratio: 16 / 9; background: #2A2A40; display: flex; align-items: center; justify-content: center; position: relative; }
+        .home-video-play { width: 64px; height: 64px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); border: 2px solid rgba(255, 255, 255, 0.55); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: #fff; padding-left: 4px; }
+        .home-video-caption { text-align: center; color: #9CA3AF; font-style: italic; font-size: 0.9rem; margin: 0.5rem auto 1.5rem; max-width: 560px; }
+        .home-footer-note { text-align: center; color: #6B7280; font-size: 0.8rem; margin: 2rem auto 0; max-width: 560px; padding: 0 0.5rem; }
 
-        /* VIEW HEADER (shared) */
-        .view-header { margin-bottom: 20px; }
-        .view-header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; color: #fff; margin-bottom: 4px; }
-        .view-header p { font-size: 0.9rem; color: #a0a0a0; }
+        /* ===== CHEATS ===== */
+        .cheats-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+        .cheats-fox { width: 70px; flex-shrink: 0; }
+        .cheats-title-box { flex: 1; border: 2px solid #8B5CF6; border-radius: 8px; padding: 0.75rem 1rem; background: transparent; }
+        .cheats-title-line1 { color: #06B6D4; font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
+        .cheats-title-line2 { color: #F9FAFB; font-style: italic; font-size: 0.95rem; margin-top: 2px; }
 
-        /* CARD GRID */
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+        .cheats-search { width: 100%; padding: 0.75rem 1rem; background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 10px; color: #F9FAFB; font: inherit; font-size: 1rem; outline: none; margin-bottom: 1rem; transition: border-color 0.15s; }
+        .cheats-search:focus { border-color: #8B5CF6; }
+        .cheats-search::placeholder { color: #6B7280; }
 
-        .card { background: rgba(20, 20, 26, 0.85); border: 1px solid rgba(139, 92, 246, 0.18); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; transition: border-color 0.15s, transform 0.15s; }
-        .card:hover { border-color: rgba(139, 92, 246, 0.5); transform: translateY(-2px); }
-        .card-thumb { width: 100%; aspect-ratio: 1 / 1; background: rgba(139, 92, 246, 0.08); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-        .card-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
-        .card-thumb-fallback { font-size: 3rem; line-height: 1; }
-        .card-name { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 10px; min-height: 2.6em; line-height: 1.3; }
-        .card-cta { margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 12px; border: 1.5px solid #F59E0B; border-radius: 6px; color: #F59E0B; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.15s, color 0.15s; }
-        .card-cta:hover { background: #F59E0B; color: #0B0B0D; }
-        .card-cta span { letter-spacing: -0.05em; font-weight: 400; }
+        .cheats-list { display: flex; flex-direction: column; gap: 0.6rem; }
+        .machine-card { display: flex; align-items: center; gap: 0.85rem; background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 12px; padding: 0.65rem; transition: border-color 0.15s, transform 0.15s; cursor: pointer; }
+        .machine-card:hover { border-color: #8B5CF6; transform: translateY(-1px); }
+        .machine-thumb { width: 90px; height: 90px; flex-shrink: 0; background: #14142B; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; }
+        .machine-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .machine-info { flex: 1; min-width: 0; }
+        .machine-name { color: #06B6D4; font-weight: 700; font-size: 1.05rem; line-height: 1.2; margin-bottom: 2px; }
+        .machine-mfg { color: #9CA3AF; font-size: 0.85rem; margin-bottom: 2px; }
+        .machine-aptype { color: #06B6D4; font-size: 0.85rem; }
+        .machine-chevron { color: #8B5CF6; font-size: 1rem; flex-shrink: 0; padding: 0 0.25rem; }
+        .cheats-empty { text-align: center; color: #9CA3AF; padding: 2rem 1rem; }
 
-        /* NOT-AP */
-        .grid-notap { grid-template-columns: 1fr; }
-        @media (min-width: 720px) { .grid-notap { grid-template-columns: repeat(2, 1fr); } }
-        .card-notap { border-color: rgba(239, 68, 68, 0.3); }
-        .card-notap:hover { border-color: rgba(239, 68, 68, 0.6); }
-        .card-notap .card-name { color: #f87171; min-height: auto; margin-bottom: 12px; }
-        .card-notap .card-cta { border-color: #f87171; color: #f87171; }
-        .card-notap .card-cta:hover { background: #f87171; color: #0B0B0D; }
-        .education-link { display: block; margin-top: 24px; padding: 14px 16px; text-align: center; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 8px; color: #F59E0B; font-weight: 600; font-size: 0.9rem; transition: background 0.15s; }
-        .education-link:hover { background: rgba(245, 158, 11, 0.18); }
+        /* ===== VIDEOS ===== */
+        .videos-header { margin-bottom: 1.5rem; }
+        .videos-title { font-size: 1.6rem; font-weight: 700; color: #F9FAFB; margin-bottom: 0.25rem; }
+        .videos-subtitle { color: #9CA3AF; font-size: 0.9rem; }
+        .video-section { margin-top: 1.5rem; }
+        .video-section-label { color: #F59E0B; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .video-list { display: flex; flex-direction: column; gap: 0.6rem; }
+        .video-card { display: flex; align-items: center; gap: 0.85rem; background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 12px; padding: 0.65rem; transition: border-color 0.15s, transform 0.15s; }
+        .video-card:hover { border-color: #8B5CF6; transform: translateY(-1px); }
+        .video-thumb { width: 80px; height: 60px; flex-shrink: 0; background: #2A2A40; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-size: 1.3rem; }
+        .video-info { flex: 1; min-width: 0; }
+        .video-title { color: #F9FAFB; font-weight: 700; font-size: 0.95rem; line-height: 1.3; margin-bottom: 3px; }
+        .video-channel { color: #9CA3AF; font-size: 0.8rem; }
+        .video-badge { display: inline-block; margin-left: 0.5rem; padding: 2px 8px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 999px; color: #F59E0B; font-size: 0.7rem; font-weight: 600; vertical-align: middle; }
+        .videos-footer-note { text-align: center; color: #9CA3AF; font-style: italic; font-size: 0.85rem; margin-top: 2rem; }
 
-        /* STATES */
-        .state-loading, .state-error { padding: 60px 16px; text-align: center; color: #a0a0a0; }
-        .spinner { width: 36px; height: 36px; margin: 0 auto 16px; border: 3px solid rgba(139, 92, 246, 0.2); border-top-color: #8B5CF6; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        /* ===== PLAY (QUIZ) ===== */
+        .quiz-header { margin-bottom: 1.5rem; }
+        .quiz-title { font-size: 1.6rem; font-weight: 700; color: #F9FAFB; margin-bottom: 0.25rem; }
+        .quiz-subtitle { color: #9CA3AF; font-size: 0.9rem; }
+        .quiz-progress { width: 100%; height: 6px; background: #1A1A2E; border-radius: 999px; overflow: hidden; margin-bottom: 0.75rem; }
+        .quiz-progress-fill { height: 100%; background: #8B5CF6; transition: width 0.3s ease; }
+        .quiz-counter { color: #9CA3AF; font-size: 0.85rem; margin-bottom: 0.75rem; }
+        .quiz-question { color: #F9FAFB; font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin-bottom: 1.25rem; }
+        .quiz-answers { display: flex; flex-direction: column; gap: 0.5rem; }
+        .quiz-answer { width: 100%; text-align: left; background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 10px; padding: 0.85rem 1rem; color: #F9FAFB; font-size: 0.95rem; transition: border-color 0.15s, background 0.15s; }
+        .quiz-answer:hover:not(:disabled) { border-color: #8B5CF6; }
+        .quiz-answer:disabled { cursor: default; }
+        .quiz-answer.correct { background: #10B981; border-color: #10B981; color: #fff; font-weight: 600; }
+        .quiz-answer.wrong { background: #EF4444; border-color: #EF4444; color: #fff; font-weight: 600; }
+        .quiz-explanation { margin-top: 1rem; background: rgba(139, 92, 246, 0.1); border-left: 3px solid #8B5CF6; padding: 0.85rem 1rem; border-radius: 0 8px 8px 0; color: #F9FAFB; font-size: 0.9rem; line-height: 1.5; }
+        .quiz-next { display: block; margin: 1.25rem 0 0 auto; padding: 0.75rem 1.5rem; background: #8B5CF6; color: #fff; border-radius: 10px; font-weight: 700; font-size: 0.95rem; }
+        .quiz-next:hover { background: #7C3AED; }
+
+        .quiz-final { text-align: center; padding: 2rem 1rem; }
+        .quiz-final-score { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.75rem; }
+        .quiz-final-message { color: #F9FAFB; font-size: 1.1rem; line-height: 1.5; margin-bottom: 1.5rem; }
+        .quiz-restart { padding: 0.85rem 1.75rem; background: #8B5CF6; color: #fff; border-radius: 10px; font-weight: 700; font-size: 1rem; }
+        .quiz-restart:hover { background: #7C3AED; }
+
+        /* ===== CHAT ===== */
+        .chat-header { margin-bottom: 1.5rem; }
+        .chat-title { font-size: 1.6rem; font-weight: 700; color: #F9FAFB; margin-bottom: 0.25rem; }
+        .chat-subtitle { color: #9CA3AF; font-size: 0.9rem; }
+        .chat-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .chat-card { display: flex; align-items: center; gap: 1rem; background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 14px; padding: 1rem 1.25rem; transition: border-color 0.15s, transform 0.15s; }
+        .chat-card:hover { border-color: #8B5CF6; transform: translateY(-1px); }
+        .chat-icon { font-size: 1.75rem; flex-shrink: 0; }
+        .chat-info { flex: 1; min-width: 0; }
+        .chat-name { color: #F9FAFB; font-weight: 700; font-size: 1rem; margin-bottom: 2px; }
+        .chat-desc { color: #9CA3AF; font-size: 0.85rem; line-height: 1.4; }
+        .chat-arrow { color: #6B7280; font-size: 1.2rem; flex-shrink: 0; }
+        .chat-footer-note { text-align: center; color: #9CA3AF; font-style: italic; font-size: 0.85rem; margin-top: 1.5rem; }
+
+        /* ===== SHARED STATES ===== */
+        .state-loading, .state-error { text-align: center; padding: 4rem 1rem; color: #9CA3AF; }
+        .spinner { width: 36px; height: 36px; border: 3px solid #2D2D4E; border-top-color: #8B5CF6; border-radius: 50%; margin: 0 auto 1rem; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .state-error h2 { color: #f87171; font-size: 1.1rem; margin-bottom: 8px; }
-        .state-error button { margin-top: 16px; padding: 10px 20px; background: #8B5CF6; color: #fff; border: 0; border-radius: 8px; font-weight: 600; }
+        .state-error { color: #EF4444; }
 
-        /* BOTTOM NAV */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 68px; padding-bottom: env(safe-area-inset-bottom); background: rgba(11, 11, 13, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid rgba(139, 92, 246, 0.2); display: flex; z-index: 50; }
-        .bottom-nav a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #707070; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.15s; }
-        .bottom-nav a .nav-icon { font-size: 1.25rem; line-height: 1; }
+        /* ===== BOTTOM NAV ===== */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            height: calc(64px + env(safe-area-inset-bottom));
+            padding-bottom: env(safe-area-inset-bottom);
+            background: #111111; border-top: 1px solid #2D2D4E;
+            display: flex; z-index: 100;
+        }
+        .bottom-nav a {
+            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 4px; color: #6B7280; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em;
+            text-transform: uppercase; transition: color 0.15s;
+        }
+        .bottom-nav a .nav-icon { font-size: 1.4rem; line-height: 1; }
         .bottom-nav a.active { color: #8B5CF6; }
-        .bottom-nav a.active .nav-icon { filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.6)); }
-        .bottom-nav a:hover { color: #a78bfa; }
+        .bottom-nav a.active .nav-icon { filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.5)); }
+
+        @media (max-width: 360px) {
+            .home-headline { font-size: 2rem; }
+            .home-logo { width: 220px; }
+            .cheats-fox { width: 56px; }
+            .machine-thumb { width: 76px; height: 76px; }
+        }
     </style>
 </head>
 <body>
-    <main id="app"></main>
+    <main id="app">
+        <div class="state-loading"><div class="spinner"></div><p>Loading…</p></div>
+    </main>
 
     <nav class="bottom-nav" aria-label="Primary">
         <a href="#home" data-tab="home"><span class="nav-icon">🏠</span><span>Home</span></a>
-        <a href="#cheats" data-tab="cheats"><span class="nav-icon">🎰</span><span>Cheats</span></a>
-        <a href="#not-ap" data-tab="not-ap"><span class="nav-icon">🚫</span><span>Not-AP</span></a>
+        <a href="#cheats" data-tab="cheats"><span class="nav-icon">✌️</span><span>Cheats</span></a>
+        <a href="#videos" data-tab="videos"><span class="nav-icon">🎬</span><span>Videos</span></a>
+        <a href="#play" data-tab="play"><span class="nav-icon">🎮</span><span>Play</span></a>
+        <a href="#chat" data-tab="chat"><span class="nav-icon">💬</span><span>Chat</span></a>
     </nav>
 
     <script>
         (function () {
             'use strict';
 
-            var TABS = ['home', 'cheats', 'not-ap'];
+            // ---------- Constants ----------
+            var TABS = ['home', 'cheats', 'videos', 'play', 'chat'];
             var DEFAULT_TAB = 'cheats';
-            var DATA_URL = '/machines.json';
 
-            var machinesData = null;
-            var fetchPromise = null;
-            var fetchError = null;
+            var QUIZ_QUESTIONS = [
+                {
+                    text: "A slot machine's coin meter shows 97 out of 100 coins collected. What do you do?",
+                    answers: [
+                        "Walk away — it might never fill",
+                        "Sit down and play — you're close to a forced payout",
+                        "Ask a slot attendant",
+                        "Only play if it's penny denomination"
+                    ],
+                    correct: 1,
+                    explanation: "Banking machines force a payout when the meter fills. At 97/100 you're getting massive value from someone else's groundwork."
+                },
+                {
+                    text: "What makes Scarab an AP target?",
+                    answers: [
+                        "A random scatter bonus",
+                        "A must-hit-by jackpot under $500",
+                        "A 10-spin cycle where wild reels are tracked — play if cycles are loaded",
+                        "A free spin meter that resets daily"
+                    ],
+                    correct: 2,
+                    explanation: "Scarab uses a 10-game cycle. Wild reels accumulate each spin. A loaded cycle left by a previous player is pure edge."
+                },
+                {
+                    text: "What does \"banking\" mean in slot AP?",
+                    answers: [
+                        "Depositing coins inside the machine",
+                        "A counter that persists between players — value left by one player collected by the next",
+                        "Playing max bet every spin",
+                        "Using a player's card to track spending"
+                    ],
+                    correct: 1,
+                    explanation: "Banking slots carry forward progress. The previous player did the work; you collect the reward."
+                },
+                {
+                    text: "Golden Egypt and Ocean Magic are made by which manufacturer?",
+                    answers: ["Aristocrat", "Konami", "WMS", "IGT"],
+                    correct: 3,
+                    explanation: "IGT (International Game Technology) makes most of the classic AP banking games including Golden Egypt, Ocean Magic, Scarab, and Golden Jungle."
+                },
+                {
+                    text: "Lock It Link is NOT an AP game because:",
+                    answers: [
+                        "The graphics are too basic to track",
+                        "It requires a player's card to activate",
+                        "Its progressives hit randomly — no persistent state to exploit",
+                        "The casino removes it before it hits"
+                    ],
+                    correct: 2,
+                    explanation: "Lock It Link progressives are random-hit, not must-hit-by. There's no state that carries over between players, so there's nothing to spot or exploit."
+                }
+            ];
 
+            var CHAT_LINKS = [
+                { icon: '👽', name: 'r/AdvantagePlay', url: 'https://reddit.com/r/advantageplay', desc: 'Dedicated AP discussion — machine spotting, trip reports, and strategy.' },
+                { icon: '🎰', name: 'r/Slots', url: 'https://reddit.com/r/Slots', desc: 'Large general slots community. AP threads are common and well-received.' },
+                { icon: '🧙', name: 'Wizard of Vegas Forums', url: 'https://wizardofvegas.com/forum/', desc: 'Long-running gambling forum with serious AP math and machine discussion.' },
+                { icon: '🎲', name: 'SlotFans Forum', url: 'https://www.slotfans.com/forum/', desc: 'Machine-specific threads, trip reports, and AP spotting tips.' },
+                { icon: '📊', name: 'VPFree2', url: 'https://www.vpfree2.com/', desc: 'Casino payback data and AP-friendly property ratings by region.' }
+            ];
+
+            // ---------- State ----------
+            var machinesData = null, machinesPromise = null, machinesError = null;
+            var videosData = null, videosPromise = null, videosError = null;
+            var searchQuery = '';
+            var quizState = { currentQ: 0, userAnswers: [-1, -1, -1, -1, -1], finished: false };
+
+            // ---------- Helpers ----------
             function escapeHtml(s) {
-                return String(s).replace(/[&<>"']/g, function (c) {
+                return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
                     return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+                });
+            }
+
+            function loadJSON(url) {
+                return fetch(url, { cache: 'no-cache' }).then(function (r) {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json();
                 });
             }
 
             function loadMachines() {
                 if (machinesData) return Promise.resolve(machinesData);
-                if (fetchPromise) return fetchPromise;
-                fetchPromise = fetch(DATA_URL, { cache: 'no-cache' })
-                    .then(function (r) {
-                        if (!r.ok) throw new Error('HTTP ' + r.status);
-                        return r.json();
-                    })
-                    .then(function (data) {
-                        machinesData = data;
-                        fetchError = null;
-                        return data;
-                    })
-                    .catch(function (err) {
-                        fetchError = err;
-                        fetchPromise = null;
-                        throw err;
-                    });
-                return fetchPromise;
+                if (machinesPromise) return machinesPromise;
+                machinesPromise = loadJSON('/machines.json').then(function (d) {
+                    machinesData = d; machinesError = null; return d;
+                }).catch(function (err) {
+                    machinesError = err; machinesPromise = null; throw err;
+                });
+                return machinesPromise;
             }
 
-            function renderHome() {
-                return ''
-                    + '<section class="view view-home">'
-                    + '  <div class="hero">'
-                    + '    <h1>🎰 SlotCheater.com</h1>'
-                    + '    <p class="tagline">Know which slots are beatable — before you sit down.</p>'
-                    + '    <p class="explainer">Advantage play means finding machines where the math is temporarily in your favor. Our cheat sheets show you exactly what to look for.</p>'
-                    + '    <a href="#cheats" class="cta">Browse Cheat Sheets →</a>'
-                    + '    <p class="footnote">Always gamble responsibly. AP is legal but requires practice.</p>'
-                    + '  </div>'
-                    + '</section>';
-            }
-
-            function renderCheats() {
-                var ap = machinesData.ap.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
-                var cards = ap.map(function (m) {
-                    return ''
-                        + '<article class="card">'
-                        + '  <div class="card-thumb">'
-                        + '    <img src="/' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="this.outerHTML=\'<div class=\\\'card-thumb-fallback\\\'>🎰</div>\'">'
-                        + '  </div>'
-                        + '  <h3 class="card-name">' + escapeHtml(m.name) + '</h3>'
-                        + '  <a class="card-cta" href="/hunter/' + escapeHtml(m.slug) + '/">Cheat Sheet <span>›››</span></a>'
-                        + '</article>';
-                }).join('');
-                return ''
-                    + '<section class="view view-cheats">'
-                    + '  <header class="view-header">'
-                    + '    <h1>🎰 Cheat Sheets</h1>'
-                    + '    <p>' + ap.length + ' confirmed advantage-play machines</p>'
-                    + '  </header>'
-                    + '  <div class="grid">' + cards + '</div>'
-                    + '</section>';
-            }
-
-            function renderNotAp() {
-                var items = machinesData.notAp.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
-                var cards = items.map(function (m) {
-                    return ''
-                        + '<article class="card card-notap">'
-                        + '  <h3 class="card-name">🚫 ' + escapeHtml(m.name) + '</h3>'
-                        + '  <a class="card-cta" href="/hunter/not-ap/' + escapeHtml(m.slug) + '/">Why not AP →</a>'
-                        + '</article>';
-                }).join('');
-                return ''
-                    + '<section class="view view-notap">'
-                    + '  <header class="view-header">'
-                    + '    <h1>🚫 NOT Advantage-Play</h1>'
-                    + '    <p>These machines look similar but don\'t have a beatable edge. Here\'s why.</p>'
-                    + '  </header>'
-                    + '  <div class="grid grid-notap">' + cards + '</div>'
-                    + '  <a class="education-link" href="/hunter/not-ap/why-modern-slots-arent-ap/">Why most modern slots aren\'t AP →</a>'
-                    + '</section>';
-            }
-
-            function renderLoading() {
-                return '<section class="view"><div class="state-loading"><div class="spinner"></div><p>Loading…</p></div></section>';
-            }
-
-            function renderError(msg) {
-                return ''
-                    + '<section class="view">'
-                    + '  <div class="state-error">'
-                    + '    <h2>Couldn\'t load cheat sheets</h2>'
-                    + '    <p>' + escapeHtml(msg) + '</p>'
-                    + '    <button onclick="location.reload()">Retry</button>'
-                    + '  </div>'
-                    + '</section>';
+            function loadVideos() {
+                if (videosData) return Promise.resolve(videosData);
+                if (videosPromise) return videosPromise;
+                videosPromise = loadJSON('/videos.json').then(function (d) {
+                    videosData = d; videosError = null; return d;
+                }).catch(function (err) {
+                    videosError = err; videosPromise = null; throw err;
+                });
+                return videosPromise;
             }
 
             function getCurrentTab() {
-                var hash = window.location.hash.replace(/^#/, '');
+                var hash = (window.location.hash || '').replace(/^#/, '');
                 return TABS.indexOf(hash) !== -1 ? hash : DEFAULT_TAB;
             }
 
@@ -240,11 +315,261 @@
                 var links = document.querySelectorAll('.bottom-nav a');
                 for (var i = 0; i < links.length; i++) {
                     var isActive = links[i].getAttribute('data-tab') === tab;
-                    if (isActive) links[i].classList.add('active');
-                    else links[i].classList.remove('active');
+                    links[i].classList.toggle('active', isActive);
+                    if (isActive) links[i].setAttribute('aria-current', 'page');
+                    else links[i].removeAttribute('aria-current');
                 }
             }
 
+            // ---------- Render: Home ----------
+            function renderHome() {
+                return ''
+                    + '<section class="view view-home">'
+                    + '  <img src="/images/slotcheater-logo.png" alt="SlotCheater" class="home-logo" onerror="this.style.display=\'none\'">'
+                    + '  <h1 class="home-headline">You found it!</h1>'
+                    + '  <p class="home-body">'
+                    +     "This is the <span style='color:#06B6D4;font-weight:600'>#1 resource</span> for learning <span style='color:#10B981;font-weight:600'>Advantage Play</span>, <span style='color:#8B5CF6;font-weight:600'>MHB</span>, <span style='color:#F59E0B;font-weight:600'>RTP slots</span> and <span style='color:#10B981;font-weight:600'>joining the winners!</span>"
+                    + '  </p>'
+                    + '  <!-- VIDEO PLACEHOLDER: replace this card with YouTube iframe embed -->'
+                    + '  <div class="home-video-card">'
+                    + '    <div class="home-video-header">Mikki Mase - Won $32Million Hustling!</div>'
+                    + '    <div class="home-video-stage" role="img" aria-label="Video placeholder">'
+                    + '      <div class="home-video-play" aria-hidden="true">▶</div>'
+                    + '    </div>'
+                    + '  </div>'
+                    + '  <p class="home-video-caption">Mikki Mase - Won $32Million Hustling</p>'
+                    + '  <p class="home-footer-note">Always gamble responsibly. AP is legal but requires practice and bankroll discipline.</p>'
+                    + '</section>';
+            }
+
+            // ---------- Render: Cheats ----------
+            function machineMatchesQuery(m, q) {
+                if (!q) return true;
+                var hay = (m.name + ' ' + (m.manufacturer || '') + ' ' + (m.apType || '')).toLowerCase();
+                return hay.indexOf(q.toLowerCase()) !== -1;
+            }
+
+            function renderMachineCard(m) {
+                var thumbHtml = m.thumb
+                    ? '<img src="/' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="var p=this.parentNode;p.innerHTML=\'🎰\';">'
+                    : '🎰';
+                return ''
+                    + '<a class="machine-card" href="/hunter/' + escapeHtml(m.slug) + '/">'
+                    + '  <div class="machine-thumb">' + thumbHtml + '</div>'
+                    + '  <div class="machine-info">'
+                    + '    <div class="machine-name">' + escapeHtml(m.name) + '</div>'
+                    + '    <div class="machine-mfg">' + escapeHtml(m.manufacturer || '') + '</div>'
+                    + '    <div class="machine-aptype">' + escapeHtml(m.apType || '') + '</div>'
+                    + '  </div>'
+                    + '  <div class="machine-chevron" aria-hidden="true">▼</div>'
+                    + '</a>';
+            }
+
+            function renderCheatsList(query) {
+                var items = machinesData.ap.slice().sort(function (a, b) {
+                    return a.name.localeCompare(b.name);
+                }).filter(function (m) { return machineMatchesQuery(m, query); });
+                if (items.length === 0) {
+                    return '<div class="cheats-empty">No machines match &ldquo;' + escapeHtml(query) + '&rdquo;.</div>';
+                }
+                return items.map(renderMachineCard).join('');
+            }
+
+            function renderCheats() {
+                if (machinesError) {
+                    return '<section class="view view-cheats"><div class="state-error">Failed to load machines. Please refresh.</div></section>';
+                }
+                if (!machinesData) {
+                    return '<section class="view view-cheats"><div class="state-loading"><div class="spinner"></div><p>Loading cheat sheets…</p></div></section>';
+                }
+                return ''
+                    + '<section class="view view-cheats">'
+                    + '  <header class="cheats-header">'
+                    + '    <img src="/images/slotcheater-logo.png" alt="SlotCheater" class="cheats-fox" onerror="this.style.display=\'none\'">'
+                    + '    <div class="cheats-title-box">'
+                    + '      <div class="cheats-title-line1">Advantage Play Slot Machines</div>'
+                    + '      <div class="cheats-title-line2">Cheat Sheets</div>'
+                    + '    </div>'
+                    + '  </header>'
+                    + '  <input id="cheats-search" class="cheats-search" type="search" placeholder="Search by name or type..." autocomplete="off" value="' + escapeHtml(searchQuery) + '">'
+                    + '  <div id="cheats-list" class="cheats-list">' + renderCheatsList(searchQuery) + '</div>'
+                    + '</section>';
+            }
+
+            function attachCheatsHandlers() {
+                var input = document.getElementById('cheats-search');
+                if (!input) return;
+                input.addEventListener('input', function (e) {
+                    searchQuery = e.target.value;
+                    var list = document.getElementById('cheats-list');
+                    if (list) list.innerHTML = renderCheatsList(searchQuery);
+                });
+            }
+
+            // ---------- Render: Videos ----------
+            function renderVideoCard(v) {
+                var isPlaceholder = (v.url || '').indexOf('PLACEHOLDER') !== -1;
+                var titleSuffix = isPlaceholder ? ' <span class="video-badge">coming soon</span>' : '';
+                var inner = ''
+                    + '<div class="video-thumb" aria-hidden="true">▶</div>'
+                    + '<div class="video-info">'
+                    + '  <div class="video-title">' + escapeHtml(v.title) + titleSuffix + '</div>'
+                    + '  <div class="video-channel">' + escapeHtml(v.channel || '') + '</div>'
+                    + '</div>';
+                if (isPlaceholder) {
+                    return '<div class="video-card" aria-disabled="true">' + inner + '</div>';
+                }
+                return '<a class="video-card" href="' + escapeHtml(v.url) + '" target="_blank" rel="noopener">' + inner + '</a>';
+            }
+
+            function renderVideos() {
+                if (videosError) {
+                    return '<section class="view view-videos"><div class="state-error">Failed to load videos. Please refresh.</div></section>';
+                }
+                if (!videosData) {
+                    return '<section class="view view-videos"><div class="state-loading"><div class="spinner"></div><p>Loading videos…</p></div></section>';
+                }
+                var sections = (videosData.categories || []).map(function (cat) {
+                    var cards = (cat.videos || []).map(renderVideoCard).join('');
+                    return ''
+                        + '<div class="video-section">'
+                        + '  <div class="video-section-label">' + escapeHtml(cat.label) + '</div>'
+                        + '  <div class="video-list">' + cards + '</div>'
+                        + '</div>';
+                }).join('');
+                return ''
+                    + '<section class="view view-videos">'
+                    + '  <header class="videos-header">'
+                    + '    <h1 class="videos-title">🎬 Video Library</h1>'
+                    + '    <p class="videos-subtitle">Curated AP strategy videos — sorted by topic and machine</p>'
+                    + '  </header>'
+                    + sections
+                    + '  <p class="videos-footer-note">More videos are being added to each individual cheat sheet page soon.</p>'
+                    + '</section>';
+            }
+
+            // ---------- Render: Play (Quiz) ----------
+            function renderQuizQuestion() {
+                var qi = quizState.currentQ;
+                var q = QUIZ_QUESTIONS[qi];
+                var selected = quizState.userAnswers[qi];
+                var answered = selected !== -1;
+                var progressPct = ((answered ? qi + 1 : qi) / QUIZ_QUESTIONS.length) * 100;
+
+                var answersHtml = q.answers.map(function (text, i) {
+                    var cls = 'quiz-answer';
+                    if (answered) {
+                        if (i === q.correct) cls += ' correct';
+                        else if (i === selected) cls += ' wrong';
+                    }
+                    var disabled = answered ? 'disabled' : '';
+                    return '<button class="' + cls + '" data-idx="' + i + '" ' + disabled + '>' + escapeHtml(text) + '</button>';
+                }).join('');
+
+                var explanationHtml = answered
+                    ? '<div class="quiz-explanation">' + escapeHtml(q.explanation) + '</div>'
+                    : '';
+
+                var nextHtml = answered
+                    ? '<button id="quiz-next" class="quiz-next">' + (qi === QUIZ_QUESTIONS.length - 1 ? 'See Results →' : 'Next Question →') + '</button>'
+                    : '';
+
+                return ''
+                    + '<div class="quiz-progress"><div class="quiz-progress-fill" style="width:' + progressPct + '%"></div></div>'
+                    + '<div class="quiz-counter">Question ' + (qi + 1) + ' of ' + QUIZ_QUESTIONS.length + '</div>'
+                    + '<h2 class="quiz-question">' + escapeHtml(q.text) + '</h2>'
+                    + '<div class="quiz-answers">' + answersHtml + '</div>'
+                    + explanationHtml
+                    + nextHtml;
+            }
+
+            function renderQuizFinal() {
+                var correctCount = quizState.userAnswers.reduce(function (acc, ans, i) {
+                    return acc + (ans === QUIZ_QUESTIONS[i].correct ? 1 : 0);
+                }, 0);
+                var total = QUIZ_QUESTIONS.length;
+                var color = correctCount >= 4 ? '#10B981' : (correctCount >= 2 ? '#F59E0B' : '#EF4444');
+                var msg;
+                if (correctCount === 5) msg = "You're a certified Slot Hustler! 🎰";
+                else if (correctCount >= 3) msg = 'Solid knowledge — keep studying the cheat sheets!';
+                else msg = 'Head to the Cheats tab and study up!';
+
+                return ''
+                    + '<div class="quiz-final">'
+                    + '  <div class="quiz-final-score" style="color:' + color + '">You got ' + correctCount + '/' + total + ' correct!</div>'
+                    + '  <p class="quiz-final-message">' + escapeHtml(msg) + '</p>'
+                    + '  <button id="quiz-restart" class="quiz-restart">Play Again</button>'
+                    + '</div>';
+            }
+
+            function renderPlay() {
+                var inner = quizState.finished ? renderQuizFinal() : renderQuizQuestion();
+                return ''
+                    + '<section class="view view-play">'
+                    + '  <header class="quiz-header">'
+                    + '    <h1 class="quiz-title">🎮 AP Spotter Quiz</h1>'
+                    + '    <p class="quiz-subtitle">Test your advantage play knowledge</p>'
+                    + '  </header>'
+                    +    inner
+                    + '</section>';
+            }
+
+            function attachQuizHandlers() {
+                var answers = document.querySelectorAll('.quiz-answer');
+                for (var i = 0; i < answers.length; i++) {
+                    answers[i].addEventListener('click', function (e) {
+                        var idx = parseInt(this.getAttribute('data-idx'), 10);
+                        if (quizState.userAnswers[quizState.currentQ] !== -1) return;
+                        quizState.userAnswers[quizState.currentQ] = idx;
+                        render();
+                    });
+                }
+                var next = document.getElementById('quiz-next');
+                if (next) {
+                    next.addEventListener('click', function () {
+                        if (quizState.currentQ < QUIZ_QUESTIONS.length - 1) {
+                            quizState.currentQ++;
+                        } else {
+                            quizState.finished = true;
+                        }
+                        render();
+                    });
+                }
+                var restart = document.getElementById('quiz-restart');
+                if (restart) {
+                    restart.addEventListener('click', function () {
+                        quizState = { currentQ: 0, userAnswers: [-1, -1, -1, -1, -1], finished: false };
+                        render();
+                    });
+                }
+            }
+
+            // ---------- Render: Chat ----------
+            function renderChat() {
+                var cards = CHAT_LINKS.map(function (l) {
+                    return ''
+                        + '<a class="chat-card" href="' + escapeHtml(l.url) + '" target="_blank" rel="noopener">'
+                        + '  <div class="chat-icon" aria-hidden="true">' + escapeHtml(l.icon) + '</div>'
+                        + '  <div class="chat-info">'
+                        + '    <div class="chat-name">' + escapeHtml(l.name) + '</div>'
+                        + '    <div class="chat-desc">' + escapeHtml(l.desc) + '</div>'
+                        + '  </div>'
+                        + '  <div class="chat-arrow" aria-hidden="true">→</div>'
+                        + '</a>';
+                }).join('');
+                return ''
+                    + '<section class="view view-chat">'
+                    + '  <header class="chat-header">'
+                    + '    <h1 class="chat-title">💬 Community</h1>'
+                    + '    <p class="chat-subtitle">Connect with other AP players. Find your crew.</p>'
+                    + '  </header>'
+                    + '  <div class="chat-list">' + cards + '</div>'
+                    + '  <p class="chat-footer-note">Know a great AP community we missed? Email us: hello@slotcheater.com</p>'
+                    + '  <!-- FUTURE: SlotCheater live community chat will appear at the top of this list when launched -->'
+                    + '</section>';
+            }
+
+            // ---------- Main render ----------
             function render() {
                 var tab = getCurrentTab();
                 var app = document.getElementById('app');
@@ -252,40 +577,47 @@
 
                 if (tab === 'home') {
                     app.innerHTML = renderHome();
-                    window.scrollTo(0, 0);
-                    return;
+                } else if (tab === 'cheats') {
+                    if (!machinesData && !machinesError) {
+                        app.innerHTML = '<section class="view"><div class="state-loading"><div class="spinner"></div><p>Loading cheat sheets…</p></div></section>';
+                        loadMachines().then(render).catch(function () { render(); });
+                        return;
+                    }
+                    app.innerHTML = renderCheats();
+                    attachCheatsHandlers();
+                } else if (tab === 'videos') {
+                    if (!videosData && !videosError) {
+                        app.innerHTML = '<section class="view"><div class="state-loading"><div class="spinner"></div><p>Loading videos…</p></div></section>';
+                        loadVideos().then(render).catch(function () { render(); });
+                        return;
+                    }
+                    app.innerHTML = renderVideos();
+                } else if (tab === 'play') {
+                    app.innerHTML = renderPlay();
+                    attachQuizHandlers();
+                } else if (tab === 'chat') {
+                    app.innerHTML = renderChat();
                 }
 
-                if (machinesData) {
-                    app.innerHTML = tab === 'cheats' ? renderCheats() : renderNotAp();
-                    window.scrollTo(0, 0);
-                    return;
-                }
-
-                if (fetchError) {
-                    app.innerHTML = renderError(fetchError.message);
-                    return;
-                }
-
-                app.innerHTML = renderLoading();
-                loadMachines().then(render).catch(function () { render(); });
+                window.scrollTo(0, 0);
             }
 
-            // Default to #cheats on first load if no hash present
+            // ---------- Init ----------
             if (!window.location.hash) {
                 history.replaceState(null, '', '#' + DEFAULT_TAB);
             }
-
             window.addEventListener('hashchange', render);
             render();
-
-            // PWA service worker registration
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function () {
-                    navigator.serviceWorker.register('/sw.js').catch(function () { /* ignore */ });
-                });
-            }
         })();
+    </script>
+
+    <!-- Service Worker registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').catch(function () { /* ignore */ });
+            });
+        }
     </script>
 </body>
 </html>
