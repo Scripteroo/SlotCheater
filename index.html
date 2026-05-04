@@ -185,15 +185,78 @@
         .bottom-nav a.active { color: #8B5CF6; }
         .bottom-nav a.active .nav-icon { filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.5)); }
 
+        /* ===== LOADING OVERLAY ===== */
+        #loading-overlay { position: fixed; inset: 0; z-index: 9999; background: #0B0B0D; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease-out; }
+        #loading-overlay.hidden { opacity: 0; pointer-events: none; }
+        .loading-stage { text-align: center; padding: 1rem; }
+        .loading-logo { max-width: 80vw; height: auto; display: block; margin: 0 auto; animation: logoPulse 1.5s ease-in-out infinite; }
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(139,92,246,0.6)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 40px rgba(139,92,246,0.9)); }
+        }
+        .loading-text { margin-top: 1.5rem; font-weight: 700; font-size: 1.2rem; color: #F9FAFB; letter-spacing: 0.05em; }
+        .loading-text .dot { display: inline-block; font-size: 1.4rem; line-height: 1; padding: 0 2px; animation: dotPulse 1.2s ease-in-out infinite; }
+        .loading-text .dot-1 { color: #06B6D4; }
+        .loading-text .dot-2 { color: #8B5CF6; animation-delay: 0.2s; }
+        .loading-text .dot-3 { color: #EC4899; animation-delay: 0.4s; }
+        @keyframes dotPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+        .loading-subtitle { margin-top: 0.6rem; font-size: 0.9rem; color: #9CA3AF; }
+
+        /* ===== HOME EXTENSIONS (Sections A-H) ===== */
+        .home-cta-tagline { text-align: center; color: #10B981; font-size: 1.1rem; font-weight: 600; margin: 1.5rem auto; max-width: 520px; line-height: 1.5; padding: 0 0.5rem; }
+        .home-press-start { display: block; margin: 1.75rem auto; padding: 0.5rem 1rem; font-size: 2.5rem; font-weight: 900; letter-spacing: 0.15em; background: transparent; border: 0; cursor: pointer; font-family: inherit; animation: neonPulse 2s ease-in-out infinite; }
+        @keyframes neonPulse {
+            0%, 100% { color: #8B5CF6; text-shadow: 0 0 10px #8B5CF6, 0 0 20px #8B5CF6, 0 0 40px #8B5CF6; }
+            50% { color: #06B6D4; text-shadow: 0 0 10px #06B6D4, 0 0 20px #06B6D4, 0 0 40px #06B6D4; }
+        }
+        .home-explainer { text-align: center; color: #9CA3AF; font-size: 0.95rem; max-width: 340px; margin: 1.5rem auto; line-height: 1.6; padding: 0 0.5rem; }
+        .home-banner-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 14px; overflow: hidden; cursor: pointer; max-width: 560px; margin: 1.5rem auto; transition: border-color 0.15s; display: block; width: 100%; padding: 0; font-family: inherit; color: inherit; text-align: center; }
+        .home-banner-card:hover { border-color: #8B5CF6; }
+        .home-banner-card img { width: 100%; display: block; }
+        .home-banner-caption { color: #9CA3AF; font-size: 0.85rem; padding: 0.65rem; }
+        .home-crypto-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 14px; padding: 1rem; max-width: 560px; margin: 1.5rem auto; }
+        .home-crypto-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+        .home-crypto-header img { width: 40px; height: 40px; flex-shrink: 0; object-fit: contain; }
+        .home-crypto-title { color: #F59E0B; font-weight: 900; letter-spacing: 0.1em; font-size: 1rem; }
+        .home-crypto-subcard { background: #14142B; border-radius: 10px; padding: 1rem; text-decoration: none; display: block; transition: background 0.15s; }
+        .home-crypto-subcard:hover { background: #1f1f3a; }
+        .home-crypto-name { color: #F9FAFB; font-weight: 700; font-size: 1.05rem; }
+        .home-crypto-bonus-label { color: #9CA3AF; font-size: 0.85rem; margin-top: 2px; }
+        .home-crypto-bonus { color: #10B981; font-weight: 700; font-size: 1rem; margin-top: 6px; }
+        .home-crypto-banner { display: block; max-width: 560px; margin: 1.5rem auto; }
+        .home-crypto-banner img { width: 100%; border-radius: 12px; display: block; }
+        .home-install-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 14px; padding: 1rem; display: flex; align-items: center; gap: 1rem; width: 100%; max-width: 560px; margin: 1.5rem auto; cursor: pointer; text-align: left; font-family: inherit; color: inherit; transition: border-color 0.15s; }
+        .home-install-card:hover { border-color: #8B5CF6; }
+        .home-install-icon { width: 48px; height: 48px; border-radius: 50%; background: #3B82F6; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+        .home-install-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+        .home-install-title { color: #F9FAFB; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em; }
+        .home-install-desc { color: #9CA3AF; font-size: 0.8rem; line-height: 1.4; }
+        .home-learn-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 14px; padding: 1rem; max-width: 360px; margin: 1.5rem auto 0; text-align: center; cursor: pointer; transition: border-color 0.15s; font-family: inherit; color: inherit; display: block; width: 100%; }
+        .home-learn-card:hover { border-color: #8B5CF6; }
+        .home-learn-card img { display: block; margin: 0 auto 0.5rem; }
+        .home-learn-card-text { color: #8B5CF6; font-size: 0.9rem; font-weight: 600; }
+
         @media (max-width: 360px) {
             .home-headline { font-size: 2rem; }
             .home-logo { width: 220px; }
             .cheats-fox { width: 56px; }
             .machine-thumb { width: 76px; height: 76px; min-width: 76px; }
+            .home-press-start { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
+    <div id="loading-overlay" aria-hidden="true">
+        <div class="loading-stage">
+            <img src="./images/slotcheater-logo.png" alt="SlotCheater" width="280" class="loading-logo" onerror="this.style.display='none'">
+            <div class="loading-text">Loading<span class="dot dot-1">.</span><span class="dot dot-2">.</span><span class="dot dot-3">.</span></div>
+            <div class="loading-subtitle">Master the Art of Slot Hustling</div>
+        </div>
+    </div>
+
     <main id="app">
         <div class="state-loading"><div class="spinner"></div><p>Loading…</p></div>
     </main>
@@ -349,8 +412,72 @@
                     + '    </div>'
                     + '  </div>'
                     + '  <p class="home-video-caption">Mikki Mase - Won $32Million Hustling</p>'
+                    + '  <p class="home-cta-tagline">'
+                    +     "Learn to be a Slot Hustler by playing games. Once you know the tricks, it's like <span style='color:#06B6D4'>cheating!</span>"
+                    + '  </p>'
+                    + '  <button type="button" class="home-press-start" data-go="cheats">PRESS START</button>'
+                    + '  <p class="home-explainer">'
+                    +     "Every day people are learning the art of <span style='color:#06B6D4'>&lsquo;Slot Hustling&rsquo;</span> and discovering Advantage Play strategies, tactics and gambits to win money."
+                    + '  </p>'
+                    + '  <button type="button" class="home-banner-card" data-go="cheats">'
+                    + '    <img src="./images/cheat-sheets-banner.png" alt="Cheat Sheets" onerror="var c=this.closest(\'.home-banner-card\'); if(c) c.style.display=\'none\';">'
+                    + '    <div class="home-banner-caption">Click Here for Cheat Sheets!</div>'
+                    + '  </button>'
+                    + '  <div class="home-crypto-card">'
+                    + '    <div class="home-crypto-header">'
+                    + '      <img src="./images/slotcheater-logo.png" alt="" onerror="this.style.display=\'none\'">'
+                    + '      <div class="home-crypto-title">CRYPTO CASINO</div>'
+                    + '    </div>'
+                    + '    <!-- AFFILIATE LINK: Dan to add real URL -->'
+                    + '    <a href="#" id="crypto-casino-link" class="home-crypto-subcard">'
+                    + '      <div class="home-crypto-name">$BIG Dollar Casino</div>'
+                    + '      <div class="home-crypto-bonus-label">Welcome Bonus</div>'
+                    + '      <div class="home-crypto-bonus">+ 55 FREE SPINS</div>'
+                    + '    </a>'
+                    + '  </div>'
+                    + '  <div class="home-crypto-banner">'
+                    + '    <img src="./images/crypto-casino-banner.png" alt="Crypto Casino" onerror="var c=this.closest(\'.home-crypto-banner\'); if(c) c.style.display=\'none\';">'
+                    + '  </div>'
+                    + '  <button type="button" class="home-install-card" id="home-install-btn">'
+                    + '    <span class="home-install-icon" aria-hidden="true">⬇️</span>'
+                    + '    <span class="home-install-info">'
+                    + '      <span class="home-install-title">SAVE AS APP</span>'
+                    + '      <span class="home-install-desc">Add SlotCheater to your home screen for instant access</span>'
+                    + '    </span>'
+                    + '  </button>'
+                    + '  <button type="button" class="home-learn-card" data-go="cheats">'
+                    + '    <img src="./images/slotcheater-logo.png" alt="SlotCheater" width="60" onerror="this.style.display=\'none\'">'
+                    + '    <span class="home-learn-card-text">Learn More Advantage Play Strategies</span>'
+                    + '  </button>'
                     + '  <p class="home-footer-note">Always gamble responsibly. AP is legal but requires practice and bankroll discipline.</p>'
                     + '</section>';
+            }
+
+            function attachHomeHandlers() {
+                var goEls = document.querySelectorAll('.view-home [data-go]');
+                for (var i = 0; i < goEls.length; i++) {
+                    goEls[i].addEventListener('click', function () {
+                        var target = this.getAttribute('data-go');
+                        if (target) location.hash = '#' + target;
+                    });
+                }
+                var install = document.getElementById('home-install-btn');
+                if (install) {
+                    install.addEventListener('click', function () {
+                        if (window.deferredPrompt && typeof window.deferredPrompt.prompt === 'function') {
+                            window.deferredPrompt.prompt();
+                            if (window.deferredPrompt.userChoice && typeof window.deferredPrompt.userChoice.then === 'function') {
+                                window.deferredPrompt.userChoice.then(function () { window.deferredPrompt = null; });
+                            }
+                        } else {
+                            alert('To install: tap Share → Add to Home Screen');
+                        }
+                    });
+                }
+                var crypto = document.getElementById('crypto-casino-link');
+                if (crypto) {
+                    crypto.addEventListener('click', function (e) { e.preventDefault(); /* TODO: replace with real affiliate URL */ });
+                }
             }
 
             // ---------- Render: Cheats ----------
@@ -618,6 +745,7 @@
 
                 if (tab === 'home') {
                     app.innerHTML = renderHome();
+                    attachHomeHandlers();
                 } else if (tab === 'cheats') {
                     if (!machinesData && !machinesError) {
                         app.innerHTML = '<section class="view"><div class="state-loading"><div class="spinner"></div><p>Loading cheat sheets…</p></div></section>';
@@ -644,11 +772,30 @@
             }
 
             // ---------- Init ----------
+            // Capture beforeinstallprompt for the Save-as-App button
+            window.addEventListener('beforeinstallprompt', function (e) {
+                e.preventDefault();
+                window.deferredPrompt = e;
+            });
+
             if (!window.location.hash) {
                 history.replaceState(null, '', '#' + DEFAULT_TAB);
             }
             window.addEventListener('hashchange', render);
             render();
+
+            // Loading overlay dismissal: whichever fires first
+            var loadingDismissed = false;
+            function dismissLoading() {
+                if (loadingDismissed) return;
+                loadingDismissed = true;
+                var overlay = document.getElementById('loading-overlay');
+                if (!overlay) return;
+                overlay.classList.add('hidden');
+                setTimeout(function () { overlay.style.display = 'none'; }, 400);
+            }
+            setTimeout(dismissLoading, 3000);
+            loadMachines().then(dismissLoading, dismissLoading);
         })();
     </script>
 
