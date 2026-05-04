@@ -86,11 +86,11 @@
         .cheats-search::placeholder { color: #6B7280; }
 
         .cheats-list { display: flex; flex-direction: column; gap: 0.6rem; }
-        .machine-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 12px; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.65rem; transition: border-color 0.15s; }
+        .machine-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 0.65rem; transition: border-color 0.15s; }
         .machine-card:hover { border-color: #8B5CF6; }
-        .machine-card-top { display: flex; align-items: stretch; gap: 0.85rem; position: relative; }
-        .machine-thumb { width: 110px; min-height: 110px; min-width: 110px; flex-shrink: 0; background: #14142B; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; position: relative; }
-        .machine-thumb img { width: 100%; height: 100%; position: absolute; top: 0; left: 0; object-fit: cover; display: block; }
+        .machine-card-top { display: flex; align-items: center; gap: 10px; position: relative; }
+        .machine-thumb { width: 90px; height: 64px; min-width: 90px; flex-shrink: 0; background: #14142B; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; }
+        .machine-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
         .machine-info { flex: 1; min-width: 0; padding-right: 2.25rem; }
         .machine-name { color: #06B6D4; font-weight: 700; font-size: 1.05rem; line-height: 1.2; margin-bottom: 2px; }
         .machine-mfg { color: #9CA3AF; font-size: 0.85rem; margin-bottom: 2px; }
@@ -107,6 +107,7 @@
         .machine-cta:hover { background: #06B6D4; color: #0B0B0D; }
         .machine-cta .arrows { letter-spacing: -0.05em; font-weight: 400; }
         .cheats-empty { text-align: center; color: #9CA3AF; padding: 2rem 1rem; }
+        .view-cheats { padding-bottom: 80px; }
 
         /* ===== VIDEOS ===== */
         .videos-header { margin-bottom: 1.5rem; }
@@ -239,11 +240,14 @@
         .home-learn-card img { display: block; margin: 0 auto 0.5rem; }
         .home-learn-card-text { color: #8B5CF6; font-size: 0.9rem; font-weight: 600; }
 
+        @media (max-width: 480px) {
+            .machine-thumb { width: 72px; height: 52px; min-width: 72px; }
+        }
+
         @media (max-width: 360px) {
             .home-headline { font-size: 2rem; }
             .home-logo { width: 220px; }
             .cheats-fox { width: 56px; }
-            .machine-thumb { width: 76px; height: 76px; min-width: 76px; }
             .home-press-start { font-size: 2rem; }
         }
 
