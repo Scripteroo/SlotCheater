@@ -362,7 +362,7 @@
 
             function renderMachineCard(m) {
                 var thumbHtml = m.thumb
-                    ? '<img src="/' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="var p=this.parentNode;p.innerHTML=\'🎰\';">'
+                    ? '<img src="./' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="var p=this.parentNode;p.innerHTML=\'🎰\';">'
                     : '🎰';
                 var infoBtn = m.hint
                     ? '<button class="machine-info-btn" type="button" aria-label="Show hint" aria-expanded="false">ⓘ</button>'
