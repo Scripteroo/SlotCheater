@@ -24,9 +24,9 @@
     <meta property="twitter:description" content="Learn to be a Slot Hustler by playing games. Master Advantage Play, MHB, RTP slots and join the winners!" />
     <meta property="twitter:image" content="https://slotcheater.com/og-image.png" />
 
-    <link rel="icon" type="image/png" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="./favicon.ico" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
 
     <title>SlotCheater.com - Learn Slot Hustling</title>
 
@@ -325,7 +325,7 @@
             function renderHome() {
                 return ''
                     + '<section class="view view-home">'
-                    + '  <img src="/images/slotcheater-logo.png" alt="SlotCheater" class="home-logo" onerror="this.style.display=\'none\'">'
+                    + '  <img src="./images/slotcheater-logo.png" alt="SlotCheater" class="home-logo" onerror="this.style.display=\'none\'">'
                     + '  <h1 class="home-headline">You found it!</h1>'
                     + '  <p class="home-body">'
                     +     "This is the <span style='color:#06B6D4;font-weight:600'>#1 resource</span> for learning <span style='color:#10B981;font-weight:600'>Advantage Play</span>, <span style='color:#8B5CF6;font-weight:600'>MHB</span>, <span style='color:#F59E0B;font-weight:600'>RTP slots</span> and <span style='color:#10B981;font-weight:600'>joining the winners!</span>"
@@ -354,7 +354,7 @@
                     ? '<img src="/' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="var p=this.parentNode;p.innerHTML=\'🎰\';">'
                     : '🎰';
                 return ''
-                    + '<a class="machine-card" href="/hunter/' + escapeHtml(m.slug) + '/">'
+                    + '<a class="machine-card" href="./hunter/' + escapeHtml(m.slug) + '/">'
                     + '  <div class="machine-thumb">' + thumbHtml + '</div>'
                     + '  <div class="machine-info">'
                     + '    <div class="machine-name">' + escapeHtml(m.name) + '</div>'
@@ -385,7 +385,7 @@
                 return ''
                     + '<section class="view view-cheats">'
                     + '  <header class="cheats-header">'
-                    + '    <img src="/images/slotcheater-logo.png" alt="SlotCheater" class="cheats-fox" onerror="this.style.display=\'none\'">'
+                    + '    <img src="./images/slotcheater-logo.png" alt="SlotCheater" class="cheats-fox" onerror="this.style.display=\'none\'">'
                     + '    <div class="cheats-title-box">'
                     + '      <div class="cheats-title-line1">Advantage Play Slot Machines</div>'
                     + '      <div class="cheats-title-line2">Cheat Sheets</div>'
@@ -615,7 +615,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('/sw.js').catch(function () { /* ignore */ });
+                navigator.serviceWorker.register('./sw.js').catch(function () { /* ignore */ });
             });
         }
     </script>
