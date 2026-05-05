@@ -52,5 +52,10 @@
   {"id": "vid-51", "title": "Ocean Magic Mermaid - AP Session", "category": "Machine Guide", "machineSlug": "ocean-magic", "localSrc": "./videos/ocean-magic-mermaid.mp4", "poster": "./images/ocean-magic-thumb.png"},
   {"id": "vid-52", "title": "Scarab Advantage Play Tutorial", "category": "Machine Guide", "machineSlug": "scarab", "localSrc": "./videos/scarab-advantage-play.mp4", "poster": "./images/scarab-thumb.png"},
   {"id": "vid-53", "title": "Wheel of Fortune AP Strategy", "category": "Machine Guide", "machineSlug": "wheel-of-fortune", "localSrc": "./videos/wheel-of-fortune.mp4", "poster": "./images/wheel-of-fortune-thumb.png"},
-  {"id": "vid-54", "title": "SlotCheater.com - Introduction", "category": "General", "machineSlug": null, "localSrc": "./videos/slotcheater-promo.mp4", "poster": "./images/slotcheater-logo.png"}
+  {"id": "vid-54", "title": "SlotCheater.com - Introduction", "category": "General", "machineSlug": null, "localSrc": "./videos/slotcheater-promo.mp4", "poster": "./images/slotcheater-logo.png"},
+  {"id": "vid-55", "youtubeId": "cjp8CElbGw0", "title": "Temple Falls Jungle Adventure - AP Session", "category": "Machine Guide", "machineSlug": "temple-falls"},
+  {"id": "vid-56", "youtubeId": "Ufn2RlDOSDQ", "title": "Lucky Pick - Advantage Play Guide", "category": "Machine Guide", "machineSlug": "lucky-pick"},
+  {"id": "vid-57", "youtubeId": "4Ro_0DIMbgM", "title": "Buffalo Link - Advantage Play Strategy", "category": "Machine Guide", "machineSlug": "buffalo"},
+  {"id": "vid-58", "youtubeId": "f5TQNhrFlVs", "title": "Buffalo Ascension - AP Demonstration", "category": "Machine Guide", "machineSlug": "buffalo-ascension"},
+  {"id": "vid-59", "youtubeId": "mVbQDCG-jCk", "title": "Pillars of Cash - Advantage Play Guide", "category": "Machine Guide", "machineSlug": "pillars-of-cash"}
 ]
