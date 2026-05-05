@@ -974,7 +974,7 @@
                     grid.innerHTML = filtered.map(v => `
                       <a class="vid-card" href="https://www.youtube.com/watch?v=${v.youtubeId}" target="_blank" rel="noopener">
                         <div class="vid-thumb-wrap">
-                          <img class="vid-thumb" src="https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg" alt="${v.title}" loading="lazy">
+                          <img class="vid-thumb" src="https://img.youtube.com/vi/${v.youtubeId}/mqdefault.jpg" alt="${v.title}" loading="lazy" onerror="var c=this.closest('.vid-card');if(c)c.style.display='none';" onload="if(this.naturalWidth===120&&this.naturalHeight===90){var c=this.closest('.vid-card');if(c)c.style.display='none';}">
                           <div class="vid-play-btn">▶</div>
                         </div>
                         <div class="vid-info">
