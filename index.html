@@ -124,6 +124,9 @@
         .machine-card-not-ap { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.15); }
         .machine-card-not-ap:hover { border-color: rgba(239, 68, 68, 0.4); }
         .not-ap-badge { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 20px; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; white-space: nowrap; }
+        .ap-trap-badge { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 20px; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; white-space: nowrap; }
+        .machine-card-trap { background: rgba(245, 158, 11, 0.04); border: 1px solid rgba(245, 158, 11, 0.12); }
+        .machine-card-trap:hover { border-color: rgba(245, 158, 11, 0.4); }
         .machine-not-ap-reason { color: #9CA3AF; font-size: 0.75rem; font-style: italic; margin-top: 3px; }
         .cheats-section-header { padding: 1.5rem 0 0.75rem; border-top: 1px solid rgba(239, 68, 68, 0.2); margin-top: 0.5rem; }
         .cheats-section-title { color: #EF4444; font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
@@ -614,6 +617,7 @@
                 { id: 'SG Gaming', label: 'SG Gaming' },
                 { id: 'Silicon Gaming', label: 'Silicon' },
                 { id: 'AGS', label: 'AGS' },
+                { id: 'Incredible Technologies', label: 'IT' },
                 { id: 'Various', label: 'Various' }
             ];
 
@@ -840,18 +844,25 @@
             }
 
             function renderNotApCard(m) {
+                var trap = m.trapRisk === true;
+                var stroke = trap ? '#F59E0B' : '#EF4444';
+                var fill = trap ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)';
+                var cardClasses = 'machine-card machine-card-not-ap' + (trap ? ' machine-card-trap' : '');
+                var badge = trap
+                    ? '<span class="ap-trap-badge">⚠️ AP TRAP</span>'
+                    : '<span class="not-ap-badge">🚫 NOT AP</span>';
                 var imgHtml = m.thumb
                     ? '<img src="./' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="this.onerror=null;this.src=\'./images/slotcheaternoimage.png\';">'
                     : '<img src="./images/slotcheaternoimage.png" alt="' + escapeHtml(m.name) + '">';
                 var overlayHtml = ''
                     + '<div class="not-ap-overlay">'
                     + '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
-                    + '<circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="2.5" fill="rgba(239,68,68,0.15)"/>'
-                    + '<line x1="4.93" y1="4.93" x2="19.07" y2="19.07" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>'
+                    + '<circle cx="12" cy="12" r="10" stroke="' + stroke + '" stroke-width="2.5" fill="' + fill + '"/>'
+                    + '<line x1="4.93" y1="4.93" x2="19.07" y2="19.07" stroke="' + stroke + '" stroke-width="2.5" stroke-linecap="round"/>'
                     + '</svg>'
                     + '</div>';
                 return ''
-                    + '<div class="machine-card machine-card-not-ap">'
+                    + '<div class="' + cardClasses + '">'
                     + '  <div class="machine-card-top">'
                     + '    <div class="machine-thumb">' + imgHtml + overlayHtml + '</div>'
                     + '    <div class="machine-info">'
@@ -859,7 +870,7 @@
                     + '      <div class="machine-mfg">' + escapeHtml(m.manufacturer || '') + '</div>'
                     + '      <div class="machine-not-ap-reason">' + escapeHtml(m.reason || '') + '</div>'
                     + '    </div>'
-                    + '    <span class="not-ap-badge">🚫 NOT AP</span>'
+                    +    badge
                     + '  </div>'
                     + '</div>';
             }
