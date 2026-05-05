@@ -1005,7 +1005,7 @@
                     const filtered = getFiltered();
                     grid.innerHTML = filtered.map(v => {
                       const slugAttr = `data-machine-slug="${v.machineSlug || ''}"`;
-                      const badge = `<span class="vid-cat-badge ${classFor(v.category)}">${categories.find(c=>c.id===v.category)?.label||v.category}</span>`;
+                      const badge = v.category ? `<span class="vid-cat-badge ${classFor(v.category)}">${categories.find(c=>c.id===v.category)?.label||v.category}</span>` : '';
                       const channel = v.channel ? `<p class="vid-channel">${v.channel}</p>` : '';
                       if (v.localSrc) {
                         return `
