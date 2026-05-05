@@ -754,8 +754,8 @@
             // ---------- Render: Cheats ----------
             function renderMachineCard(m) {
                 var thumbHtml = m.thumb
-                    ? '<img src="./' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="var p=this.parentNode;p.innerHTML=\'🎰\';">'
-                    : '🎰';
+                    ? '<img src="./' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="this.onerror=null;this.src=\'./images/slotcheaternoimage.png\';">'
+                    : '<img src="./images/slotcheaternoimage.png" alt="' + escapeHtml(m.name) + '">';
                 var infoBtn = m.hint
                     ? '<button class="machine-info-btn" type="button" aria-label="Show hint" aria-expanded="false">ⓘ</button>'
                     : '';
@@ -820,8 +820,8 @@
 
             function renderNotApCard(m) {
                 var imgHtml = m.thumb
-                    ? '<img src="./' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="this.style.display=\'none\'">'
-                    : '';
+                    ? '<img src="./' + escapeHtml(m.thumb) + '" alt="' + escapeHtml(m.name) + '" loading="lazy" onerror="this.onerror=null;this.src=\'./images/slotcheaternoimage.png\';">'
+                    : '<img src="./images/slotcheaternoimage.png" alt="' + escapeHtml(m.name) + '">';
                 var overlayHtml = ''
                     + '<div class="not-ap-overlay">'
                     + '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
