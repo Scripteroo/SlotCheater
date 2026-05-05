@@ -44,5 +44,13 @@
   {"id": "vid-43", "youtubeId": "I6wo4Uo5Euo", "title": "Advantage Play Guide - Triple Double Diamond by IGT", "category": "Machine Guide", "machineSlug": "triple-double-diamond"},
   {"id": "vid-44", "youtubeId": "kE_PfchWU1U", "title": "Advantage Play Wheel of Fortune 4D Collectors Edition", "category": "Machine Guide", "machineSlug": "wheel-of-fortune"},
   {"id": "vid-45", "youtubeId": "O3RIrdU9kqI", "title": "How to Beat Wheel of Fortune High Roller - AP Guide", "category": "Machine Guide", "machineSlug": "wheel-of-fortune-high-roller"},
-  {"id": "vid-46", "youtubeId": "qRAB1wT4bDs", "title": "Wolf Run Eclipse Ultimate Advantage Play Revealed", "category": "Machine Guide", "machineSlug": "wolf-run-eclipse"}
+  {"id": "vid-46", "youtubeId": "qRAB1wT4bDs", "title": "Wolf Run Eclipse Ultimate Advantage Play Revealed", "category": "Machine Guide", "machineSlug": "wolf-run-eclipse"},
+  {"id": "vid-47", "title": "Golden Egypt Advantage Play Guide", "category": "Machine Guide", "machineSlug": "golden-egypt", "localSrc": "./videos/golden-egypt-advantage-play.mp4", "poster": "./images/golden-egypt-thumb.png"},
+  {"id": "vid-48", "title": "Golden Egypt Imitations - What to Look For", "category": "Machine Guide", "machineSlug": "golden-egypt", "localSrc": "./videos/golden-egypt-imitations.mp4", "poster": "./images/golden-egypt-thumb.png"},
+  {"id": "vid-49", "title": "Hexbreaker Advantage Play Session", "category": "Machine Guide", "machineSlug": "hexbreaker", "localSrc": "./videos/hexbreaker-advantage-play.mp4", "poster": "./images/hexbreaker-thumb.jpg"},
+  {"id": "vid-50", "title": "Mustang Money AP Strategy", "category": "Machine Guide", "machineSlug": "mustang-money", "localSrc": "./videos/mustang.mp4", "poster": "./images/mustang-money-thumb.webp"},
+  {"id": "vid-51", "title": "Ocean Magic Mermaid - AP Session", "category": "Machine Guide", "machineSlug": "ocean-magic", "localSrc": "./videos/ocean-magic-mermaid.mp4", "poster": "./images/ocean-magic-thumb.png"},
+  {"id": "vid-52", "title": "Scarab Advantage Play Tutorial", "category": "Machine Guide", "machineSlug": "scarab", "localSrc": "./videos/scarab-advantage-play.mp4", "poster": "./images/scarab-thumb.png"},
+  {"id": "vid-53", "title": "Wheel of Fortune AP Strategy", "category": "Machine Guide", "machineSlug": "wheel-of-fortune", "localSrc": "./videos/wheel-of-fortune.mp4", "poster": "./images/wheel-of-fortune-thumb.png"},
+  {"id": "vid-54", "title": "SlotCheater.com - Introduction", "category": "General", "machineSlug": null, "localSrc": "./videos/slotcheater-promo.mp4", "poster": "./images/slotcheater-logo.png"}
 ]
