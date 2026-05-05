@@ -793,7 +793,9 @@
                     + (videosData && videosData.some(function (v) { return v.machineSlug === m.slug; })
                         ? '    <button type="button" class="machine-video-btn" data-slug="' + escapeHtml(m.slug) + '">▶ Watch Video</button>'
                         : '')
-                    + '    <a class="machine-cta" href="./hunter/' + escapeHtml(m.slug) + '/">Cheat Sheet <span class="arrows">&gt;&gt;&gt;</span></a>'
+                    + (m.hasPage !== false
+                        ? '    <a class="machine-cta" href="./hunter/' + escapeHtml(m.slug) + '/">Cheat Sheet <span class="arrows">&gt;&gt;&gt;</span></a>'
+                        : '')
                     + '  </div>'
                     + '</div>';
             }
