@@ -108,8 +108,12 @@
         .machine-hint.open { display: block; }
         .machine-hint-label { color: #F59E0B; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.35rem; }
         .machine-hint-text { color: #F9FAFB; font-size: 0.85rem; line-height: 1.5; }
-        .machine-card-actions { display: flex; justify-content: flex-end; }
+        .machine-card-actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
         .machine-cta { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border: 1.5px solid #06B6D4; border-radius: 6px; color: #06B6D4; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.15s, color 0.15s; }
+        .machine-watch-btn { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border: 1.5px solid #06B6D4; border-radius: 6px; background: transparent; color: #06B6D4; font: inherit; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.15s, color 0.15s; }
+        .machine-watch-btn:hover { background: #06B6D4; color: #0B0B0D; }
+        .vid-cat-machine-guide { background: #1d2e3a; color: #06B6D4; }
+        .vid-card-highlight { box-shadow: 0 0 0 2px #06B6D4; transition: box-shadow 1s ease-out; }
         .machine-cta:hover { background: #06B6D4; color: #0B0B0D; }
         .machine-cta .arrows { letter-spacing: -0.05em; font-weight: 400; }
         .cheats-empty { text-align: center; color: #9CA3AF; padding: 2rem 1rem; }
@@ -595,6 +599,7 @@
             // ---------- State ----------
             var machinesData = null, machinesPromise = null, machinesError = null;
             var videosData = null, videosPromise = null, videosError = null;
+            var pendingVideoSlug = null;
             var searchQuery = '';
             var activeMfr = 'all';
             var quizState = { currentQ: 0, userAnswers: [-1, -1, -1, -1, -1], finished: false };
@@ -781,9 +786,22 @@
                     + '  </div>'
                     +    hintBlock
                     + '  <div class="machine-card-actions">'
+                    + (videosData && videosData.some(function (v) { return v.machineSlug === m.slug; })
+                        ? '    <button type="button" class="machine-watch-btn" data-slug="' + escapeHtml(m.slug) + '">▶ Watch Video</button>'
+                        : '')
                     + '    <a class="machine-cta" href="./hunter/' + escapeHtml(m.slug) + '/">Cheat Sheet <span class="arrows">&gt;&gt;&gt;</span></a>'
                     + '  </div>'
                     + '</div>';
+            }
+
+            function loadVideosData() {
+                if (videosData) return Promise.resolve(videosData);
+                if (videosPromise) return videosPromise;
+                videosPromise = fetch('./videos.json', { cache: 'no-cache' })
+                    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+                    .then(function (data) { videosData = data; videosError = null; return data; })
+                    .catch(function (err) { videosError = err; videosPromise = null; throw err; });
+                return videosPromise;
             }
 
             function renderCheatsList() {
@@ -920,7 +938,15 @@
                 if (list) {
                     list.addEventListener('click', function (e) {
                         var t = e.target;
-                        var btn = t && t.closest ? t.closest('.machine-info-btn') : null;
+                        if (!t || !t.closest) return;
+                        var watchBtn = t.closest('.machine-watch-btn');
+                        if (watchBtn) {
+                            e.preventDefault();
+                            pendingVideoSlug = watchBtn.getAttribute('data-slug');
+                            location.hash = '#videos';
+                            return;
+                        }
+                        var btn = t.closest('.machine-info-btn');
                         if (!btn) return;
                         e.preventDefault();
                         var card = btn.closest('.machine-card');
@@ -951,14 +977,13 @@
             }
 
             function renderVideos() {
-              fetch('videos.json')
-                .then(r => r.json())
-                .then(videos => {
+              loadVideosData().then(function (videos) {
                   const section = document.getElementById('videos');
                   if (!section) return;
 
                   const categories = [
                     { id: 'all',            label: 'All' },
+                    { id: 'Machine Guide',  label: 'Machine Guides' },
                     { id: 'advantage-play', label: 'Advantage Play' },
                     { id: 'progressives',   label: 'Progressives' },
                     { id: 'strategy',       label: 'Strategy' },
@@ -972,16 +997,20 @@
                     return activeFilter === 'all' ? videos : videos.filter(v => v.category === activeFilter);
                   }
 
+                  function classFor(category) {
+                    return 'vid-cat-' + (category || '').toLowerCase().replace(/\s+/g, '-');
+                  }
+
                   function renderGrid() {
                     const filtered = getFiltered();
                     grid.innerHTML = filtered.map(v => `
-                      <a class="vid-card" href="https://www.youtube.com/watch?v=${v.youtubeId}" target="_blank" rel="noopener">
+                      <a class="vid-card" data-machine-slug="${v.machineSlug || ''}" href="https://www.youtube.com/watch?v=${v.youtubeId}" target="_blank" rel="noopener">
                         <div class="vid-thumb-wrap">
                           <img class="vid-thumb" src="https://img.youtube.com/vi/${v.youtubeId}/mqdefault.jpg" alt="${v.title}" loading="lazy" onerror="var c=this.closest('.vid-card');if(c)c.style.display='none';" onload="if(this.naturalWidth===120&&this.naturalHeight===90){var c=this.closest('.vid-card');if(c)c.style.display='none';}">
                           <div class="vid-play-btn">▶</div>
                         </div>
                         <div class="vid-info">
-                          <span class="vid-cat-badge vid-cat-${v.category}">${categories.find(c=>c.id===v.category)?.label||v.category}</span>
+                          <span class="vid-cat-badge ${classFor(v.category)}">${categories.find(c=>c.id===v.category)?.label||v.category}</span>
                           <p class="vid-title">${v.title}</p>
                           <p class="vid-channel">${v.channel}</p>
                         </div>
@@ -1015,7 +1044,20 @@
 
                   renderPills();
                   renderGrid();
-                });
+
+                  if (pendingVideoSlug) {
+                    var slug = pendingVideoSlug;
+                    pendingVideoSlug = null;
+                    setTimeout(function () {
+                      var card = document.querySelector('.vid-card[data-machine-slug="' + slug + '"]');
+                      if (card) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        card.classList.add('vid-card-highlight');
+                        setTimeout(function () { card.classList.remove('vid-card-highlight'); }, 2000);
+                      }
+                    }, 300);
+                  }
+              });
             }
 
             // ---------- Render: Play (Quiz) ----------
@@ -1224,6 +1266,18 @@
             }
             setTimeout(dismissLoading, 3000);
             loadMachines().then(dismissLoading, dismissLoading);
+
+            // Eager-load videos data so machine cards can show "Watch Video" buttons.
+            // If user is already on cheats when videos arrive, re-render to inject the buttons.
+            loadVideosData().then(function () {
+                if (getCurrentTab() === 'cheats' && machinesData) {
+                    var app = document.getElementById('app');
+                    if (app) {
+                        app.innerHTML = renderCheats();
+                        attachCheatsHandlers();
+                    }
+                }
+            }).catch(function () { /* videos optional, ignore */ });
 
             // ---------- Top controls: info modal + share ----------
             var toastTimer = null;
