@@ -1400,14 +1400,25 @@
     <!-- Service Worker registration -->
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                  for(let registration of registrations) {
-                    registration.unregister();
-                  }
-                });
-                navigator.serviceWorker.register('./sw.js').catch(function () { /* ignore */ });
-            });
+          window.addEventListener('load', function() {
+            // Force unregister ALL existing service workers first
+            navigator.serviceWorker.getRegistrations().then(function(regs) {
+              var unregPromises = regs.map(function(r) {
+                return r.unregister();
+              });
+              return Promise.all(unregPromises);
+            }).then(function() {
+              // Clear ALL caches
+              return caches.keys().then(function(keys) {
+                return Promise.all(keys.map(function(k) {
+                  return caches.delete(k);
+                }));
+              });
+            }).then(function() {
+              // Re-register fresh
+              return navigator.serviceWorker.register('./sw.js');
+            }).catch(function() {});
+          });
         }
     </script>
 </body>
