@@ -115,8 +115,9 @@
         .machine-hint-label { color: #F59E0B; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.35rem; }
         .machine-hint-text { color: #F9FAFB; font-size: 0.85rem; line-height: 1.5; }
         .machine-card-actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
-        .machine-cta { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border: 1.5px solid #06B6D4; border-radius: 6px; color: #06B6D4; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.15s, color 0.15s; }
-        .machine-video-btn { display: inline-flex; align-items: center; gap: 4px; border: 1px solid #06B6D4; border-radius: 6px; background: transparent; color: #06B6D4; font: inherit; padding: 0.4rem 0.85rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .machine-cta { display: inline-flex; align-items: center; gap: 4px; padding: 0.35rem 0.65rem; border: 1.5px solid #06B6D4; border-radius: 6px; color: #06B6D4; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.15s, color 0.15s; }
+        .machine-video-btn { display: inline-flex; align-items: center; gap: 4px; border: 1px solid #06B6D4; border-radius: 6px; background: transparent; color: #06B6D4; font: inherit; padding: 0.35rem 0.65rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .vid-play-icon { color: #FF0000; font-size: 0.9rem; margin-right: 2px; }
         .machine-video-btn:hover { background: rgba(6, 182, 212, 0.1); }
         .vid-cat-machine-guide { background: #1d2e3a; color: #06B6D4; }
         .vid-card { transition: box-shadow 1s ease-out; }
@@ -797,10 +798,10 @@
                     +    hintBlock
                     + '  <div class="machine-card-actions">'
                     + (videosData && videosData.some(function (v) { return v.machineSlug === m.slug; })
-                        ? '    <button type="button" class="machine-video-btn" data-slug="' + escapeHtml(m.slug) + '">▶ Watch Video</button>'
+                        ? '    <button type="button" class="machine-video-btn" data-slug="' + escapeHtml(m.slug) + '"><span class="vid-play-icon">▶</span> Video</button>'
                         : '')
                     + (m.hasPage !== false
-                        ? '    <a class="machine-cta" href="./hunter/' + escapeHtml(m.slug) + '/">Cheat Sheet <span class="arrows">&gt;&gt;&gt;</span></a>'
+                        ? '    <a class="machine-cta" href="./hunter/' + escapeHtml(m.slug) + '/">Cheats &gt;&gt;&gt;</a>'
                         : '')
                     + '  </div>'
                     + '</div>';
