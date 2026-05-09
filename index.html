@@ -96,11 +96,12 @@
         .cheats-search::placeholder { color: #6B7280; }
 
         .cheats-list { display: flex; flex-direction: column; gap: 0.6rem; }
-        .machine-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 0.65rem; transition: border-color 0.15s; }
+        .machine-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 12px; padding: 0; display: flex; flex-direction: row; align-items: stretch; gap: 0; overflow: hidden; transition: border-color 0.15s; }
         .machine-card:hover { border-color: #8B5CF6; }
-        .machine-card-top { display: flex; align-items: center; gap: 10px; position: relative; }
-        .machine-thumb { width: 160px; min-width: 160px; height: 110px; flex-shrink: 0; background: #14142B; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2rem; position: relative; }
-        .machine-thumb img { width: 100%; height: 100%; object-fit: contain; object-position: center center; display: block; padding: 4px; }
+        .machine-card-content { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 12px 12px 12px 14px; min-width: 0; }
+        .machine-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; flex: 1; position: relative; }
+        .machine-thumb { width: 140px; min-width: 140px; height: auto; align-self: stretch; flex-shrink: 0; background: #14142B; border-radius: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2rem; position: relative; }
+        .machine-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
         .not-ap-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.25); }
         .not-ap-overlay svg { width: 60%; height: 60%; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)); }
         .machine-info { flex: 1; min-width: 0; padding-right: 2.25rem; }
@@ -114,7 +115,7 @@
         .machine-hint.open { display: block; }
         .machine-hint-label { color: #F59E0B; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.35rem; }
         .machine-hint-text { color: #F9FAFB; font-size: 0.85rem; line-height: 1.5; }
-        .machine-card-actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+        .machine-card-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: nowrap; }
         .machine-cta { display: inline-flex; align-items: center; gap: 4px; padding: 0.35rem 0.65rem; border: 1.5px solid #06B6D4; border-radius: 6px; color: #06B6D4; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.15s, color 0.15s; }
         .machine-video-btn { display: inline-flex; align-items: center; gap: 4px; border: 1px solid #06B6D4; border-radius: 6px; background: transparent; color: #06B6D4; font: inherit; padding: 0.35rem 0.65rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
         .vid-play-icon { color: #FF0000; font-size: 0.9rem; margin-right: 2px; }
@@ -275,7 +276,7 @@
         .home-learn-card-text { color: #8B5CF6; font-size: 0.9rem; font-weight: 600; }
 
         @media (max-width: 480px) {
-            .machine-thumb { width: 120px; min-width: 120px; height: 84px; }
+            .machine-thumb { width: 110px; min-width: 110px; }
         }
 
         @media (max-width: 360px) {
@@ -786,23 +787,25 @@
                     : '';
                 return ''
                     + '<div class="machine-card" data-manufacturer="' + escapeHtml(m.manufacturer || '') + '">'
-                    + '  <div class="machine-card-top">'
-                    + '    <div class="machine-thumb">' + thumbHtml + '</div>'
-                    + '    <div class="machine-info">'
-                    + '      <div class="machine-name">' + escapeHtml(m.name) + '</div>'
-                    + '      <div class="machine-mfg">' + escapeHtml(m.manufacturer || '') + '</div>'
-                    + '      <div class="machine-aptype">' + escapeHtml(m.apType || '') + '</div>'
+                    + '  <div class="machine-thumb">' + thumbHtml + '</div>'
+                    + '  <div class="machine-card-content">'
+                    + '    <div class="machine-card-top">'
+                    + '      <div class="machine-info">'
+                    + '        <div class="machine-name">' + escapeHtml(m.name) + '</div>'
+                    + '        <div class="machine-mfg">' + escapeHtml(m.manufacturer || '') + '</div>'
+                    + '        <div class="machine-aptype">' + escapeHtml(m.apType || '') + '</div>'
+                    + '      </div>'
+                    +        infoBtn
                     + '    </div>'
-                    +      infoBtn
-                    + '  </div>'
-                    +    hintBlock
-                    + '  <div class="machine-card-actions">'
+                    +      hintBlock
+                    + '    <div class="machine-card-actions">'
                     + (videosData && videosData.some(function (v) { return v.machineSlug === m.slug; })
-                        ? '    <button type="button" class="machine-video-btn" data-slug="' + escapeHtml(m.slug) + '"><span class="vid-play-icon">▶</span> Video</button>'
+                        ? '      <button type="button" class="machine-video-btn" data-slug="' + escapeHtml(m.slug) + '"><span class="vid-play-icon">▶</span> Video</button>'
                         : '')
                     + (m.hasPage !== false
-                        ? '    <a class="machine-cta" href="./hunter/' + escapeHtml(m.slug) + '/">Cheats &gt;&gt;&gt;</a>'
+                        ? '      <a class="machine-cta" href="./hunter/' + escapeHtml(m.slug) + '/">Cheat Sheets &gt;&gt;&gt;</a>'
                         : '')
+                    + '    </div>'
                     + '  </div>'
                     + '</div>';
             }
@@ -872,14 +875,16 @@
                     + '</div>';
                 return ''
                     + '<div class="' + cardClasses + '">'
-                    + '  <div class="machine-card-top">'
-                    + '    <div class="machine-thumb">' + imgHtml + overlayHtml + '</div>'
-                    + '    <div class="machine-info">'
-                    + '      <div class="machine-name">' + escapeHtml(m.name) + '</div>'
-                    + '      <div class="machine-mfg">' + escapeHtml(m.manufacturer || '') + '</div>'
-                    + '      <div class="machine-not-ap-reason">' + escapeHtml(m.reason || '') + '</div>'
+                    + '  <div class="machine-thumb">' + imgHtml + overlayHtml + '</div>'
+                    + '  <div class="machine-card-content">'
+                    + '    <div class="machine-card-top">'
+                    + '      <div class="machine-info">'
+                    + '        <div class="machine-name">' + escapeHtml(m.name) + '</div>'
+                    + '        <div class="machine-mfg">' + escapeHtml(m.manufacturer || '') + '</div>'
+                    + '        <div class="machine-not-ap-reason">' + escapeHtml(m.reason || '') + '</div>'
+                    + '      </div>'
+                    +        badge
                     + '    </div>'
-                    +    badge
                     + '  </div>'
                     + '</div>';
             }
