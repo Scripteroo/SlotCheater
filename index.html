@@ -85,6 +85,12 @@
         .cheats-filter-pills::-webkit-scrollbar { display: none; }
         .filter-pill { background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); color: #A78BFA; border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
         .filter-pill.active { background: rgba(139, 92, 246, 0.3); border-color: #8B5CF6; color: #fff; }
+        .cheats-info-card { background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+        .cheats-info-title { color: #A78BFA; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .cheats-definitions { display: grid; grid-template-columns: auto 1fr; gap: 0.4rem 0.75rem; font-size: 0.8rem; line-height: 1.5; }
+        .cheats-definitions dt { color: #06B6D4; font-weight: 700; white-space: nowrap; }
+        .cheats-definitions dd { color: #9CA3AF; margin: 0; }
+        .cheats-notes { list-style: disc; padding-left: 1.25rem; font-size: 0.8rem; color: #9CA3AF; line-height: 1.6; display: flex; flex-direction: column; gap: 0.35rem; }
         .cheats-search { width: 100%; padding: 0.75rem 1rem; background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 10px; color: #F9FAFB; font: inherit; font-size: 1rem; outline: none; margin-bottom: 1rem; transition: border-color 0.15s; }
         .cheats-search:focus { border-color: #8B5CF6; }
         .cheats-search::placeholder { color: #6B7280; }
@@ -93,7 +99,7 @@
         .machine-card { background: #1A1A2E; border: 1px solid #2D2D4E; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 0.65rem; transition: border-color 0.15s; }
         .machine-card:hover { border-color: #8B5CF6; }
         .machine-card-top { display: flex; align-items: center; gap: 10px; position: relative; }
-        .machine-thumb { width: 130px; min-width: 130px; height: 80px; flex-shrink: 0; background: #14142B; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2rem; position: relative; }
+        .machine-thumb { width: 160px; min-width: 160px; height: 110px; flex-shrink: 0; background: #14142B; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2rem; position: relative; }
         .machine-thumb img { width: 100%; height: 100%; object-fit: contain; object-position: center center; display: block; padding: 4px; }
         .not-ap-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.25); }
         .not-ap-overlay svg { width: 60%; height: 60%; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)); }
@@ -268,7 +274,7 @@
         .home-learn-card-text { color: #8B5CF6; font-size: 0.9rem; font-weight: 600; }
 
         @media (max-width: 480px) {
-            .machine-thumb { width: 100px; min-width: 100px; height: 64px; }
+            .machine-thumb { width: 120px; min-width: 120px; height: 84px; }
         }
 
         @media (max-width: 360px) {
@@ -909,6 +915,27 @@
                     + '  </header>'
                     + '  <div class="cheats-filter-pills">' + renderFilterPills() + '</div>'
                     + '  <input id="cheats-search" class="cheats-search" type="search" placeholder="Search by name or type..." autocomplete="off" value="' + escapeHtml(searchQuery) + '">'
+                    + '  <div class="cheats-info-card">'
+                    + '    <h3 class="cheats-info-title">Type Definitions</h3>'
+                    + '    <dl class="cheats-definitions">'
+                    + '      <dt>RTP:</dt><dd>Return To Player — the amount as a percentage that the slot returns to players (90%, 98%, etc.)</dd>'
+                    + '      <dt>AP:</dt><dd>Advantage Play — exploiting persistence mechanics, playing only when the odds are in your favor</dd>'
+                    + '      <dt>MHB:</dt><dd>Must-Hit-By — jackpot guaranteed to trigger before stated cap</dd>'
+                    + '      <dt>Banking/Accumulator:</dt><dd>Stores progress (coins, symbols, etc.) between players</dd>'
+                    + '      <dt>Cycle-Based:</dt><dd>Fixed sequence (e.g., 10 spins) with payoff on final spin</dd>'
+                    + '      <dt>Expanding Reel:</dt><dd>Reels expand and persist, increasing ways to win</dd>'
+                    + '      <dt>Multi-Level Progressive:</dt><dd>Multiple jackpot tiers with mystery trigger</dd>'
+                    + '    </dl>'
+                    + '  </div>'
+                    + '  <div class="cheats-info-card">'
+                    + '    <h3 class="cheats-info-title">Notes</h3>'
+                    + '    <ul class="cheats-notes">'
+                    + '      <li>Silicon Gaming was acquired by IGT in 2003, so newer versions of Buccaneer\'s Gold may carry IGT branding</li>'
+                    + '      <li>WMS/Williams was acquired by Scientific Games in 2013, which became Light &amp; Wonder in 2022</li>'
+                    + '      <li>GTECH merged with IGT in 2015</li>'
+                    + '      <li>Ainsworth remains independent and is known for the most mathematically transparent MHB progressives</li>'
+                    + '    </ul>'
+                    + '  </div>'
                     + '  <div id="cheats-list" class="cheats-list">' + renderCheatsList() + '</div>'
                     + '  <div id="cheats-empty" class="cheats-empty" style="display:none">No machines match your search.</div>'
                     + '  <div id="not-ap-section"' + (searchQuery ? ' style="display:none"' : '') + '>'
