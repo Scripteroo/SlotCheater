@@ -15,10 +15,10 @@ RedirectMatch 301 ^/hunter/(.*)$ /cheatsheets/$1
 DirectoryIndex index.html
 
 # Redirects
-Redirect 301 /cheatsheet /hunter
-Redirect 301 /cheatsheet/ /hunter/
-Redirect 301 /cheats /hunter
-Redirect 301 /cheats/ /hunter/
+Redirect 301 /cheatsheet /cheatsheets
+Redirect 301 /cheatsheet/ /cheatsheets/
+Redirect 301 /cheats /#cheats
+Redirect 301 /cheats/ /#cheats
 
 # Security Headers - Fix CSP Error
 <IfModule mod_headers.c>
