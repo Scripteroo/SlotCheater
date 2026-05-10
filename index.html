@@ -1466,7 +1466,7 @@
         if ('serviceWorker' in navigator) {
           window.addEventListener('load', function() {
             var didReset = false;
-            try { didReset = !!localStorage.getItem('sw-reset-v6'); } catch (e) {}
+            try { didReset = !!localStorage.getItem('sw-reset-v7'); } catch (e) {}
             if (!didReset) {
               // One-time wipe: unregister all SWs, clear all caches, mark done, register fresh
               navigator.serviceWorker.getRegistrations().then(function(regs) {
@@ -1481,7 +1481,7 @@
                   }));
                 });
               }).then(function() {
-                try { localStorage.setItem('sw-reset-v6', '1'); } catch (e) {}
+                try { localStorage.setItem('sw-reset-v7', '1'); } catch (e) {}
                 return navigator.serviceWorker.register('./sw.js');
               }).catch(function() {});
             } else {

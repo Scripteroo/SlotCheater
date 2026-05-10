@@ -1,5 +1,5 @@
 // Service Worker for SlotCheater PWA
-const CACHE_NAME = 'slotcheater-v6';
+const CACHE_NAME = 'slotcheater-v7';
 const urlsToCache = [
   '/',
   '/manifest.json',
