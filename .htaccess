@@ -1,3 +1,6 @@
+# Redirect old /hunter/ URLs to /cheatsheets/
+RedirectMatch 301 ^/hunter/(.*)$ /cheatsheets/$1
+
 # Enable rewrite engine
 <IfModule mod_rewrite.c>
   RewriteEngine On

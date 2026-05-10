@@ -75,7 +75,7 @@ jobs:
           echo "Testing homepage..."
           curl -sfI https://slotcheater.com/ | head -1
           echo "Testing a cheat sheet..."
-          curl -sfI https://slotcheater.com/hunter/golden-jungle/ | head -1
+          curl -sfI https://slotcheater.com/cheatsheets/golden-jungle/ | head -1
           echo "Testing nav assets..."
           curl -sfI https://slotcheater.com/assets/cheat-nav.js | head -1
           curl -sfI https://slotcheater.com/assets/cheat-nav.css | head -1

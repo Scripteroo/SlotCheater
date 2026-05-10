@@ -44,11 +44,11 @@
         var back = el('button', { 'type': 'button', 'class': 'sc-nav-back', 'aria-label': 'Back' }, '← Back');
         back.addEventListener('click', function () {
             if (window.history.length > 1) window.history.back();
-            else window.location.href = '/hunter/';
+            else window.location.href = '/cheatsheets/';
         });
         var home = el('a', { 'href': '/', 'class': 'sc-nav-home' },
             '<span class="sc-nav-home-mark">♦</span> SlotCheater');
-        var all = el('a', { 'href': '/hunter/', 'class': 'sc-nav-all' }, 'All Sheets');
+        var all = el('a', { 'href': '/cheatsheets/', 'class': 'sc-nav-all' }, 'All Sheets');
         nav.appendChild(back);
         nav.appendChild(home);
         nav.appendChild(all);
@@ -58,12 +58,12 @@
     function buildBottom(prev, next) {
         var nav = el('nav', { 'class': 'sc-nav-bottom', 'aria-label': 'Previous and next cheat sheets' });
         if (prev) {
-            var p = el('a', { 'href': '/hunter/' + prev.slug + '/', 'class': 'sc-nav-prev' + (next ? '' : ' sc-nav-solo') },
+            var p = el('a', { 'href': '/cheatsheets/' + prev.slug + '/', 'class': 'sc-nav-prev' + (next ? '' : ' sc-nav-solo') },
                 '<span class="sc-nav-label">← Previous</span>' + escapeHtml(prev.name));
             nav.appendChild(p);
         }
         if (next) {
-            var n = el('a', { 'href': '/hunter/' + next.slug + '/', 'class': 'sc-nav-next' + (prev ? '' : ' sc-nav-solo') },
+            var n = el('a', { 'href': '/cheatsheets/' + next.slug + '/', 'class': 'sc-nav-next' + (prev ? '' : ' sc-nav-solo') },
                 '<span class="sc-nav-label">Next →</span>' + escapeHtml(next.name));
             nav.appendChild(n);
         }
