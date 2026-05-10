@@ -26,7 +26,7 @@
     ];
 
     function currentSlug() {
-        var m = window.location.pathname.match(/\/hunter\/([^\/]+)\/?/);
+        var m = window.location.pathname.match(/\/cheatsheets\/([^\/]+)\/?/);
         return m ? m[1] : null;
     }
 
